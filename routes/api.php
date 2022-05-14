@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
 use App\User;
+use App\District;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,5 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/user-all', function (){
-    return user::all();
+    return User::all();
+});
+Route::get('/districts-all', function (){
+    return District::all();
 });
