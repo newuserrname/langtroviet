@@ -22,63 +22,58 @@
 					</div>
 					<div class="x_content">
 						<br />
-						<form method="POST" action="{{ route('categories.store') }}">
+						<form method="POST" action="{{ route('electricandwater.store') }}">
 								@csrf
-							<div class="item form-group">
-								<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Người thêm<span class="required">*</span>
-								</label>
-								<div class="col-md-6 col-sm-6 ">
-									<input type="text" name="name" required="required" class="form-control ">
-								</div>
-							</div>
 							<div class="item form-group">
 								<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Mã phòng<span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 ">
-									<input type="text" name="name" required="required" class="form-control ">
+									<select name="idroom" class="form-control" class="form-control m-bot15">
+									@foreach ($myroom as $mroom)
+									<option class="form-control " value="{{ $mroom->id }}">{{ $mroom->title }}</option>
+									@endforeach		
+									</select>							
 								</div>
 							</div>
 							<div class="item form-group">
 								<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Số điện<span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 ">
-									<input type="number" name="name" required="required" class="form-control">
+									<input type="number" name="electric" required="required" class="form-control">
 								</div>
 							</div>
 							<div class="item form-group">
 								<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Số nước<span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 ">
-									<input type="number" name="name" required="required" class="form-control ">
+									<input type="number" name="water" required="required" class="form-control ">
 								</div>
 							</div>
 							<div class="item form-group">
 								<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">ngày thêm<span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 ">
-									<input type="number" name="name" required="required" class="form-control ">
+									<input type="number" name="day" required="required" class="form-control ">
 								</div>
 							</div>
 							<div class="item form-group">
 								<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">tháng<span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 ">
-									<input type="number" name="name" required="required" class="form-control ">
+									<input type="number" name="month" required="required" class="form-control ">
 								</div>
 							</div>
 							<div class="item form-group">
 								<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">năm<span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 ">
-									<input type="number" name="name" required="required" class="form-control ">
+									<input type="number" name="year" required="required" class="form-control ">
 								</div>
 							</div>
 							<div class="ln_solid"></div>
 							<div class="item form-group">
 								<div class="col-md-6 col-sm-6 offset-md-3">
-									<button class="btn btn-primary" type="button">Cancel</button>
-									<button class="btn btn-primary" type="reset">Reset</button>
-									<button type="submit" name="themloaiphong" class="btn btn-success">Thêm</button>
+									<button type="submit" class="btn btn-success">Thêm</button>
 								</div>
 							</div>
 						</form>

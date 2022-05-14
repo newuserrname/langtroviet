@@ -67,6 +67,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminmiddleware'], function () {
 });
 
 /* End Admin */
+
 Route::get('/phongtro/{slug}',function($slug){
     $room = Motelroom::findBySlug($slug);
     $room->count_view = $room->count_view +1;
@@ -80,7 +81,6 @@ Route::get('/phongtro/{slug}',function($slug){
          $commentt->avatar=$user_detail->avatar;
 
 //         $commentt->name=$user_detail->name;
-
 
 //            array_push($commentt, $user_detail);
 
