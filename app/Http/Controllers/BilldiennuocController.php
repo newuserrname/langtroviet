@@ -25,7 +25,7 @@ class BilldiennuocController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.billeaw.create');
     }
 
     /**

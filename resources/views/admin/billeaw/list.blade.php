@@ -26,7 +26,7 @@
 							<span class="text-semibold">Well done!</span>  {{session('thongbao')}}
 						</div>
                         @endif
-						<a style="color: white" hreftype="button" class="btn btn-success">Tính tiền</a>
+						<a href="{{ route('billeaw.create') }}" hreftype="button" class="btn btn-success">Tính tiền</a>
 						<table class="table datatable-show-all">
 							<thead>
 								<tr class="bg-blue">
