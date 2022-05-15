@@ -232,4 +232,8 @@ class UserController extends Controller
          return redirect('/user/dangtin')->with('success','Đăng tin thành công. Vui lòng đợi Admin kiểm duyệt');
 
       }
+
+      public function get_adddiennuoc() {
+         return view('home.themsodiennuoc');
+      }
 }

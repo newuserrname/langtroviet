@@ -27,6 +27,10 @@ class Motelroom extends Model
     {
         return $this->hasMany('App\ThemsodiennuocModel','motelroom_id','id');
     }
+    public function billeaw()
+    {
+        return $this->hasMany('App\BilldiennuocModel', 'motelroom_id','id');
+    }
     public function sluggable()
     {
         return [

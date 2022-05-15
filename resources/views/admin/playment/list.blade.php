@@ -61,7 +61,7 @@ window.onload = function () {
         <tr>
             <td align="center" height="50"><b>HÓA ĐƠN TIỀN ĐIỆN NƯỚC THÁNG , TIỀN PHÒNG THÁNG </b></td>
             <tr>
-            <td align="center">ngày 123 tháng 456</td>
+            <td align="center">ngày tháng </td>
         </tr>
         </tr>
         <tr>

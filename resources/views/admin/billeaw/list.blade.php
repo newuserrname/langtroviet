@@ -14,7 +14,7 @@
 			<div class="col-12">
 				<div class="panel panel-flat">
 						<div class="panel-heading">
-							<h5 class="panel-title">Danh sách giá điện nước sử dụng của mỗi phòng <span class="badge badge-primary">{{$sodiennuoc->count()}}</span></h5>
+							<h5 class="panel-title">Danh sách giá điện nước sử dụng của mỗi phòng <span class="badge badge-primary">{{ $list_bill->count() }}</span></h5>
 						</div>
 
 						<div class="panel-body">
@@ -26,32 +26,27 @@
 							<span class="text-semibold">Well done!</span>  {{session('thongbao')}}
 						</div>
                         @endif
+						<a style="color: white" hreftype="button" class="btn btn-success">Tính tiền</a>
 						<table class="table datatable-show-all">
 							<thead>
 								<tr class="bg-blue">
 									<th>ID</th>
 									<th>Giá điện (kWh)</th>
 									<th>Giá mước tiêu thụ (m3)</th>
-									<th>Phòng</th>
+									<th>Mã Phòng</th>
 									<th>Từ ngày</th>
                                     <th>Đến ngày</th>
-									<th class="text-center"><a href="{{ route('electricandwater.create') }}" class="btn btn-success">Thêm mới</a></th>
 								</tr>
 							</thead>
 							<tbody>
-								@foreach($sodiennuoc as $numbereaw)
+								@foreach ($list_bill as $bill)
 								<tr>
-									<td>{{$numbereaw->id}}</td>
-									<td>{{$numbereaw->electric}} /kWh</td>
-									<td>{{$numbereaw->water}} /m3</td>
-									<td>{{$numbereaw->user->name}}</td>
-									<td style="display:-webkit-box;
-									overflow:hidden;
-									text-overflow:ellipsis;
-									-webkit-line-clamp: 1;
-									-webkit-box-orient:vertical;
-									width: 300px;height: 50px;">{{$numbereaw->motelroom->title}}</td>
-									<td>{{$numbereaw->day}} / {{$numbereaw->month}} / {{$numbereaw->year}}</td>
+									<td>{{ $bill->id }}</td>
+									<td>{{ $bill->electric }}</td>
+									<td>{{ $bill->water }}</td>
+									<td>{{ $bill->motelroom->id }}</td>
+									<td>{{ $bill->tungay }}</td>
+									<td>{{ $bill->denngay }}</td>
 								</tr>
 								@endforeach
 							</tbody>

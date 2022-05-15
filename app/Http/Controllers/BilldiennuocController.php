@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\BilldiennuocModel;
 
 class BilldiennuocController extends Controller
 {
@@ -13,7 +14,8 @@ class BilldiennuocController extends Controller
      */
     public function index()
     {
-        //
+        $list_billeaw = BilldiennuocModel::all();
+        return view('admin.billeaw.list', ['list_bill' => $list_billeaw]);
     }
 
     /**

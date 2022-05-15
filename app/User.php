@@ -22,6 +22,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\ThemsodiennuocModel', 'user_id','id');
     }
+    public function billeaw()
+    {
+        return $this->hasMany('App\BilldiennuocModel', 'user_id','id');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

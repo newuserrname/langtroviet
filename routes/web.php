@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PlaymentController;
 use App\Http\Controllers\ThemsodiennuocController;
+use App\Http\Controllers\BilldiennuocController;
 
 Route::get('/', function () {
 	$district = District::all();
@@ -64,6 +65,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminmiddleware'], function () {
     Route::resource('/categories', 'CategoriesController');
     Route::resource('/payment', 'PlaymentController');
     Route::resource('/electricandwater', 'ThemsodiennuocController');
+    Route::resource('/billeaw', 'BilldiennuocController');
 });
 
 /* End Admin */
@@ -106,6 +108,8 @@ Route::group(['prefix'=>'user'], function () {
     Route::get('profile','UserController@getprofile')->middleware('dangtinmiddleware');
     Route::get('profile/edit','UserController@getEditprofile')->middleware('dangtinmiddleware');
     Route::post('profile/edit','UserController@postEditprofile')->name('user.edit')->middleware('dangtinmiddleware');
+
+    Route::get('diennuoc', 'UserController@get_adddiennuoc')->middleware('dangtinmiddleware');
 
 });
 

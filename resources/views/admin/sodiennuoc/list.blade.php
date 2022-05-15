@@ -26,6 +26,7 @@
 							<span class="text-semibold">Well done!</span>  {{session('thongbao')}}
 						</div>
                         @endif
+						<a href="{{ route('electricandwater.create') }}" class="btn btn-success">Thêm mới</a>
 						<table class="table datatable-show-all">
 							<thead>
 								<tr class="bg-blue">
@@ -35,7 +36,6 @@
 									<th>người lấy</th>
 									<th>Phòng</th>
 									<th>Ngày-tháng-năm</th>
-									<th class="text-center"><a href="{{ route('electricandwater.create') }}" class="btn btn-success">Thêm mới</a></th>
 								</tr>
 							</thead>
 							<tbody>

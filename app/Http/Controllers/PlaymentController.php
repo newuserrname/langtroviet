@@ -19,7 +19,11 @@ class PlaymentController extends Controller
      */
     public function index()
     {
-        return view('admin.playment.list');
+        $data = [
+            'ngay' => date('d'),
+            'thang' => date('m')
+        ];
+        return view('admin.playment.list', ['daymonth' => $data]);
     }
 
     /**

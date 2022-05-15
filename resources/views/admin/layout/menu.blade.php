@@ -28,7 +28,7 @@
         </li>
         <li><a href="{{ route('electricandwater.index') }}"> <i class="fa fa-edit"></i> Số điện nước </a>
         </li>
-        <li><a href="/admin/report"> <i class="fa fa-list-ol"></i> Tiền điện nước </a>
+        <li><a href="{{ route('billeaw.index') }}"> <i class="fa fa-list-ol"></i> Tiền điện nước </a>
         </li>
         <li><a href="/admin/thongke"> <i class="fa fa-tasks"></i> Thống kê </a>
         </li>

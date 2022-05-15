@@ -36,6 +36,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="user/profile">Thông tin chi tiết</a></li>
 							<li><a href="user/dangtin">Đăng tin cho thuê</a></li>
+							<li><a href="user/diennuoc">Thêm số điện nước</a></li>
 							<li><a href="user/logout">Thoát</a></li>
 						</ul>
 					</li>
