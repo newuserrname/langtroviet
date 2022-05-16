@@ -162,13 +162,15 @@ function time_elapsed_string($datetime, $full = false) {
 						<?php 
 							$img_thumb = json_decode($room->images,true);
 						 ?>
-						<div class="col-12 col-md-4">
-							<div class="room-item">
-								<div class="wrap-img" style="background: url(uploads/images/<?php echo $img_thumb[0]; ?>) center;     background-size: cover;">
+						<div class="col-md-10">
+							<div class="room-item-vertical">
+							<div class="col-md-4">
+								<div class="wrap-img-vertical" style="background: url(uploads/images/<?php echo $img_thumb[0]; ?>) ;     background-size: cover;">
 									<img src="" class="lazyload img-responsive">
 									<div class="category">
 										<a href="category/{{ $room->category->id }}">{{ $room->category->name }}</a>
 									</div>
+								</div>
 								</div>
 								<div class="room-detail">
 									<h4><a href="phongtro/{{ $room->slug }}">{{ $room->title }}</a></h4>
@@ -200,18 +202,20 @@ function time_elapsed_string($datetime, $full = false) {
 							<div class="container">
 								<h3 class="title-comm"><span class="title-holder">PHÒNG TRỌ MỚI NHẤT</span></h3>
 								<div class="row">
-									<div class="col-md-10">
+									
 										@foreach($new_motelroom as $room)
 									<?php
 										$img_thumb = json_decode($room->images,true);
 									?>
-							<div class="col-md-4">
-								<div class="room-item">
-								<div class="wrap-img" style="background: url(uploads/images/<?php echo $img_thumb[0]; ?>) center;     background-size: cover;">
+							<div class="col-md-10">
+								<div class="room-item-vertical">
+								<div class="col-md-4">
+								<div class="wrap-img-vertical" style="background: url(uploads/images/<?php echo $img_thumb[0]; ?>) center;     background-size: cover;">
 									<img src="" class="lazyload img-responsive">
 									<div class="category">
 										<a href="category/{{ $room->category->id }}">{{ $room->category->name }}</a>
 									</div>
+								</div>
 								</div>
 								<div class="room-detail">
 									<h4><a href="phongtro/{{ $room->slug }}">{{ $room->title }}</a></h4>
