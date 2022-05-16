@@ -79,8 +79,9 @@ class UserController extends Controller
    		if(Auth::attempt(['username'=>$req->txtuser,'password'=>$req->txtpass])){
     		return redirect('/');
     	}
-    	else 
-    		return redirect('user/login')->with('warn','Tài khoản hoặc mật khẩu không đúng');	
+    	else{
+         return redirect('user/login')->with('warn','Tài khoản hoặc mật khẩu không đúng');
+       }     			
    	}
 
    	public function logout(){

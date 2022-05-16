@@ -20,6 +20,9 @@ use App\District;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+// User
+Route::post('/login', 'AuthController@login');
+Route::post('/register', 'AuthController@register');
 
 Route::get('/user-all', function (){
     return User::all();

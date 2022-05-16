@@ -92,6 +92,7 @@ Route::get('/phongtro/{slug}',function($slug){
 
 Route::get('/report/{id}','MotelController@userReport')->name('user.report');
 Route::get('/motelroom/del/{id}','MotelController@user_del_motel');
+
 /* User */
 Route::group(['prefix'=>'user'], function () {
     Route::get('register','UserController@get_register');
