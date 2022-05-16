@@ -14,7 +14,7 @@
         "laravel/tinker": "~1.0",
         "league/flysystem": "^1.0",
         "symfony/thanks": "^1.2",
-        "tymon/jwt-auth": "^1.0"
+        "tymon/jwt-auth": "1.*"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

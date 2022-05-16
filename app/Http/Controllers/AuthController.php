@@ -13,6 +13,7 @@ use App\User;
 class AuthController extends Controller
 {
     public function login(Request $request) {
+
         $creds = $request->only(['username','password']);
 
         if(!$token=auth()->attempt($creds)){
@@ -25,7 +26,7 @@ class AuthController extends Controller
         return response()->json([
             'success' =>true,
             'token' => $token,
-            'users' => Auth::user()
+            'user' => Auth::user()
         ]);
     }
     
@@ -42,6 +43,22 @@ class AuthController extends Controller
             $user->password = $encryptedPass;
             $user->save();
             return $this->login($request);
+        }
+        catch(Exception $e){
+            return response()->json([
+                'success' => false,
+                'message' => ''.$e
+            ]);
+        }
+    }
+
+    public function logout(Request $request){
+        try{
+            JWTAuth::invalidate(JWTAuth::parseToken($request->token));
+            return response()->json([
+                'success' => true,
+                'message' => 'logout success'
+            ]);
         }
         catch(Exception $e){
             return response()->json([
