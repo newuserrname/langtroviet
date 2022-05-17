@@ -57,6 +57,7 @@ class Kernel extends HttpKernel
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'jwtAuth' => \App\Http\Middleware\JWTMiddleware::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'dangtinmiddleware' => \App\Http\Middleware\DangTinMiddleware::class,
         'adminmiddleware' => \App\Http\Middleware\AdminMiddleware::class

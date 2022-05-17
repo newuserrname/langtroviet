@@ -67,4 +67,24 @@ class AuthController extends Controller
             ]);
         }
     }
+
+    public function saveUserInfo(request $request) {
+        $user = User::find(Auth::user()->id);
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $avatar = 'no-avatar.jpg';
+        if($request->avatar!='no-avatar.jpg')
+        {
+            $avatar = time().'.jpg';
+            file_put_contents('uploads/avatars/'.$avatar,base64_decode($request->avatar));
+            $user->avatar = $avatar;
+        }
+
+        $user->update();
+
+        return response()->json([
+            'success' => true,
+            'avatar' => $avatar
+        ]);
+    }
 }
