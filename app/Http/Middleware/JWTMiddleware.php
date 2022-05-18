@@ -25,13 +25,13 @@ class JWTMiddleware
 
       } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
           // do whatever you want to do if a token is expired
-          $message = 'token expired';
+          $message = 'Token hết hạn';
       } catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
           // do whatever you want to do if a token is invalid
-          $message = 'invalid token';
+          $message = 'Token không hợp lệ';
       } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
           // do whatever you want to do if a token is not present
-          $message = 'provide token';
+          $message = 'Không tìm thấy token';
       }
       return response()->json([
               'success' => false,

@@ -26,6 +26,11 @@ Route::post('register', 'AuthController@register');
 Route::get('logout', 'AuthController@logout');
 Route::post('save_user_info', 'AuthController@saveUserInfo')->middleware('jwtAuth');
 
+// Post Motelroom
+Route::get('posts_all', 'PostsMotelroomController@postsAll')->middleware('jwtAuth');
+Route::post('posts/create', 'PostsMotelroomController@postsCreate')->middleware('jwtAuth');
+Route::post('posts/update', 'PostsMotelroomController@postsUpdate')->middleware('jwtAuth');
+Route::post('posts/delete', 'PostsMotelroomController@postsDelete')->middleware('jwtAuth');
 
 Route::get('/districts-all', function (){
     return District::all();

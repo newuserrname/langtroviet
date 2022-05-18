@@ -77,7 +77,8 @@ class MotelController extends Controller
 	       $ipaddress = getenv('HTTP_FORWARDED');
 	    else if(getenv('REMOTE_ADDR'))
 	        $ipaddress = getenv('REMOTE_ADDR');
-	    else
+			
+	    else{
 	        $ipaddress = 'UNKNOWN';
 	    $report = new Reports;
 	    $report->ip_address = $ipaddress;
@@ -86,5 +87,6 @@ class MotelController extends Controller
 	    $report->save();
 	    $getmotel = Motelroom::find($id);
 		return redirect('phongtro/'.$getmotel->slug)->with('thongbao','Cảm ơn bạn đã báo cáo, đội ngũ chúng tôi sẽ xem xét');
+	}
 	}
 }
