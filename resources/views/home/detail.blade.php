@@ -110,93 +110,93 @@ function time_elapsed_string($datetime, $full = false) {
 			<!-- END Slider Hình Ảnh -->
 
                 <hr>
-             <div class="row">
-             <div class="col-sm-12">
+                <div class="row">
+                 <div class="col-sm-12">
              <h3>Bình luận</h3>
-             </div><!-- /col-sm-12 -->
-             </div><!-- /row -->
+                </div><!-- /col-sm-12 -->
+                </div><!-- /row -->
              @foreach($comment as $cmt)
-                             						{{--<span><i class="fas fa-check"></i> {{ $cmt->name }}</span>--}}
-                             						 <div class="row">
-                                                                 <div class="col-md-1">
-                                                                 <div class="thumbnail">
-                                                                 @if($cmt->avatar == 'no-avatar.jpg')
-                                                                 							<img class="img-responsive user-photo" src="images/no-avatar.jpg">
-                                                                 						@else
-                                                                 							<img src="uploads/avatars/<?php echo $cmt->avatar; ?>" class="img-responsive user-photo" alt="Cinque Terre" width="100" height="100">
-                                                                 						@endif
+            {{--<span><i class="fas fa-check"></i> {{ $cmt->name }}</span>--}}
+                <div class="row">
+                 <div class="col-md-1">
+                  <div class="thumbnail">
+                 @if($cmt->avatar == 'no-avatar.jpg')
+                	<img class="img-responsive user-photo" src="images/no-avatar.jpg">
+                        @else
+                            <img src="uploads/avatars/<?php echo $cmt->avatar; ?>" class="img-responsive user-photo" alt="Cinque Terre" width="100" height="100">
+                        @endif
 
-                                                                 </div><!-- /thumbnail -->
-                                                                 </div><!-- /col-sm-1 -->
+                        </div><!-- /thumbnail -->
+                        </div><!-- /col-sm-1 -->
 
-                                                                 <div class="col-md-11">
-                                                                 <div class="panel panel-default">
-                                                                 <div class="panel-heading">
-                                                                 <strong>{{ $cmt->name }}</strong>
-                                                                 <span class="text-muted">
-                                                                    <?php
-                                                                    											echo time_elapsed_string($cmt->created_at);
-                                                                    											?>
+                <div class="col-md-11">
+                 <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <strong>{{ $cmt->name }}</strong>
+                    <span class="text-muted">
+                    <?php
+                        echo time_elapsed_string($cmt->created_at);
+                    ?>
 
-                                                                 </span>
-                                                                 </div>
-                                                                 <div class="panel-body">
-                                                                 {{$cmt->content}}
-                                                                 </div><!-- /panel-body -->
-                                                                 </div><!-- /panel panel-default -->
-                                                                 </div><!-- /col-sm-5 -->
-                                                                 </div>
+                    </span>
+             </div>
+             <div class="panel-body">
+                {{$cmt->content}}
+                </div><!-- /panel-body -->
+                </div><!-- /panel panel-default -->
+                </div><!-- /col-sm-5 -->
+             </div>
 
             @endforeach
             @if(Auth::user())
             <div class="row">
-                                      <div class="col-md-1">
-                                      <div class="thumbnail">
+             <div class="col-md-1">
+              <div class="thumbnail">
 
-                                                                                                       @if(Auth::user()->avatar == 'no-avatar.jpg')
-                                                                                                       							<img class="img-responsive user-photo" src="images/no-avatar.jpg">
-                                                                                                       						@else
-                                                                                                       							<img src="uploads/avatars/<?php echo Auth::user()->avatar ?>" class="img-responsive user-photo" alt="Cinque Terre" width="100" height="100">
-                                                                                                       						@endif
-
-
-                                      </div><!-- /thumbnail -->
-                                      </div><!-- /col-sm-1 -->
-
-                                      <div class="col-md-11">
-                                      <div class="panel panel-default">
-                                      <div class="panel-heading">
-                                      <strong>{{Auth::user()->name}}</strong> <span class="text-muted"></span>
-                                      </div>
-                                      <div class="panel-body">
-                                      <form action="{{ url ('guibinhluan')}}" method="get" >
-                                      {{--<form onsubmit="return false" >--}}
-                                                  <div class="form-group">
-                                                    {{--<label for="comment">Bình luận của bạn:</label>--}}
-                                                    <textarea class="form-control" rows="5" name="txtbinhluan" style=" resize: none;" placeholder="Để lại bình luận của bạn tại đây.."></textarea>
-                                                    <input name="room_id" type="hidden" value="{{$motelroom->id}}">
-                                                  </div>
-                                                  {{--<button class="btn btn-primary " onclick="submitcomment()" >Gửi bình luận</button>--}}
-                                                  <button class="btn btn-primary " >Gửi bình luận</button>
-                                      </form>
-                                      </div><!-- /panel-body -->
-                                      </div><!-- /panel panel-default -->
-                                      </div><!-- /col-sm-5 -->
-                                      </div>
+                @if(Auth::user()->avatar == 'no-avatar.jpg')
+                    <img class="img-responsive user-photo" src="images/no-avatar.jpg">
+                @else
+                    <img src="uploads/avatars/<?php echo Auth::user()->avatar ?>" class="img-responsive user-photo" alt="Cinque Terre" width="100" height="100">
+                @endif
 
 
-            				@else
-            				<div>
-            				<hr>
-            				 <div class="row">
-            				    <div class="col-md-1"></div>
-            				    <div class="col-md-11">
-            				        <h4>Bạn cần đăng nhập để có thể gửi bình luận!</h4>
-            				    </div>
-            				 </div>
+                </div><!-- /thumbnail -->
+                </div><!-- /col-sm-1 -->
+
+             <div class="col-md-11">
+              <div class="panel panel-default">
+               <div class="panel-heading">
+                    <strong>{{Auth::user()->name}}</strong> <span class="text-muted"></span>
+             </div>
+              <div class="panel-body">
+                <form action="{{ url ('guibinhluan')}}" method="get" >
+                    {{--<form onsubmit="return false" >--}}
+              <div class="form-group">
+                    {{--<label for="comment">Bình luận của bạn:</label>--}}
+                <textarea class="form-control" rows="5" name="txtbinhluan" style=" resize: none;" placeholder="Để lại bình luận của bạn tại đây.."></textarea>
+                <input name="room_id" type="hidden" value="{{$motelroom->id}}">
+             </div>
+                    {{--<button class="btn btn-primary " onclick="submitcomment()" >Gửi bình luận</button>--}}
+                <button class="btn btn-primary " >Gửi bình luận</button>
+                </form>
+                    </div><!-- /panel-body -->
+                    </div><!-- /panel panel-default -->
+                    </div><!-- /col-sm-5 -->
+             </div>
+
+
+            	@else
+            	<div>
+            		<hr>
+            		<div class="row">
+            			<div class="col-md-1"></div>
+            				<div class="col-md-11">
+            				<h4>Bạn cần đăng nhập để có thể gửi bình luận!</h4>
             				</div>
-            				@endif
             			</div>
+            		</div>
+            	@endif
+            	</div>
 
 			<div class="gap"></div>
 		{{--</div>--}}
