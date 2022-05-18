@@ -12,14 +12,16 @@ class PostsMotelroomController extends Controller
 {
     public function postsAll() {
         $posts = Motelroom::orderBy('id', 'ASC')->get();
-        $categories = Categories::all();
+        foreach ($posts as $post) {
+            $post->user;
+            $post['selfLike'] = false;
+
+        }
         return response()->json([
             'success' => true,
             'posts' => $posts,
-            'categories' => $categories
         ]);
     }
-
 
     public function postsCreate(Request $request) {
 
