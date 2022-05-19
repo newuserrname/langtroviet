@@ -159,14 +159,11 @@ function time_elapsed_string($datetime, $full = false) {
 					<h3 class="title-comm"><span class="title-holder">ĐƯỢC XEM NHIỀU NHẤT</span></h3>
 				<div class="row room-hot">
 						@foreach($hot_motelroom as $room)
-						<?php 
-							$img_thumb = json_decode($room->images,true);
-						?>
 					<div class="col-md-10">
 						<div class="room-item-vertical">
 							<div class="col-md-4">
-								<div class="wrap-img-vertical" style="background: url(uploads/images/<?php echo $img_thumb[0]; ?>) ;     background-size: cover;">
-									<img src="" class="lazyload img-responsive">
+								<div class="wrap-img-vertical">
+									<img style="width: 100%;height: 136%;" src="{{ URL::to('uploads/images/'.$room->images) }}" class="lazyload img-responsive">
 									<div class="category">
 										<a href="category/{{ $room->category->id }}">{{ $room->category->name }}</a>
 									</div>
@@ -182,8 +179,10 @@ function time_elapsed_string($datetime, $full = false) {
 							?>
 						</span>
 					</div>
+
 					<div class="room-description"><i class="fas fa-audio-description"></i>
-						{{ limit_description($room->description) }}</div>
+						{{ limit_description($room->description) }}
+					</div>
 					<div class="room-info">
 						<span><i class="far fa-stop-circle"></i> Diện tích: <b>{{ $room->area }} m<sup>2</sup></b></span>
 						<span class="pull-right"><i class="fas fa-eye"></i> Lượt xem: <b>{{ $room->count_view }}</b></span>
@@ -192,7 +191,6 @@ function time_elapsed_string($datetime, $full = false) {
 								<b>{{ number_format($room->price) }} VNĐ</b></div>
 							</div>
 							</div>
-
 					</div>
 					</div>
 						@endforeach								
@@ -201,68 +199,65 @@ function time_elapsed_string($datetime, $full = false) {
 
 				<div class="container">
 					<h3 class="title-comm"><span class="title-holder">PHÒNG TRỌ MỚI NHẤT</span></h3>
-					<div class="row">
-									
+					<div class="row room-hot">
 						@foreach($new_motelroom as $room)
-							<?php
-								$img_thumb = json_decode($room->images,true);
-							?>
 					<div class="col-md-10">
 						<div class="room-item-vertical">
-						<div class="col-md-4">
-						<div class="wrap-img-vertical" style="background: url(uploads/images/<?php echo $img_thumb[0]; ?>) center;     background-size: cover;">
-							    <img src="" class="lazyload img-responsive">
-							<div class="category">
-								<a href="category/{{ $room->category->id }}">{{ $room->category->name }}</a>
+							<div class="col-md-4">
+								<div class="wrap-img-vertical">
+									<img style="width: 100%;height: 136%;" src="{{ URL::to('uploads/images/'.$room->images) }}" class="lazyload img-responsive">
+									<div class="category">
+										<a href="category/{{ $room->category->id }}">{{ $room->category->name }}</a>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
 				<div class="room-detail">
 					<h4><a href="phongtro/{{ $room->slug }}">{{ $room->title }}</a></h4>
 					<div class="room-meta">
 						<span><i class="fas fa-user-circle"></i> Người đăng: <a href="/"> {{ $room->user->name }}</a></span>
 						<span class="pull-right"><i class="far fa-clock"></i>
-							<?php
+							<?php 
 								echo time_elapsed_string($room->created_at);
 							?>
 						</span>
 					</div>
+
 					<div class="room-description"><i class="fas fa-audio-description"></i>
-							{{ limit_description($room->description) }}</div>
-				<div class="room-info">
+						{{ limit_description($room->description) }}
+					</div>
+					<div class="room-info">
 						<span><i class="far fa-stop-circle"></i> Diện tích: <b>{{ $room->area }} m<sup>2</sup></b></span>
 						<span class="pull-right"><i class="fas fa-eye"></i> Lượt xem: <b>{{ $room->count_view }}</b></span>
 							<div><i class="fas fa-map-marker"></i> Địa chỉ: {{ $room->address }}</div>
-								<div style="color: #e74c3c"><i class="far fa-money-bill-alt"></i> Giá thuê:
-									<b>{{ number_format($room->price) }} VNĐ</b></div>
-								</div>
+							<div style="color: #e74c3c"><i class="far fa-money-bill-alt"></i> Giá thuê: 
+								<b>{{ number_format($room->price) }} VNĐ</b></div>
 							</div>
-
+							</div>
 					</div>
-				</div>
 						@endforeach
-
-						<ul class="pagination pull-right">
-							@if($listmotelroom->currentPage() != 1)
-								<li><a href="{{ $listmotelroom->url($listmotelroom->currentPage() -1) }}">Trước</a></li>
-						@endif
-							@for($i= 1 ; $i<= $listmotelroom->lastPage(); $i++)
-								<li class=" {{ ($listmotelroom->currentPage() == $i )? 'active':''}}">
-									<a href="{{ $listmotelroom->url($i) }}">{{ $i }}</a>
-								</li>
-						@endfor
-							@if($listmotelroom->currentPage() != $listmotelroom->lastPage())
-								<li><a href="{{ $listmotelroom->url($listmotelroom->currentPage() +1) }}">Sau</a></li>
-						@endif
-						</ul>
+					</div>											
 				</div>
-						{{-- <div class="col-md-4">
-							<img src="images/ADVANCE.png" width="100%">
-							</div> --}}
-						</div>
-					</div>
-
-							
+					
+				{{-- <div class="col-md-4">
+				<img src="images/ADVANCE.png" width="100%">
+				</div> --}}
+				</div>
+				<div class="container">
+					<ul class="pagination pull-center">
+						@if($listmotelroom->currentPage() != 1)
+							<li><a href="{{ $listmotelroom->url($listmotelroom->currentPage() -1) }}">Trước</a></li>
+					@endif
+						@for($i= 1 ; $i<= $listmotelroom->lastPage(); $i++)
+							<li class=" {{ ($listmotelroom->currentPage() == $i )? 'active':''}}">
+								<a href="{{ $listmotelroom->url($i) }}">{{ $i }}</a>
+							</li>
+					@endfor
+						@if($listmotelroom->currentPage() != $listmotelroom->lastPage())
+							<li><a href="{{ $listmotelroom->url($listmotelroom->currentPage() +1) }}">Sau</a></li>
+					@endif
+					</ul>	
+				</div>	
+			</div>			
 						{{-- script --}}
 
 <script>

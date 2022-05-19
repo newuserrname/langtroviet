@@ -185,33 +185,30 @@ class UserController extends Controller
          /* Check file */
           $json_img ="";
          if ($request->hasFile('hinhanh')){
-            $arr_images = array();
+            
             $inputfile =  $request->file('hinhanh');
                 foreach ($inputfile as $filehinh) {
-                    $namefile = "phongtro-" . str_random(5) . "-" . $filehinh->getClientOriginalName();
+                    $namefile = "phongtro-" . rand(0,99) . "-" . $filehinh->getClientOriginalName();
                    
-                    array_push($arr_images, $namefile);
                     $filehinh->move('uploads/images',$namefile);
                 }
-                $json_img = json_encode($arr_images, JSON_FORCE_OBJECT);
+                $json_img = $namefile;
 
          }
          else {
 
-            $arr_images[] = "no_img_room.png";
-            $json_img = json_encode($arr_images,JSON_FORCE_OBJECT);
+            $json_img = "no_img_room.png";
+           
          }
          /* tiện ích*/
-         $json_tienich = json_encode($request->tienich,JSON_FORCE_OBJECT);
+         
          /* ----*/ 
          /* get LatLng google map */ 
-         // $arrlatlng = array();
-         // $arrlatlng[] = $request->txtlat;
-         // $arrlatlng[] = $request->txtlng;
-         // $json_latlng = json_encode($arrlatlng,JSON_FORCE_OBJECT);
+        
          $json_latlng = '{"0":"16.06139802641261","1":"108.22745463068135"}';
          /* --- */
          /* New Phòng trọ */
+
          $motel = new Motelroom;
          $motel->title = $request->txttitle;
          $motel->description = $request->txtdescription;
@@ -220,7 +217,6 @@ class UserController extends Controller
          $motel->count_view = 0;
          $motel->address = $request->txtaddress;
          $motel->latlng = $json_latlng;
-         $motel->utilities = $json_tienich;
          $motel->images = $json_img;
          $motel->user_id = Auth::user()->id;
          $motel->category_id = $request->idcategory;

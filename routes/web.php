@@ -46,7 +46,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminmiddleware'], function () {
     Route::get('','AdminController@getIndex');
     Route::get('thongke','AdminController@getThongke');
     Route::get('report','AdminController@getReport');
-    Route::group(['prefix'=>'users'],function(){
+    Route::group(['prefix'=>'users'],function() {
+        
         Route::get('list','AdminController@getListUser');
         Route::get('edit/{id}','AdminController@getUpdateUser');
         Route::post('edit/{id}','AdminController@postUpdateUser')->name('admin.user.edit');

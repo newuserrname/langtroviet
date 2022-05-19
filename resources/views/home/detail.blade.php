@@ -82,15 +82,7 @@ function time_elapsed_string($datetime, $full = false) {
 					<strong><i class="fas fa-street-view"></i> Diện tích: </strong><span> {{$motelroom->area}} m <sup>2</sup> </span>
 				</p>
 				<!-- Tiện ích -->
-				<?php $arrtienich = json_decode($motelroom->utilities,true); ?>
-				<div id="km-detail">
-					<div class="fs-dtslt">Tiện ích</div>
-					<div style="padding: 5px;">
-						@foreach($arrtienich as $tienich)
-						<span><i class="fas fa-check"></i> {{ $tienich }}</span> 
-						@endforeach
-					</div>
-				</div>
+				
 				<hr>
 				<h4>Mô tả:</h4>
 				<pre>
@@ -98,15 +90,9 @@ function time_elapsed_string($datetime, $full = false) {
 				</pre>
 			</div>
 			<h4>Hình ảnh thực tế:</h4>
-			<?php 
-			$arrimg =  json_decode($motelroom->images,true);
-			?>
-			<center>
-			<!-- Slider Hình Ảnh -->
-			@foreach($arrimg as $img)
-				<img src="uploads/images/<?php echo $img; ?>" width="50%">
-			@endforeach
-			</center>
+
+				<img src="{{ URL::to('uploads/images/'.$motelroom->images) }}" width="50%">
+
 			<!-- END Slider Hình Ảnh -->
 
                 <hr>

@@ -22,13 +22,13 @@
 					@if(session('warn'))
           <div class="alert bg-danger">
             <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
-            <span class="text-semibold">Error!</span>  {{session('warn')}}
+            <span class="text-semibold">Lỗi!</span>  {{session('warn')}}
           </div>
           @endif
           @if(session('success'))
 					<div class="alert bg-success">
 						<button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
-						<span class="text-semibold">Done!</span>  {{session('success')}}
+						<span class="text-semibold">Ok nhé!</span>  {{session('success')}}
 					</div>
 					@endif
           @if(Auth::user()->tinhtrang != 0)
@@ -85,7 +85,7 @@
                 </div>
               </div>
             </div> 
-            <div class="form-group">
+            {{-- <div class="form-group">
               <!-- ************** Max Items Demo ************** -->
               <label>Các tiện ích:</label>
               <select id="select-state" name="tienich[]" multiple class="demo-default" placeholder="Chọn các tiện ích phòng trọ">
@@ -98,9 +98,9 @@
                 <option value="Vệ sinh riêng">Vệ sinh riêng</option>
                 <option value="Vệ sinh chung">Vệ sinh chung</option>
               </select>
-            </div>
+            </div> --}}
             <div class="form-group">
-              <label for="comment">Mô tả ngắn:</label>
+              <label for="comment">Thông tin mô tả:</label>
               <textarea class="form-control" rows="5" name="txtdescription" style=" resize: none;"></textarea>
             </div>
             <div class="form-group">
@@ -115,7 +115,7 @@
           @else
           <div class="alert bg-danger">
             <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
-            <span class="text-semibold">Error!</span>  Tài khoản của bạn đang bị khóa đăng tin.
+            <span class="text-semibold">Lỗi!</span>  Tài khoản của bạn đang bị khóa đăng tin.
           </div>
           @endif
         </div>
