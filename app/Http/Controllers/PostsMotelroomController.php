@@ -11,7 +11,7 @@ use App\Categories;
 class PostsMotelroomController extends Controller
 {
     public function postsAll() {
-        $posts = Motelroom::orderBy('id', 'ASC')->get();
+        $posts = Motelroom::orderBy('id', 'DESC')->get();
         foreach ($posts as $post) {
             $post->user;
             $post['selfLike'] = false;
@@ -28,9 +28,11 @@ class PostsMotelroomController extends Controller
         $post = new Motelroom();
         $post->user_id = Auth::user()->id;
         $post->title = $request->title;
-        $post->description = $request->description;
-        $post->price = $request->price;
         $post->address = $request->address;
+        $post->price = $request->price;
+        $post->area = $request->area;
+        $post->phone = $request->phone;
+        $post->description = $request->description;
         
         // check photo post motelroom
         if($request->images != '') {

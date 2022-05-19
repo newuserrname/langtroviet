@@ -197,7 +197,7 @@ class UserController extends Controller
          }
          else {
 
-            $json_img = "no_img_room.png";
+            $json_img = "no_image_room.png";
            
          }
          /* tiện ích*/

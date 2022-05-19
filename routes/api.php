@@ -32,6 +32,7 @@ Route::post('posts/create', 'PostsMotelroomController@postsCreate')->middleware(
 Route::post('posts/update', 'PostsMotelroomController@postsUpdate')->middleware('jwtAuth');
 Route::post('posts/delete', 'PostsMotelroomController@postsDelete')->middleware('jwtAuth');
 
+
 Route::get('/districts-all', function (){
     return District::all();
 });
