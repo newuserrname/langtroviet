@@ -180,10 +180,10 @@ function time_elapsed_string($datetime, $full = false) {
 						</span>
 					</div>
 
-					<div class="room-description"><i class="fas fa-audio-description"></i>
+				<div class="room-description"><i class="fas fa-audio-description"></i>
 						{{ limit_description($room->description) }}
 					</div>
-					<div class="room-info">
+				<div class="room-info">
 						<span><i class="far fa-stop-circle"></i> Diện tích: <b>{{ $room->area }} m<sup>2</sup></b></span>
 						<span class="pull-right"><i class="fas fa-eye"></i> Lượt xem: <b>{{ $room->count_view }}</b></span>
 							<div><i class="fas fa-map-marker"></i> Địa chỉ: {{ $room->address }}</div>
@@ -195,11 +195,8 @@ function time_elapsed_string($datetime, $full = false) {
 					</div>
 						@endforeach								
 					</div>
-				</div>
-
-				<div class="container">
-					<h3 class="title-comm"><span class="title-holder">PHÒNG TRỌ MỚI NHẤT</span></h3>
-					<div class="row room-hot">
+				<h3 class="title-comm"><span class="title-holder">PHÒNG TRỌ MỚI NHẤT</span></h3>
+				<div class="row room-hot">
 						@foreach($new_motelroom as $room)
 					<div class="col-md-10">
 						<div class="room-item-vertical">
@@ -222,10 +219,10 @@ function time_elapsed_string($datetime, $full = false) {
 						</span>
 					</div>
 
-					<div class="room-description"><i class="fas fa-audio-description"></i>
+				<div class="room-description"><i class="fas fa-audio-description"></i>
 						{{ limit_description($room->description) }}
 					</div>
-					<div class="room-info">
+				<div class="room-info">
 						<span><i class="far fa-stop-circle"></i> Diện tích: <b>{{ $room->area }} m<sup>2</sup></b></span>
 						<span class="pull-right"><i class="fas fa-eye"></i> Lượt xem: <b>{{ $room->count_view }}</b></span>
 							<div><i class="fas fa-map-marker"></i> Địa chỉ: {{ $room->address }}</div>
@@ -234,28 +231,25 @@ function time_elapsed_string($datetime, $full = false) {
 							</div>
 							</div>
 					</div>
-						@endforeach
-					</div>											
-				</div>
-					
+					</div>
+						@endforeach								
+					</div>
+
+	
 				{{-- <div class="col-md-4">
 				<img src="images/ADVANCE.png" width="100%">
 				</div> --}}
 				</div>
 				<div class="container">
 					<ul class="pagination pull-center">
-						@if($listmotelroom->currentPage() != 1)
-							<li><a href="{{ $listmotelroom->url($listmotelroom->currentPage() -1) }}">Trước</a></li>
-					@endif
-						@for($i= 1 ; $i<= $listmotelroom->lastPage(); $i++)
-							<li class=" {{ ($listmotelroom->currentPage() == $i )? 'active':''}}">
-								<a href="{{ $listmotelroom->url($i) }}">{{ $i }}</a>
-							</li>
-					@endfor
-						@if($listmotelroom->currentPage() != $listmotelroom->lastPage())
-							<li><a href="{{ $listmotelroom->url($listmotelroom->currentPage() +1) }}">Sau</a></li>
-					@endif
-					</ul>	
+    				<li><a href="#">&laquo;</a></li>
+    				<li><a href="#">1</a></li>
+    				<li><a href="#">2</a></li>
+    				<li><a href="#">3</a></li>
+    				<li><a href="#">4</a></li>
+    				<li><a href="#">5</a></li>
+    				<li><a href="#">&raquo;</a></li>
+ 					</ul>	
 				</div>	
 			</div>			
 						{{-- script --}}
