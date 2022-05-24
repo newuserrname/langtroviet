@@ -242,15 +242,22 @@ function time_elapsed_string($datetime, $full = false) {
 				</div>
 				<div class="container">
 					<ul class="pagination pull-center">
-    				<li><a href="#">&laquo;</a></li>
-    				<li><a href="#">1</a></li>
-    				<li><a href="#">2</a></li>
-    				<li><a href="#">3</a></li>
-    				<li><a href="#">4</a></li>
-    				<li><a href="#">5</a></li>
-    				<li><a href="#">&raquo;</a></li>
+				@if($listmotelroom->currentPage() != 1)
+    				<li><a href="{{ $listmotelroom->url($listmotelroom->currentPage() -1) }}">&laquo;</a></li>
+				@endif
+				@for($i= 1 ; $i<= $listmotelroom->lastPage(); $i++)		
+    				<li class="{{ ($listmotelroom->currentPage() == $i )? 'active':''}}">
+						<a href="{{ $listmotelroom->url($i) }}">{{ $i }}</a>
+					</li>
+				@endfor
+				{{ ($listmotelroom->currentPage() == $i )? 'active':''}}
+				@if($listmotelroom->currentPage() != $listmotelroom->lastPage())
+					<li>
+						<a href="{{ $listmotelroom->url($listmotelroom->currentPage() +1) }}">&raquo;</a>
+					</li>
+				@endif
  					</ul>	
-				</div>	
+				</div>
 			</div>			
 						{{-- script --}}
 

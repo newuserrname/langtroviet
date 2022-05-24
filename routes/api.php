@@ -25,6 +25,7 @@ Route::post('login', 'AuthController@login');
 Route::post('register', 'AuthController@register');
 Route::get('logout', 'AuthController@logout');
 Route::post('save_user_info', 'AuthController@saveUserInfo')->middleware('jwtAuth');
+// update search
 
 // Post Motelroom
 Route::get('posts', 'PostsMotelroomController@postsAll')->middleware('jwtAuth');
