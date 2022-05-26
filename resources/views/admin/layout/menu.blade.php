@@ -1,7 +1,7 @@
 			<!-- menu profile quick info -->
 			<div class="profile clearfix">
 				<div class="profile_pic">
-				  <img src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="..." class="img-circle profile_img">
+				  <img src="/public/uploads/avatars/{{ Auth::user()->avatar }}" alt="..." class="img-circle profile_img">
 				</div>
 				<div class="profile_info">
 				  <span>Xin chào</span>

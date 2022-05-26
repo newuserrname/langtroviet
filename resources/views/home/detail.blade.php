@@ -91,7 +91,7 @@ function time_elapsed_string($datetime, $full = false) {
 			</div>
 			<h4>Hình ảnh thực tế:</h4>
 
-				<img src="{{ URL::to('uploads/images/'.$motelroom->images) }}" width="50%">
+				<img src="{{ URL::to('public/uploads/images/'.$motelroom->images) }}" width="50%">
 
 			<!-- END Slider Hình Ảnh -->
 
@@ -109,7 +109,7 @@ function time_elapsed_string($datetime, $full = false) {
                  @if($cmt->avatar == 'no-avatar.jpg')
                 	<img class="img-responsive user-photo" src="images/no-avatar.jpg">
                         @else
-                            <img src="uploads/avatars/<?php echo $cmt->avatar; ?>" class="img-responsive user-photo" alt="Cinque Terre" width="100" height="100">
+                            <img src="public/uploads/avatars/<?php echo $cmt->avatar; ?>" class="img-responsive user-photo" alt="Cinque Terre" width="100" height="100">
                         @endif
 
                         </div><!-- /thumbnail -->
@@ -142,7 +142,7 @@ function time_elapsed_string($datetime, $full = false) {
                 @if(Auth::user()->avatar == 'no-avatar.jpg')
                     <img class="img-responsive user-photo" src="images/no-avatar.jpg">
                 @else
-                    <img src="uploads/avatars/<?php echo Auth::user()->avatar ?>" class="img-responsive user-photo" alt="Cinque Terre" width="100" height="100">
+                    <img src="public/uploads/avatars/<?php echo Auth::user()->avatar ?>" class="img-responsive user-photo" alt="Cinque Terre" width="100" height="100">
                 @endif
 
 
@@ -191,9 +191,9 @@ function time_elapsed_string($datetime, $full = false) {
 				<div class="row">
 					<div class="col-md-4 text-center">
 						@if($motelroom->user->avatar == 'no-avatar.jpg')
-							<img src="images/no-avatar.jpg" class="img-circle" alt="Cinque Terre" width="100" height="100"> 
+							<img src="public/images/no-avatar.jpg" class="img-circle" alt="Cinque Terre" width="100" height="100"> 
 						@else
-							<img src="uploads/avatars/<?php echo $motelroom->user->avatar; ?>" class="img-circle" alt="Cinque Terre" width="100" height="100"> 
+							<img src="public/uploads/avatars/<?php echo $motelroom->user->avatar; ?>" class="img-circle" alt="Cinque Terre" width="100" height="100"> 
 						@endif
 					</div>
 					<div class="col-md-8">

@@ -57,14 +57,11 @@ function time_elapsed_string($datetime, $full = false) {
 	@endif
 	<div class="row room-hot">
 		@foreach($listmotel as $room)
-		<?php 
-		$img_thumb = json_decode($room->images,true);
-
-		?>
+		
 		<div class="col-md-4 col-sm-6">
 			<div class="room-item">
-				<div class="wrap-img" style="background: url(uploads/images/<?php echo $img_thumb[0]; ?>) center;     background-size: cover;">
-					<img src="" class="lazyload img-responsive">
+				<div class="wrap-img" style="">
+					<img style="width: 99%; height: 99%" src="{{ URL::to('/public/uploads/images/'.$room->images) }}" class="lazyload img-responsive">
 					<div class="category">
 						<a href="">{{ $room->category->name }}</a>
 					</div>

@@ -163,7 +163,7 @@ function time_elapsed_string($datetime, $full = false) {
 						<div class="room-item-vertical">
 							<div class="col-md-4">
 								<div class="wrap-img-vertical">
-									<img style="width: 100%;height: 136%;" src="{{ URL::to('uploads/images/'.$room->images) }}" class="lazyload img-responsive">
+									<img style="width: 100%;height: 136%;" src="{{ URL::to('/public/uploads/images/'.$room->images) }}" class="lazyload img-responsive">
 									<div class="category">
 										<a href="category/{{ $room->category->id }}">{{ $room->category->name }}</a>
 									</div>
@@ -202,7 +202,7 @@ function time_elapsed_string($datetime, $full = false) {
 						<div class="room-item-vertical">
 							<div class="col-md-4">
 								<div class="wrap-img-vertical">
-									<img style="width: 100%;height: 136%;" src="{{ URL::to('uploads/images/'.$room->images) }}" class="lazyload img-responsive">
+									<img style="width: 100%;height: 136%;" src="{{ URL::to('/public/uploads/images/'.$room->images) }}" class="lazyload img-responsive">
 									<div class="category">
 										<a href="category/{{ $room->category->id }}">{{ $room->category->name }}</a>
 									</div>

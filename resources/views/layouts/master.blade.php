@@ -6,22 +6,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<base href="{{asset('')}}">
-	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/style.css">
-	<link rel="stylesheet" href="assets/awesome/css/fontawesome-all.css">
-	<link rel="stylesheet" href="assets/toast/toastr.min.css">
-	<script src="assets/jquery.min.js"></script>
-	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/myjs.js"></script>
-	<link rel="stylesheet" href="assets/selectize.default.css" data-theme="default">
-	<script src="assets/js/fileinput/fileinput.js" type="text/javascript"></script>
-	<script src="assets/js/fileinput/vi.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="assets/fileinput.css">
-	<script src="assets/pgwslider/pgwslider.min.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="assets/pgwslider/pgwslider.min.css">
-	<link rel="stylesheet" href="assets/bootstrap/bootstrap-select.min.css">
+	<link rel="stylesheet" href="public/assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="public/assets/style.css">
+	<link rel="stylesheet" href="public/assets/awesome/css/fontawesome-all.css">
+	<link rel="stylesheet" href="public/assets/toast/toastr.min.css">
+	<script src="public/assets/jquery.min.js"></script>
+	<script src="public/assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="public/assets/myjs.js"></script>
+	<link rel="stylesheet" href="public/assets/selectize.default.css" data-theme="default">
+	<script src="public/assets/js/fileinput/fileinput.js" type="text/javascript"></script>
+	<script src="public/assets/js/fileinput/vi.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="public/assets/fileinput.css">
+	<script src="public/assets/pgwslider/pgwslider.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="public/assets/pgwslider/pgwslider.min.css">
+	<link rel="stylesheet" href="public/assets/bootstrap/bootstrap-select.min.css">
 	<link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
-	<script src="assets/bootstrap/bootstrap-select.min.js"></script>
+	<script src="public/assets/bootstrap/bootstrap-select.min.js"></script>
 </head>
 <body>
 	<nav class="class="navbar navbar-light" style="background-color: #003352;">
@@ -81,6 +81,6 @@
 
 	</footer>
 	
-<script type="text/javascript" src="assets/toast/toastr.min.js"></script>
+<script type="text/javascript" src="public/assets/toast/toastr.min.js"></script>
 </body>
 </html>
