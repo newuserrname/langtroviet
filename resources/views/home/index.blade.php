@@ -241,22 +241,21 @@ function time_elapsed_string($datetime, $full = false) {
 				</div> --}}
 				</div>
 				<div class="container">
-					<ul class="pagination pull-center">
-				@if($listmotelroom->currentPage() != 1)
-    				<li><a href="{{ $listmotelroom->url($listmotelroom->currentPage() -1) }}">&laquo;</a></li>
-				@endif
-				@for($i= 1 ; $i<= $listmotelroom->lastPage(); $i++)		
-    				<li class="{{ ($listmotelroom->currentPage() == $i )? 'active':''}}">
-						<a href="{{ $listmotelroom->url($i) }}">{{ $i }}</a>
-					</li>
-				@endfor
-				{{ ($listmotelroom->currentPage() == $i )? 'active':''}}
-				@if($listmotelroom->currentPage() != $listmotelroom->lastPage())
-					<li>
-						<a href="{{ $listmotelroom->url($listmotelroom->currentPage() +1) }}">&raquo;</a>
-					</li>
-				@endif
- 					</ul>	
+						@if(count($listmotelroom) != 0)
+						<ul class="pagination pull-right">
+							@if($listmotelroom->currentPage() != 1)
+							<li><a href="{{ $listmotelroom->url($listmotelroom->currentPage() -1) }}">Trước</a></li>
+							@endif
+							@for($i= 1 ; $i<= $listmotelroom->lastPage(); $i++)
+							<li class=" {{ ($listmotelroom->currentPage() == $i )? 'active':''}}">
+								<a href="{{ $listmotelroom->url($i) }}">{{ $i }}</a>
+							</li>
+							@endfor
+							@if($listmotelroom->currentPage() != $listmotelroom->lastPage())
+							<li><a href="{{ $listmotelroom->url($listmotelroom->currentPage() +1) }}">Sau</a></li>
+							@endif
+						</ul>
+						@endif
 				</div>
 			</div>			
 						{{-- script --}}

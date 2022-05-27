@@ -29,7 +29,7 @@
 						<table class="table datatable-show-all">
 							<thead>
 								<tr class="bg-blue">
-									<th>ID</th>
+									<th>Mã Phòng</th>
 									<th>Tiêu đề</th>
 									<th>Danh mục</th>
 									<th>Giá phòng</th>

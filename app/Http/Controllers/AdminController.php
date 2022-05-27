@@ -82,8 +82,11 @@ class AdminController extends Controller
 
     /* Motel room */
     public function getListMotel(){
-      $motelrooms = Motelroom::all()->sortByDesc("created_at");
-      return view('admin.motelroom.list',['motelrooms'=>$motelrooms]);
+
+      $myroom = Motelroom::where('user_id', Auth::user()->id)->get();
+        return view('admin.motelroom.list', ['motelrooms'=>$myroom]);
+      // $motelrooms = Motelroom::all()->sortByDesc("created_at");
+      // return view('admin.motelroom.list',['motelrooms'=>$motelrooms]);
     }
 
     public function ApproveMotelroom($id){

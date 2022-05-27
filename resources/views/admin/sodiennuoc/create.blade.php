@@ -30,7 +30,7 @@
 								<div class="col-md-6 col-sm-6 ">
 									<select name="idroom" class="form-control" class="form-control m-bot15">
 									@foreach ($myroom as $mroom)
-									<option class="form-control " value="{{ $mroom->id }}">{{ $mroom->title }}</option>
+									<option class="form-control " value="{{ $mroom->id }}">{{ $mroom->coderoom }}</option>
 									@endforeach		
 									</select>							
 								</div>
