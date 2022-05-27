@@ -12,7 +12,7 @@ jobs:
       with:
         fetch-depth: 2
     - name: FTP-Deploy-Action
-      uses: newuserrname/FTP-Deploy-Action@4.3.0
+      uses: thanhtruongdn24/FTP-Deploy-Action@4.3.0
       with:
         ftp-server: ${{ secrets.FTP_SERVER }}
         ftp-username: ${{ secrets.FTP_USERNAME }}
