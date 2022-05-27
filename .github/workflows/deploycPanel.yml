@@ -1,4 +1,4 @@
-name: Deploy website to Cpanel
+name: DeploywebsitetoCpanel
 on:
   push:
     branches:
