@@ -182,6 +182,18 @@ class UserController extends Controller
             'txtaddress.required' => 'Nhập hoặc chọn địa chỉ phòng trọ trên bản đồ'
          ]);
         
+
+          // ham random
+          function randomStringABCD($length = 4) {
+            $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $charactersLength = strlen($characters);
+            $randomString = '';
+            for ($i = 0; $i < $length; $i++) {
+                $randomString .= $characters[mt_rand(0, $charactersLength - 1)];
+            }
+            return $randomString;
+        }
+
          /* Check file */
           $json_img ="";
          if ($request->hasFile('hinhanh')){
@@ -200,17 +212,7 @@ class UserController extends Controller
             $json_img = "no_image_room.png";
            
          }
-
-         // random String
-         function randomStringABCD($length = 4) {
-            $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $charactersLength = strlen($characters);
-            $randomString = '';
-            for ($i = 0; $i < $length; $i++) {
-                $randomString .= $characters[mt_rand(0, $charactersLength - 1)];
-            }
-            return $randomString;
-        }
+        
         // reaname code room and add code room
         $coderoom = "#-" . mt_rand(0,999) . "-" . randomStringABCD();     
 

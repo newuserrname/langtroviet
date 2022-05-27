@@ -125,7 +125,7 @@
      <div class="contactpanel">
       <div class="row">
        <div class="col-md-4 text-center">
-        <img src="uploads/avatars/{{ Auth::user()->avatar }}" class="img-circle" alt="Cinque Terre" width="100" height="100"> 
+        <img src="public/uploads/avatars/{{ Auth::user()->avatar }}" class="img-circle" alt="Cinque Terre" width="100" height="100"> 
       </div>
       <div class="col-md-8">
         <h4>Thông tin người đăng</h4>
