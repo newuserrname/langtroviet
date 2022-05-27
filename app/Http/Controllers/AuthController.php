@@ -75,8 +75,8 @@ class AuthController extends Controller
         $avatar = 'no-avatar.jpg';
         if($request->avatar!='no-avatar.jpg')
         {
-            $avatar = time().'.jpg';
-            file_put_contents('uploads/avatars/'.$avatar,base64_decode($request->avatar));
+            $avatar = "Avatar-" . rand(0,9999) . '.jpg';
+            file_put_contents('public/uploads/avatars/'.$avatar,base64_decode($request->avatar));
             $user->avatar = $avatar;
         }
 

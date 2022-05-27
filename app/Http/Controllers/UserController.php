@@ -188,9 +188,9 @@ class UserController extends Controller
             
             $inputfile =  $request->file('hinhanh');
                 foreach ($inputfile as $filehinh) {
-                    $namefile = "phongtro-" . rand(0,99) . "-" . $filehinh->getClientOriginalName();
+                    $namefile = "phongtro-" . rand(0,999) . "-" . randomStringABCD() . '.jpg';
                    
-                    $filehinh->move('uploads/images',$namefile);
+                    $filehinh->move('public/uploads/images',$namefile);
                 }
                 $json_img = $namefile;
 
@@ -200,6 +200,20 @@ class UserController extends Controller
             $json_img = "no_image_room.png";
            
          }
+
+         // random String
+         function randomStringABCD($length = 4) {
+            $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $charactersLength = strlen($characters);
+            $randomString = '';
+            for ($i = 0; $i < $length; $i++) {
+                $randomString .= $characters[mt_rand(0, $charactersLength - 1)];
+            }
+            return $randomString;
+        }
+        // reaname code room and add code room
+        $coderoom = "#-" . mt_rand(0,999) . "-" . randomStringABCD();     
+
          /* tiện ích*/
          
          /* ----*/ 
@@ -211,6 +225,7 @@ class UserController extends Controller
 
          $motel = new Motelroom;
          $motel->title = $request->txttitle;
+         $motel->coderoom = $coderoom;
          $motel->description = $request->txtdescription;
          $motel->price = $request->txtprice;
          $motel->area = $request->txtarea;
