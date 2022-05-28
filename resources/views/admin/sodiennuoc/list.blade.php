@@ -33,9 +33,8 @@
 									<th>ID</th>
 									<th>Số điện tiêu thụ (kWh)</th>
 									<th>Số mước tiêu thụ (m3)</th>
-									<th>người lấy</th>
-									<th>Phòng</th>
-									<th>Ngày-tháng-năm</th>
+									<th>Mã Phòng</th>
+									<th>Ngày Thêm</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -44,14 +43,8 @@
 									<td>{{$numbereaw->id}}</td>
 									<td>{{$numbereaw->electric}} /kWh</td>
 									<td>{{$numbereaw->water}} /m3</td>
-									<td>{{$numbereaw->user->name}}</td>
-									<td style="display:-webkit-box;
-									overflow:hidden;
-									text-overflow:ellipsis;
-									-webkit-line-clamp: 1;
-									-webkit-box-orient:vertical;
-									width: 300px;height: 50px;">{{$numbereaw->motelroom->title}}</td>
-									<td>{{$numbereaw->day}} / {{$numbereaw->month}} / {{$numbereaw->year}}</td>
+									<td>{{$numbereaw->motelroom->coderoom}}</td>
+									<td>{{ date("d/m/Y", strtotime($numbereaw->day)) }}</td>
 								</tr>
 								@endforeach
 							</tbody>

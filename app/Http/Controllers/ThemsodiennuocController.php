@@ -43,22 +43,25 @@ class ThemsodiennuocController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
+
             'electric' => 'required|unique:numbereaw|max:255',
             'water' => 'required|max:255',
             'idroom' => 'required|max:255',
             'day' => 'required|max:255',
-            'month' => 'required|max:255',
-            'year' => 'required|max:255',
+
         ]);
+
         $sodiennuoc = new ThemsodiennuocModel();
-        $sodiennuoc->user_id = Auth::user()->id;
         $sodiennuoc->electric = $data['electric'];
         $sodiennuoc->water = $data['water'];
+        $sodiennuoc->user_id = Auth::user()->id;
         $sodiennuoc->motelroom_id = $data['idroom'];
         $sodiennuoc->day = $data['day'];
-        $sodiennuoc->month = $data['month'];
-        $sodiennuoc->year = $data['year'];
+
+        // var_dump($data);
+        // die();
         $sodiennuoc->save();
+
         return redirect() ->back();   
     }
 

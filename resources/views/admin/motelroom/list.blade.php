@@ -40,7 +40,7 @@
 							<tbody>
 								@foreach($motelrooms as $room)
 								<tr>
-									<td>{{$room->id}}</td>
+									<td>{{$room->coderoom}}</td>
 									
 									<td>
 										<div style="width: 300px;

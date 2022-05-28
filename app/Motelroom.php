@@ -25,7 +25,7 @@ class Motelroom extends Model
     }
     public function numbereaw()
     {
-        return $this->hasMany('App\ThemsodiennuocModel','motelroom_id','id');
+        return $this->hasMany('App\ThemsodiennuocModel', 'motelroom_id','id');
     }
     public function billeaw()
     {

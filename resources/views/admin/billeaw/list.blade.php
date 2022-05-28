@@ -36,17 +36,19 @@
 									<th>Mã Phòng</th>
 									<th>Từ ngày</th>
                                     <th>Đến ngày</th>
+									<th>In hóa đơn</th>
 								</tr>
 							</thead>
 							<tbody>
 								@foreach ($list_bill as $bill)
 								<tr>
 									<td>{{ $bill->id }}</td>
-									<td>{{ $bill->electric }}</td>
-									<td>{{ $bill->water }}</td>
-									<td>{{ $bill->motelroom->id }}</td>
-									<td>{{ $bill->tungay }}</td>
-									<td>{{ $bill->denngay }}</td>
+									<td>{{ number_format($bill->electric)}}</td>
+									<td>{{ number_format($bill->water) }}</td>
+									<td>{{ $bill->motelroom->coderoom }}</td>
+									<td>{{ date("d/m/Y", strtotime($bill->tungay)) }}</td>
+									<td>{{ date("d/m/Y", strtotime($bill->denngay)) }}</td>
+									<td><a href="{{ route('payment.index') }}"><i class="fa fa-print"></i></a></td>
 								</tr>
 								@endforeach
 							</tbody>

@@ -1,6 +1,13 @@
 @extends('admin.layout.master')
 @section('content2')					
 		<div class="row">
+			<div class="breadcrumb-line">
+				<ol class="breadcrumb">
+				  <li class="breadcrumb-item"><a href="/admin">Admin</a></li>
+				  <li class="breadcrumb-item"><a href="{{ route('billeaw.index') }}">Danh sách giá điện nước</a></li>
+				  <li class="breadcrumb-item active" aria-current="page">Tính giá điện nước</li>
+				  </ol>
+			  </div>
 			<div class="col-md-12 col-sm-12 ">
 				<div class="x_panel">
 					<div class="x_title">
@@ -9,7 +16,7 @@
 							<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 							</li>
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
 							</li>
 						</ul>
 						<div class="clearfix"></div>

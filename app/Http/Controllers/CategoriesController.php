@@ -40,6 +40,7 @@ class CategoriesController extends Controller
             'name' => 'required|unique:categories|max:255',
             'slug' => 'required|max:255',
         ]);
+        
         $loaiphong = new Categories();
         $loaiphong->name = $data['name'];
         $loaiphong->slug = $data['slug'];
