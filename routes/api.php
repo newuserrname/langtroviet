@@ -37,7 +37,3 @@ Route::post('posts/delete', 'PostsMotelroomController@postsDelete')->middleware(
 Route::get('/districts-all', function (){
     return District::all();
 });
-
-Route::get('/districts-all', function (){
-    return District::all();
-});
