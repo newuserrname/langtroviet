@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\BilldiennuocModel;
+use app\Motelroom;
+use app\Categories;
+use app\District;
+use app\User;
+
+use PDF;
 
 class BilldiennuocController extends Controller
 {
@@ -82,5 +88,19 @@ class BilldiennuocController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function print_bill($checkout_code) {
+        $pdf = App::make('dompdf.wrapper');
+		$pdf->loadHTML($this->print_order_convert($checkout_code));
+		
+		return $pdf->stream();
+    }
+    public function print_bill_convert($checkout_code) {
+        $order_details = OrderDetails::where('order_code',$checkout_code)->get();
+        $order = Order::where('order_code',$checkout_code)->get();
+		foreach($order as $key => $ord) {
+			$customer_id = $ord->customer_id;
+			$shipping_id = $ord->shipping_id;
+		}
     }
 }

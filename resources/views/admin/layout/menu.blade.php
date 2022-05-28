@@ -16,10 +16,10 @@
       <ul class="nav side-menu">
         <li><a href="/admin/motelrooms/list"> <i class="fa fa-home"></i> Danh sách phòng trọ</a>
         </li>
-        <li><a href="{{ route('categories.index') }}"> <i class="fa fa-th-list"></i> Danh sách loại phòng</a>
+        {{-- <li><a href="{{ route('categories.index') }}"> <i class="fa fa-th-list"></i> Danh sách loại phòng</a>
         </li>
         <li><a href="/admin/users/list"> <i class="fa fa-smile-o"></i> Danh sách người dùng </a>
-        </li>
+        </li> --}}
         <li><a href="/admin/users/list"> <i class="fa fa-users"></i> Danh sách người thuê trọ </a>
         </li>
         <li><a href="{{ route('payment.index') }}"> <i class="fa fa-cc-visa"></i> Thanh toán </a>
