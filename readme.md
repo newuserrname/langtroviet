@@ -23,7 +23,7 @@ Laravel is accessible, yet powerful, providing tools needed for large, robust ap
 
 ## About langtroviet
 
-Dự án phát triển ứng dụng tìm kiếm và cho thuê phòng trọ [website](https://langtro.vn) 
+Dự án phát triển ứng dụng tìm kiếm và cho thuê phòng trọ [website](http://langtro.ml) 
 
 Sinh viên thực hiện Phạm Thanh Trường 20IT461 - Trần Gia Bảo 20IT303
 
