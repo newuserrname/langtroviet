@@ -5,7 +5,7 @@
     <div class="dashboard_graph">
       <div class="row x_title">
         <div class="col-md-6">
-          <h3>Chào bạn! <small>Đây là trang quản lí phòng trọ</small></h3>
+          <h3>Chào bạn! <small>Quản lý phòng và thanh toán hóa đơn tại đây</small></h3>
         </div>
       </div>
       <div class="breadcrumb-line">

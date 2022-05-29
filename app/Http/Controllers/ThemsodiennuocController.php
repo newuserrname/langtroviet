@@ -19,7 +19,7 @@ class ThemsodiennuocController extends Controller
      */
     public function index()
     {
-        $list_sodiennuoc = ThemsodiennuocModel::all();
+        $list_sodiennuoc = ThemsodiennuocModel::where('user_id', Auth::user()->id)->get();
         return view('admin/sodiennuoc/list', ['sodiennuoc'=>$list_sodiennuoc]);
     }
 

@@ -48,7 +48,7 @@
 									<td>{{ $bill->motelroom->coderoom }}</td>
 									<td>{{ date("d/m/Y", strtotime($bill->tungay)) }}</td>
 									<td>{{ date("d/m/Y", strtotime($bill->denngay)) }}</td>
-									<td><a href="{{ route('payment.index') }}"><i class="fa fa-print"></i></a></td>
+									<td><a target="_blank" href="{{ url('/print-bill/'.$bill->motelroom->coderoom) }}"><i class="fa fa-print"></i></a></td>
 								</tr>
 								@endforeach
 							</tbody>

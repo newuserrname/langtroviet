@@ -67,8 +67,9 @@ Route::group(['prefix'=>'admin','middleware'=>'adminmiddleware'], function () {
     Route::resource('/payment', 'PlaymentController');
     Route::resource('/electricandwater', 'ThemsodiennuocController');
     Route::resource('/billeaw', 'BilldiennuocController');
-    Route::get('print-bill', 'BilldiennuocController@print_bill');
+    
 });
+Route::get('/print-bill/{checkout_code}', 'BilldiennuocController@print_bill');
 
 /* End Admin */
 

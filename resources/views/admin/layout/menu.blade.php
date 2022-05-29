@@ -4,15 +4,16 @@
 				  <img src="/public/uploads/avatars/{{ Auth::user()->avatar }}" alt="..." class="img-circle profile_img">
 				</div>
 				<div class="profile_info">
-				  <span>Xin chào</span>
+				  <span>Xin chào,</span>
 				  <h2>{{ Auth::user()->name }}</h2>
 				</div>
 			  </div>
 			  <!-- /menu profile quick info -->
 			<!-- /main sidebar --> 
 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-    <div class="menu_section">
-      <h3>Quản trị</h3>
+    <div class="menu_section active">
+      <br>
+      <h3>hôm nay <br> {{ date('d') }}/{{ date('m') }}/{{ date('Y') }} </h3>
       <ul class="nav side-menu">
         <li><a href="/admin/motelrooms/list"> <i class="fa fa-home"></i> Danh sách phòng trọ</a>
         </li>

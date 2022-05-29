@@ -47,7 +47,7 @@ class PostsMotelroomController extends Controller
         }
 
         // reaname code room and add code room
-        $coderoom = "#-" . mt_rand(0,999) . "-" . randomStringABCD();
+        $coderoom = mt_rand(0,999) . "-" . randomStringABCD();
         $post->coderoom = $coderoom;
 
         // check photo post motelroom
