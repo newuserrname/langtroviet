@@ -5,6 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
+use App\User;
+use App\Comment;
+use App\Bookmask;
 
 class Motelroom extends Model
 {
@@ -30,6 +33,14 @@ class Motelroom extends Model
     public function billeaw()
     {
         return $this->hasMany('App\BilldiennuocModel', 'motelroom_id','id');
+    }
+    public function bookmasks()
+    {
+        return $this->hasMany(Bookmask::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany('App\Comment', 'room_id', 'id');
     }
     public function sluggable()
     {

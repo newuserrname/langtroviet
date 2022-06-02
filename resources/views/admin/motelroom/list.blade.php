@@ -53,7 +53,7 @@
 										</div>
 									</td>
 									<td>{{$room->category->name}}</td>
-									<td>{{$room->price}}</td>
+									<td>{{number_format($room->price)}} VNĐ</td>
 									<td>
 										@if($room->approve == 1)
 											<span class="btn btn-success">Đã kiểm duyệt</span>
@@ -84,6 +84,11 @@
 							</tbody>
 						</table>
 					</div>
+					<nav aria-label="Page navigation example">
+					<ul class="pagination justify-content-end">
+						{{ $motelrooms->links() }}
+					</ul>
+				</nav>
 			</div>
 		</div>
 	</div>

@@ -14,8 +14,15 @@ class PostsMotelroomController extends Controller
     public function postsAll() {
         $posts = Motelroom::orderBy('id', 'DESC')->get();
         foreach ($posts as $post) {
+            //get user of post
             $post->user;
+            //get comment count
+            $post['commentsCount'] = count($post->comments);
+            //get bookmask self
             $post['selfLike'] = false;
+            //get bookmask count
+            // $post['bookmaskCount'] = count($post->bookmask);
+            
 
         }
         return response()->json([

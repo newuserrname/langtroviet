@@ -116,19 +116,21 @@ function time_elapsed_string($datetime, $full = false) {
 				</div>
 				</div>
 				<div class="form-group row" style="padding: 0 20px">
-							<p style="color: #ffffff; font-style: italic "> *Chọn loại bất động sản và khoảng giá, sau đó bấm vào biểu tượng
+							<p style="color: #ffffff; font-style: italic "> *Chọn loại phòng và khoảng giá, sau đó bấm vào biểu tượng
 							<img src="images/drawingcontrolicon.png" style="display: inline-block"width="20px"> ở phía trên để bắt đầu khoanh
 							vùng khu vực mà bạn muốn tìm kiếm</p>
 				</div>
 					</form>
                 </div>
 
-				<!-- <div id="flat"></div>
-					<div id="lng"></div> -->
+				<div id="flat"></div>
+					<div id="lng"></div>
 
 		        </div>
 	        </div>
         </div>
+		<div class="container">
+		</div>
 			<div class="container">
 				<div class="row" style="margin-top: 10px; margin-bottom: 10px">
 					<div class="col-md-6">
@@ -154,9 +156,25 @@ function time_elapsed_string($datetime, $full = false) {
 					    </div>
 				        </div>
 					</div>
-				</div>
-
-					<h3 class="title-comm"><span class="title-holder">ĐƯỢC XEM NHIỀU NHẤT</span></h3>
+				</div>					
+				<nav class="navbar navbar-default" role="navigation">
+					<div class="container">
+					  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+						  <li class="active"><a href="#">Phòng trọ xem nhiều nhất</a></li>
+						  <li><a href="#">Phòng trọ mới nhất</a></li>
+						</ul>
+						<form class="navbar-form navbar-right" role="search">
+						  <div class="form-group">
+							<input type="text" class="form-control" placeholder="">
+						  </div>
+						  <button type="submit" class="btn btn-default">Tìm kiếm</button>
+						</form>
+						</ul>
+					  </div><!-- /.navbar-collapse -->
+					</div><!-- /.container-fluid -->
+				  </nav>
+				  <br>
 				<div class="row room-hot">
 						@foreach($hot_motelroom as $room)
 					<div class="col-md-10">

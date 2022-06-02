@@ -24,50 +24,58 @@
 	<script src="public/assets/bootstrap/bootstrap-select.min.js"></script>
 </head>
 <body>
-	<nav class="class="navbar navbar-light" style="background-color: #003352;">
-		<div class="container">
-			<div class="navbar navbar-expand-lg navbar-light bg-light">
-				<a class="navbar-brand" href=""><img src="/images/logolt.png"></a>
-				@if(Auth::user())
+	<nav class="navbar navbar-light" style="background-color: #003352;">
+			<div class="container">
+			  <!-- Collect the nav links, forms, and other content for toggling -->
+			  <div class="navbar navbar-expand-lg navbar-light bg-light">
+					<a class="navbar-brand" href=""><img src="/images/logolt.png"></a>
+					@if(Auth::user())
+					
 				<ul class="nav navbar-nav navbar-right">
-					<li><a class="btn-dangtin" href="user/dangtin"><i class="fas fa-edit"></i> Đăng tin ngay</a></li>
-					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Xin chào! {{Auth::user()->name}} <span class="caret"></span></a>
+				  <li><a class="btn btn-default" href="user/dangtin"><i class="fas fa-edit"></i>Đăng tin ngay</a></li>
+				  <li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Xin chào! {{ Auth::user()->name }} <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="user/profile">Thông tin chi tiết</a></li>
+						<li><a href="user/dangtin">Đăng tin cho thuê</a></li>
+						<li><a href="user/diennuoc">Thêm số điện nước</a></li>
+						<li class="divider"></li>
+						<li><a href="user/logout">Thoát</a></li>
+					</ul>
+				  </li>
+				</ul>
+					@else
+					<div class="btn-group">
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						  Loại phòng
+						  <span class="caret"></span>
+						</button>
 						<ul class="dropdown-menu">
-							<li><a href="user/profile">Thông tin chi tiết</a></li>
-							<li><a href="user/dangtin">Đăng tin cho thuê</a></li>
-							<li><a href="user/diennuoc">Thêm số điện nước</a></li>
-							<li><a href="user/logout">Thoát</a></li>
+							@foreach($categories as $category)
+							<li><a href="category/{{ $category->id }}">{{ $category->name }}</a></li>
+							@endforeach
 						</ul>
-					</li>
-				</ul>
-				@else
-				<ul class="nav navbar-nav navbar-right">
-					<li><a class="btn-dangtin" href="user/dangtin"><i class="fas fa-edit"></i> Đăng tin ngay</a></li>
-					<li><a href="user/login" class="btn btn-outline-primary">Đăng Nhập</a></li>
-					<li><a href="user/register" class="btn btn-outline-primary">Đăng Kí</a></li>
-				</ul>
-				@endif
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav">
-					@foreach($categories as $category)
-					<li><a href="category/{{$category->id}}">{{ $category->name }}</a></li>
-					@endforeach
-				</ul>
-			</div>
-		</div>
-	</nav>
-	
+					  </div>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a class="btn-dangtin" href="user/dangtin"><i class="fas fa-edit"></i> Đăng tin ngay</a></li>
+						<li><a href="user/login" class="btn btn-outline-primary">Đăng Nhập</a></li>
+						<li><a href="user/register" class="btn btn-outline-primary">Đăng Kí</a></li>
+					</ul>
+					@endif
+			  </div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>	
 		@yield('content')
+
 	<div class="gap"></div>
+
 	<footer>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="logo-footer">
 						<a href="/" title="Cổng thông tin số 1 về Dự án Bất động sản">
-							<img src="images/logolt.png">
+							<img src="/images/logolt.png">
 						</a>
 						<div style="padding-top: 10px;">
 							<p>Dự án phát triển Website tìm kiếm và cho thuê phòng trọ</p>

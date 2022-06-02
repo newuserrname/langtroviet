@@ -33,6 +33,14 @@ Route::post('posts/create', 'PostsMotelroomController@postsCreate')->middleware(
 Route::post('posts/update', 'PostsMotelroomController@postsUpdate')->middleware('jwtAuth');
 Route::post('posts/delete', 'PostsMotelroomController@postsDelete')->middleware('jwtAuth');
 
+// Bookmask
+Route::get('posts/bookmask', 'PostsBookmaskController@bookmask')->middleware('jwtAuth');
+
+// Comment
+Route::post('comments/create', 'CommentController@create')->middleware('jwtAuth');
+Route::post('comments/delete', 'CommentController@delete')->middleware('jwtAuth');
+Route::post('comments/update', 'CommentController@update')->middleware('jwtAuth');
+Route::post('posts/comments', 'CommentController@comments')->middleware('jwtAuth');
 
 Route::get('/districts-all', function (){
     return District::all();

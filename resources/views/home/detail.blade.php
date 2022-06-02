@@ -91,7 +91,7 @@ function time_elapsed_string($datetime, $full = false) {
 			</div>
 			<h4>Hình ảnh thực tế:</h4>
 
-				<img src="{{ URL::to('public/uploads/images/'.$motelroom->images) }}" width="50%">
+				<img src="{{ URL::to('public/uploads/images/'.$motelroom->images) }}" width="40%">
 
 			<!-- END Slider Hình Ảnh -->
 
@@ -102,19 +102,7 @@ function time_elapsed_string($datetime, $full = false) {
                 </div><!-- /col-sm-12 -->
                 </div><!-- /row -->
              @foreach($comment as $cmt)
-            {{--<span><i class="fas fa-check"></i> {{ $cmt->name }}</span>--}}
                 <div class="row">
-                 <div class="col-md-1">
-                  <div class="thumbnail">
-                 @if($cmt->avatar == 'no-avatar.jpg')
-                	<img class="img-responsive user-photo" src="images/no-avatar.jpg">
-                        @else
-                            <img src="public/uploads/avatars/<?php echo $cmt->avatar; ?>" class="img-responsive user-photo" alt="Cinque Terre" width="100" height="100">
-                        @endif
-
-                        </div><!-- /thumbnail -->
-                        </div><!-- /col-sm-1 -->
-
                 <div class="col-md-11">
                  <div class="panel panel-default">
                   <div class="panel-heading">
@@ -123,7 +111,6 @@ function time_elapsed_string($datetime, $full = false) {
                     <?php
                         echo time_elapsed_string($cmt->created_at);
                     ?>
-
                     </span>
              </div>
              <div class="panel-body">
@@ -132,23 +119,14 @@ function time_elapsed_string($datetime, $full = false) {
                 </div><!-- /panel panel-default -->
                 </div><!-- /col-sm-5 -->
              </div>
-
             @endforeach
+			<nav aria-label="Page navigation example">
+				<ul class="pagination justify-content-end">
+			{{ $comment->links() }}
+				</ul>
+			</nav>
             @if(Auth::user())
             <div class="row">
-             <div class="col-md-1">
-              <div class="thumbnail">
-
-                @if(Auth::user()->avatar == 'no-avatar.jpg')
-                    <img class="img-responsive user-photo" src="images/no-avatar.jpg">
-                @else
-                    <img src="public/uploads/avatars/<?php echo Auth::user()->avatar ?>" class="img-responsive user-photo" alt="Cinque Terre" width="100" height="100">
-                @endif
-
-
-                </div><!-- /thumbnail -->
-                </div><!-- /col-sm-1 -->
-
              <div class="col-md-11">
               <div class="panel panel-default">
                <div class="panel-heading">
@@ -165,12 +143,10 @@ function time_elapsed_string($datetime, $full = false) {
                     {{--<button class="btn btn-primary " onclick="submitcomment()" >Gửi bình luận</button>--}}
                 <button class="btn btn-primary " >Gửi bình luận</button>
                 </form>
-                    </div><!-- /panel-body -->
-                    </div><!-- /panel panel-default -->
-                    </div><!-- /col-sm-5 -->
+                    </div>
+                    </div>
+                    </div>
              </div>
-
-
             	@else
             	<div>
             		<hr>
@@ -183,7 +159,6 @@ function time_elapsed_string($datetime, $full = false) {
             		</div>
             	@endif
             	</div>
-
 			<div class="gap"></div>
 		{{--</div>--}}
 		<div class="col-md-4">
@@ -199,7 +174,7 @@ function time_elapsed_string($datetime, $full = false) {
 					<div class="col-md-8">
 						<h4>Thông tin người đăng</h4>
 						<strong>{{ $motelroom->user->name }}</strong><br>
-						<i class="far fa-clock"></i> Ngày tham gia: 17-02-2018	
+						<i class="far fa-clock"></i> ngày tham gia: {{ date("d/m/Y", strtotime($motelroom->user->created_at)) }}	
 
 					</div>
 				</div>
@@ -217,7 +192,7 @@ function time_elapsed_string($datetime, $full = false) {
 			@if(session('thongbao'))
 			<div class="alert bg-success">
 				<button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
-				<span class="text-semibold">Well done!</span>  {{session('thongbao')}}
+				<span class="text-semibold">Hoàn thành!</span>  {{session('thongbao')}}
 			</div>
 			@else	
 			<div class="report">

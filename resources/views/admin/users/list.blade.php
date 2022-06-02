@@ -83,11 +83,6 @@
 					</div>
 			</div>
 		</div>
-		<!-- Footer -->
-		<div class="footer text-muted">
-			&copy; 2019. <a href="#">Project Bất động sản Hà Nội</a> by <a href="" target="_blank">Chu Sỹ Tùng</a>
-		</div>
-		<!-- /footer -->
 	</div>
 </div>
 @endsection

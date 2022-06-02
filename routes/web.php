@@ -37,6 +37,7 @@ Route::get('/', function () {
         'listmotelroom'=>$listmotelroom
     ]);
 });
+
 Route::get('category/{id}','MotelController@getMotelByCategoryId');
 /* Admin */
 Route::get('admin/login','AdminController@getLogin');
@@ -79,7 +80,7 @@ Route::get('/phongtro/{slug}',function($slug){
     $room->save();
 //    $cmt_id = comment::find($room->id);
     $categories = Categories::all();
-    $comment = DB::table('comment')->orderBy('id','asc')->where('room_id',$room->id)->get();
+    $comment = DB::table('comment')->orderBy('id','asc')->where('room_id',$room->id)->paginate(3);
     foreach($comment as $commentt) {
             $user_detail = DB::table('users')->where('id', $commentt->user_id)->first();
          $commentt->name=$user_detail->name;
