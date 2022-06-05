@@ -15,7 +15,7 @@
       <br>
       <h3>hôm nay <br> {{ date('d') }}/{{ date('m') }}/{{ date('Y') }} </h3>
       <ul class="nav side-menu">
-        <li><a href="/admin/motelrooms/list"> <i class="fa fa-home"></i> Danh sách phòng trọ</a>
+        <li><a href="/admin/motelrooms/list"> <i class="fa fa-home"></i> Quản lý tin đăng </a>
         </li>
         {{-- <li><a href="{{ route('categories.index') }}"> <i class="fa fa-th-list"></i> Danh sách loại phòng</a>
         </li>

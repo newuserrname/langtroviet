@@ -50,7 +50,9 @@
         <!-- /top navigation -->
        <div class="right_col" role="main">
         <!-- Main content -->
-		@yield('content2')
+        
+        	@yield('content2')
+        
 		<!-- /Main content -->       
       </div>
     </div>

@@ -32,6 +32,7 @@ Route::get('posts', 'PostsMotelroomController@postsAll')->middleware('jwtAuth');
 Route::post('posts/create', 'PostsMotelroomController@postsCreate')->middleware('jwtAuth');
 Route::post('posts/update', 'PostsMotelroomController@postsUpdate')->middleware('jwtAuth');
 Route::post('posts/delete', 'PostsMotelroomController@postsDelete')->middleware('jwtAuth');
+Route::get('posts/my_posts', 'PostsMotelroomController@myPost')->middleware('jwtAuth');
 
 // Bookmask
 Route::get('posts/bookmask', 'PostsBookmaskController@bookmask')->middleware('jwtAuth');

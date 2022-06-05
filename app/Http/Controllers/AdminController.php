@@ -14,12 +14,17 @@ class AdminController extends Controller
       $total_users_deactive = User::where('tinhtrang',0)->get()->count();
       $total_rooms_approve = Motelroom::where('approve',1)->get()->count();
       $total_rooms_unapprove = Motelroom::where('approve',0)->get()->count();
+
+      $so_tin_da_dang = Motelroom::where('user_id', Auth::user()->id)->get()->count();
+      $tongso_luot_xem_tin = Motelroom::where('user_id', Auth::user()->id)->get()->sum('count_view');
       $reports = Reports::all();
       return view ('admin.index',[
-        'total_users_active'=>$total_users_active,
+        'total_users_active'=>$total_users_active,  
         'total_users_deactive'=>$total_users_deactive,
         'total_rooms_approve'=>$total_rooms_approve,
         'total_rooms_unapprove'=>$total_rooms_unapprove,
+        'tin_da_dang'=>$so_tin_da_dang,
+        'tong_luot_xem'=>$tongso_luot_xem_tin,
         'total_report'=>$reports->count(),
       ]);
     }
@@ -83,10 +88,8 @@ class AdminController extends Controller
     /* Motel room */
     public function getListMotel(){
 
-      $myroom = Motelroom::where('user_id', Auth::user()->id)->paginate(5);
+      $myroom = Motelroom::where('user_id', Auth::user()->id)->paginate(6);
         return view('admin.motelroom.list', ['motelrooms'=>$myroom]);
-      // $motelrooms = Motelroom::all()->sortByDesc("created_at");
-      // return view('admin.motelroom.list',['motelrooms'=>$motelrooms]);
     }
 
     public function ApproveMotelroom($id){

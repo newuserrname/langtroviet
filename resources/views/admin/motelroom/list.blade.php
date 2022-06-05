@@ -1,96 +1,96 @@
 @extends('admin.layout.master')
 @section('content2')
+
 <!-- Main content -->
 <div class="content-wrapper">
 	<div class="breadcrumb-line">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/admin">Admin</a></li>
           <li class="breadcrumb-item active" aria-current="page">Danh sách phòng trọ</li>
-          </ol>
-      </div>
-<!-- /page header -->
-	<div class="content">
-		<div class="row">
-			<div class="col-12">
-				<div class="panel panel-flat">
-						<div class="panel-heading">
-							<h5 class="panel-title">Danh sách các Phòng trọ <span class="badge badge-primary">{{$motelrooms->count()}}</span></h5>
-						</div>
-
-						<div class="panel-body">
-							Các <code>phòng trọ</code> được liệt kê tại đây. <strong>Dữ liệu đang cập nhật.</strong>
-						</div>
-                        @if(session('thongbao'))
-                        <div class="alert bg-success">
-							<button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
-							<span class="text-semibold">Well done!</span>  {{session('thongbao')}}
-						</div>
-                        @endif
-						<table class="table datatable-show-all">
-							<thead>
-								<tr class="bg-blue">
-									<th>Mã Phòng</th>
-									<th>Tiêu đề</th>
-									<th>Danh mục</th>
-									<th>Giá phòng</th>
-									<th>Trạng thái</th>
-									<th class="text-center"><i class="fa fa-bars"></i></th>
-								</tr>
-							</thead>
-							<tbody>
-								@foreach($motelrooms as $room)
-								<tr>
-									<td>{{$room->coderoom}}</td>
-									
-									<td>
-										<div style="width: 300px;
-										height: 50px;">
-										<a style="display:-webkit-box;
-										overflow:hidden;
-										text-overflow:ellipsis;
-										-webkit-line-clamp: 1;
-										-webkit-box-orient:vertical;" href="/phongtro/{{$room->slug}}">{{$room->title}}</a>
-										</div>
-									</td>
-									<td>{{$room->category->name}}</td>
-									<td>{{number_format($room->price)}} VNĐ</td>
-									<td>
-										@if($room->approve == 1)
-											<span class="btn btn-success">Đã kiểm duyệt</span>
-										@elseif($room->tinhtrang == 0)
-											<span class="btn btn-danger">Chờ Phê Duyệt</span>
-										@endif
-									</td>
-									<td class="text-center">	
-										<div class="dropdown">
-											<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">
-											  Thay đổi
-											</button>
-											<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-												@if($room->approve == 1)
-											<button class="dropdown-item" type="button">
-												<a href="/admin/motelrooms/unapprove/{{$room->id}}"><i class="fa fa-check-circle-o"></i> Bỏ kiểm duyệt</a></button>
-												@elseif($room->tinhtrang == 0)
-											<button class="dropdown-item" type="button">
-												<a href="/admin/motelrooms/approve/{{$room->id}}"><i class="fa fa-remove"></i> Kiểm duyệt</a></button>
-												@endif
-											<button class="dropdown-item" type="button">
-												<a href="/admin/motelrooms/del/{{$room->id}}"><i class="fa fa-trash-o"></i> Xóa</a></button>
-											</div>
-										  </div>
-									</td>
-								</tr>
-								@endforeach
-							</tbody>
-						</table>
-					</div>
-					<nav aria-label="Page navigation example">
-					<ul class="pagination justify-content-end">
-						{{ $motelrooms->links() }}
-					</ul>
-				</nav>
-			</div>
-		</div>
+        </ol>
 	</div>
+<!-- /page header -->
+<div class="col-md-12 col-sm-12  ">
+	<div class="x_panel">
+	  <div class="x_title">
+		<h2>Tổng số phòng trọ:<small>0</small></h2>
+		<div class="clearfix"></div>
+	  </div>
+	  <div class="x_content">
+		<p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>
+		@if(session('thongbao'))
+		<div class="alert bg-secondary">
+			<button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+			<span style="font-size:15px" class="badge badge-light">{{session('thongbao')}}</span>
+		</div>
+		@endif
+		<div class="table-responsive">
+		  <table class="table table-striped jambo_table bulk_action">
+			<thead>
+			  <tr class="headings">
+				<th>
+				  <input type="checkbox" id="check-all" class="flat">
+				</th>
+				<th class="column-title">Mã phòng </th>
+				<th class="column-title">Loại </th>
+				<th class="column-title">Ngày đăng </th>
+				<th class="column-title">Luợt xem </th>
+				<th class="column-title">Tiêu đề </th>
+				<th class="column-title">Giá </th>
+				<th class="column-title">Trạng thái </th>					
+				<th class="column-title no-link last"><span class="nobr"><i class="fa fa-bars"></i></span>
+				</th>
+				<th class="bulk-actions" colspan="7">
+				  <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+				</th>
+			  </tr>
+			</thead>
+
+			<tbody>
+				@foreach ($motelrooms as $postsroom)
+			  <tr class="even pointer">
+				<td class="a-center ">
+				  <input type="checkbox" class="flat" name="table_records">
+				</td>
+				<td class=" ">{{ $postsroom->coderoom }}</td>
+				<td class=" ">{{ $postsroom->category->name }}</td>
+				<td class=" ">{{ date('d/m/Y', strtotime($postsroom->created_at)) }} </td>
+				<td class=" ">{{ $postsroom->count_view }}</td>
+				<td class=" "><a class="d-inline-block text-truncate" style="max-width:350px" href="/phongtro/{{$postsroom->slug}}">{{ $postsroom->title }}</a></td>
+				<td class=" ">{{ number_format($postsroom->price)}} đ</td>
+				<td class=" ">
+					@if($postsroom->approve==1) 
+						<button type="button" class="btn btn-round btn-primary">tin hiển thị</button>
+					@elseif($postsroom->approve==0)
+						<button type="button" class="btn btn-round btn-secondary">tin đang ẩn</button>
+					@endif
+				</td>
+				<td class=" last">
+					<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false">
+					Thay đổi
+				  </button>
+				  <div class="dropdown-menu">
+					  @if($postsroom->approve==1)
+					  <a class="dropdown-item" href="/admin/motelrooms/unapprove/{{$postsroom->id}}"><i class="fa fa-check-circle-o"></i> ẩn tin</a>
+					  @elseif($postsroom->approve==0)
+					  <a class="dropdown-item" href="/admin/motelrooms/approve/{{$postsroom->id}}"><i class="fa fa-check-circle-o"></i> hiển thị tin</a>
+					  @endif
+					  <a class="dropdown-item" href="/admin/motelrooms/del/{{$postsroom->id}}"><i class="fa fa-trash-o"></i> Xóa</a></button>
+				  </div>
+				</td>
+			  </tr>
+				  @endforeach
+			</tbody>
+		  </table>
+		</div>
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-end">
+				{{ $motelrooms->links() }}
+			</ul>
+		</nav>
+	  </div>
+	</div>
+  </div>
 </div>
 @endsection
