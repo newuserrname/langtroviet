@@ -51,7 +51,7 @@ function time_elapsed_string($datetime, $full = false) {
 
 </div>
 <div class="container" style="min-height: 400px">
-	<h3 class="title-comm"><span class="title-holder">PHÒNG TRỌ XEM NHIỀU NHẤT</span></h3>
+	<h3 class="title-comm"><span class="title-holder">PHÒNG TRỌ CHO THUÊ</span></h3>
 	@if(count($listmotel) == 0)
 		Không có kết quả nào trong danh mục này
 	@endif

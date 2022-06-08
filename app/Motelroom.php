@@ -23,6 +23,9 @@ class Motelroom extends Model
     public function district(){
     	return $this->belongsTo('App\District','district_id','id');
     }
+    public function hopdong() {
+        return $this->hasMany('App\Hopdong','motelroom_id', 'id');
+    }
     public function reports(){
         return $this->hasMany('App\Reports','id_motelroom','id');
     }
@@ -41,6 +44,10 @@ class Motelroom extends Model
     public function comments()
     {
         return $this->hasMany('App\Comment', 'room_id', 'id');
+    }
+    public function request() 
+    {
+        return $this->hasMany('App\Request', 'id_motelroom', 'id');
     }
     public function sluggable()
     {

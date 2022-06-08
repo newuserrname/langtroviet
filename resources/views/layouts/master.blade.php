@@ -30,7 +30,17 @@
 			  <div class="navbar navbar-expand-lg navbar-light bg-light">
 					<a class="navbar-brand" href=""><img src="/images/logolt.png"></a>
 					@if(Auth::user())
-					
+				<div class="btn-group">
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						  Loại phòng
+						  <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							@foreach($categories as $category)
+							<li><a href="category/{{ $category->id }}">{{ $category->name }}</a></li>
+							@endforeach
+						</ul>
+					  </div>	
 				<ul class="nav navbar-nav navbar-right">
 				  <li><a class="btn btn-default" href="user/dangtin"><i class="fas fa-edit"></i>Đăng tin ngay</a></li>
 				  <li class="dropdown">

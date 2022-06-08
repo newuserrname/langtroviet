@@ -73,8 +73,8 @@
     <script src="/public/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="/public/vendors/nprogress/nprogress.js"></script>
-    <!-- Chart.js -->
-    <script src="/public/vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- Chart.js --> 
+    <script src="/public/vendors/Chart.js/dist/Chart.js"></script>
     <!-- gauge.js -->
     <script src="/public/vendors/gauge.js/dist/gauge.min.js"></script>
     <!-- bootstrap-progressbar -->
@@ -104,8 +104,7 @@
     <script src="/public/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="/js/custom.min.js"></script>
-	
+    <script src="/js/custom.js"></script>
     <script type="text/javascript">
       function ChangeToSlug()
           {

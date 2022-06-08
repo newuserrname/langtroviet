@@ -17,7 +17,7 @@
 		<div class="clearfix"></div>
 	  </div>
 	  <div class="x_content">
-		<p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>
+		<p>Toàn bộ <code>tin đăng</code> của bạn được hiển thị ở đây</p>
 		@if(session('thongbao'))
 		<div class="alert bg-secondary">
 			<button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
@@ -40,8 +40,8 @@
 				<th class="column-title">Trạng thái </th>					
 				<th class="column-title no-link last"><span class="nobr"><i class="fa fa-bars"></i></span>
 				</th>
-				<th class="bulk-actions" colspan="7">
-				  <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+				<th class="bulk-actions" colspan="8">
+				  <a class="antoo" style="color:#fff; font-weight:500;">Đã chọn ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
 				</th>
 			  </tr>
 			</thead>
@@ -93,4 +93,5 @@
 	</div>
   </div>
 </div>
+
 @endsection

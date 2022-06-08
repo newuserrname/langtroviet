@@ -51,7 +51,7 @@
 						<div class="form-group">
 							<label class="control-label col-sm-3" for="pwd">Tên hiển thị:</label>
 							<div class="col-sm-9"> 
-								<input type="text" class="form-control" name="txtname" placeholder="Tên hiển thị">
+								<input type="text" class="form-control" name="txtname" placeholder="Nhập đúng họ & tên để tránh lỗi khi giao dịch">
 							</div>
 						</div>
 						<div class="form-group"> 

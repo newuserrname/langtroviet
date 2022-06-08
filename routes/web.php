@@ -20,20 +20,35 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PlaymentController;
 use App\Http\Controllers\ThemsodiennuocController;
 use App\Http\Controllers\BilldiennuocController;
+use App\Http\Controllers\RequestFromCustomerController;
+use App\Http\Controllers\HopDongThueNhaController;
 
 Route::get('/', function () {
 	$district = District::all();
     $categories = Categories::all();
-    $hot_motelroom = Motelroom::where('approve',1)->limit(6)->orderBy('count_view','desc')->get();
-    $new_motelroom = Motelroom::where('approve',1)->limit(6)->orderBy('created_at','desc')->get();
+    $hot_motelroom = Motelroom::where('approve',1)->orderBy('count_view','desc')->paginate(5);
     $map_motelroom = Motelroom::where('approve',1)->get();
 	$listmotelroom = Motelroom::where('approve',1)->paginate(4);
     return view('home.index',[
     	'district'=>$district,
         'categories'=>$categories,
         'hot_motelroom'=>$hot_motelroom,
-        'new_motelroom'=>$new_motelroom,
     	'map_motelroom'=>$map_motelroom,
+        'listmotelroom'=>$listmotelroom
+    ]);
+});
+
+Route::get('/moinhat', function () {
+    $district = District::all();
+    $categories = Categories::all();
+    $new_motelroom = Motelroom::where('approve',1)->orderBy('created_at','desc')->paginate(5);
+    $map_motelroom = Motelroom::where('approve',1)->get();
+    $listmotelroom = Motelroom::where('approve',1)->paginate(4);
+    return view('home.newpostsroom',[
+        'district'=>$district,
+        'categories'=>$categories,
+        'new_motelroom'=>$new_motelroom,
+        'map_motelroom'=>$map_motelroom,
         'listmotelroom'=>$listmotelroom
     ]);
 });
@@ -59,15 +74,14 @@ Route::group(['prefix'=>'admin','middleware'=>'adminmiddleware'], function () {
         Route::get('approve/{id}','AdminController@ApproveMotelroom');
         Route::get('unapprove/{id}','AdminController@UnApproveMotelroom');
         Route::get('del/{id}','AdminController@DelMotelroom');
-        // Route::get('edit/{id}','AdminController@getUpdateUser');
-        // Route::post('edit/{id}','AdminController@postUpdateUser')->name('admin.user.edit');
-        // Route::get('del/{id}','AdminController@DeleteUser');
     });
 
     Route::resource('/categories', 'CategoriesController');
     Route::resource('/payment', 'PlaymentController');
     Route::resource('/electricandwater', 'ThemsodiennuocController');
     Route::resource('/billeaw', 'BilldiennuocController');
+    Route::resource('/request', 'RequestFromCustomerController');
+    Route::resource('/hopdong', 'HopDongThueNhaController');
     
 });
 Route::get('/print-bill/{checkout_code}', 'BilldiennuocController@print_bill');
@@ -78,24 +92,19 @@ Route::get('/phongtro/{slug}',function($slug){
     $room = Motelroom::findBySlug($slug);
     $room->count_view = $room->count_view +1;
     $room->save();
-//    $cmt_id = comment::find($room->id);
     $categories = Categories::all();
     $comment = DB::table('comment')->orderBy('id','asc')->where('room_id',$room->id)->paginate(3);
     foreach($comment as $commentt) {
             $user_detail = DB::table('users')->where('id', $commentt->user_id)->first();
-         $commentt->name=$user_detail->name;
-         $commentt->avatar=$user_detail->avatar;
-
-//         $commentt->name=$user_detail->name;
-
-//            array_push($commentt, $user_detail);
-
+            $commentt->name=$user_detail->name;
+            $commentt->avatar=$user_detail->avatar;
     }
     return view('home.detail',['motelroom'=>$room, 'categories'=>$categories, 'comment'=>$comment]);
 });
 
 Route::get('/report/{id}','MotelController@userReport')->name('user.report');
 Route::get('/motelroom/del/{id}','MotelController@user_del_motel');
+Route::get('/yeucau/{id},{user_motel}', 'RequestFromCustomerController@store')->name('user.yeucau');
 
 /* User */
 Route::group(['prefix'=>'user'], function () {

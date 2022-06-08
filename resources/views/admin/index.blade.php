@@ -64,19 +64,31 @@
                   <td>
                     <p><i class="fa fa-square blue"></i>Người thuê trọ </p>
                   </td>
-                  <td>30%</td>
+                  <td>0</td>
                 </tr>
                 <tr>
                   <td>
-                    <p><i class="fa fa-square green"></i>Tin đã đăng </p>
+                    <p><i class="fa fa-square" style="color:#97FFFF"></i>Tin đã đăng </p>
                   </td>
-                  <td>10%</td>
+                  <td>{{ $tin_da_dang }}</td>
                 </tr>
                 <tr>
                   <td>
-                    <p><i class="fa fa-square purple"></i>Số lượt xem </p>
+                    <p><i class="fa fa-square" style="color:#00BFFF"></i>Số lượt xem </p>
                   </td>
-                  <td>20%</td>
+                  <td>{{ $tong_luot_xem }}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <p><i class="fa fa-square" style="color:#00FF00"></i>Yêu cầu </p>
+                  </td>
+                  <td>{{ $yeu_cau }}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <p><i class="fa fa-square" style="color:#FF3030"></i>Hợp đồng </p>
+                  </td>
+                  <td>{{ $hop_dong }}</td>
                 </tr>
               </table>
             </td>
@@ -161,5 +173,10 @@
 
   </div>
   <br />
-
+  <script type="text/javascript">
+    var tindadang ='{!! json_encode($tin_da_dang) !!}';
+    var luotxem ='{!! json_encode($tong_luot_xem) !!}';
+    var yeucau ='{!! json_encode($yeu_cau) !!}';
+    var hopdong = '{!! json_encode($hop_dong)}';
+  </script>
 @endsection

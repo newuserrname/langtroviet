@@ -63,30 +63,15 @@ class MotelController extends Controller
 		return view('home.category',['listmotel'=>$getmotel,'categories'=>$Categories]);
 	}
 
-	public function userReport($id,Request $request){
-		$ipaddress = '';
-	    if (getenv('HTTP_CLIENT_IP'))
-	        $ipaddress = getenv('HTTP_CLIENT_IP');
-	    else if(getenv('HTTP_X_FORWARDED_FOR'))
-	        $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-	    else if(getenv('HTTP_X_FORWARDED'))
-	        $ipaddress = getenv('HTTP_X_FORWARDED');
-	    else if(getenv('HTTP_FORWARDED_FOR'))
-	        $ipaddress = getenv('HTTP_FORWARDED_FOR');
-	    else if(getenv('HTTP_FORWARDED'))
-	       $ipaddress = getenv('HTTP_FORWARDED');
-	    else if(getenv('REMOTE_ADDR'))
-	        $ipaddress = getenv('REMOTE_ADDR');
-			
-	    else{
-	        $ipaddress = 'UNKNOWN';
+	public function userReport($id,Request $request) {
+
 	    $report = new Reports;
-	    $report->ip_address = $ipaddress;
+	    $report->user_id = Auth::user()->id;
 	    $report->id_motelroom = $id;
 	    $report->status = $request->baocao;
 	    $report->save();
 	    $getmotel = Motelroom::find($id);
-		return redirect('phongtro/'.$getmotel->slug)->with('thongbao','Cảm ơn bạn đã báo cáo, đội ngũ chúng tôi sẽ xem xét');
-	}
+		return redirect('phongtro/'.$getmotel->slug)->with('thongbao','Đã gửi yêu cầu đến chủ trọ');
+	
 	}
 }

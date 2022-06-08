@@ -161,8 +161,8 @@ function time_elapsed_string($datetime, $full = false) {
 					<div class="container">
 					  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
-						  <li class="active"><a href="">Phòng trọ xem nhiều nhất</a></li>
-						  <li><a href="moinhat">Phòng trọ mới nhất</a></li>
+						  <li><a href="">Phòng trọ xem nhiều nhất</a></li>
+						  <li class="active"><a href="moinhat">Phòng trọ mới nhất</a></li>
 						</ul>
 						<form class="navbar-form navbar-right" role="search">
 						  <div class="form-group">
@@ -175,9 +175,9 @@ function time_elapsed_string($datetime, $full = false) {
 					</div><!-- /.container-fluid -->
 				  </nav>
 				  <br>
-				  <h3 class="title-comm"><span class="title-holder">PHÒNG TRỌ XEM NHIỀU NHẤT</span></h3>
-				<div class="row room-hot">
-						@foreach($hot_motelroom as $room)
+				<h3 class="title-comm"><span class="title-holder">PHÒNG TRỌ MỚI NHẤT</span></h3>
+				<div class="row room-new">
+						@foreach($new_motelroom as $room)
 					<div class="col-md-10">
 						<div class="room-item-vertical">
 							<div class="col-md-4">
@@ -214,6 +214,8 @@ function time_elapsed_string($datetime, $full = false) {
 					</div>
 						@endforeach								
 					</div>
+
+	
 				{{-- <div class="col-md-4">
 				<img src="images/ADVANCE.png" width="100%">
 				</div> --}}
@@ -221,7 +223,7 @@ function time_elapsed_string($datetime, $full = false) {
 				<div class="container">
 				<nav aria-label="Page navigation example">
 					<ul class="pagination justify-content-end">
-						{{ $hot_motelroom->links() }}
+						{{ $new_motelroom->links() }}
 					</ul>
 				</nav>
 				</div>

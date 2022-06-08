@@ -689,28 +689,20 @@ function init_chart_doughnut() {
             type: 'doughnut',
             tooltipFillColor: "rgba(51, 51, 51, 0.55)",
             data: {
-                labels: [
-                    "Symbian",
-                    "Blackberry",
-                    "Other",
-                    "Android",
-                    "IOS"
-                ],
+                labels: ["Tin đã đăng","Lượt xem","Yêu cầu","Hợp đồng"],
                 datasets: [{
-                    data: [15, 20, 30, 10, 30],
+                    data: [tindadang,luotxem,yeucau,hopdong],
                     backgroundColor: [
-                        "#BDC3C7",
-                        "#9B59B6",
-                        "#E74C3C",
-                        "#26B99A",
-                        "#3498DB"
+                        "#97FFFF",
+                        "#00BFFF",
+                        "#00FF00",
+                        "#FF3030",
                     ],
                     hoverBackgroundColor: [
-                        "#CFD4D8",
-                        "#B370CF",
-                        "#E95E4F",
-                        "#36CAAB",
-                        "#49A9EA"
+                        "#97FFFF",
+                        "#00BFFF",
+                        "#00FF00",
+                        "#FF3030",
                     ]
                 }]
             },
@@ -2212,11 +2204,7 @@ function init_charts() {
         var ctx = document.getElementById("canvasDoughnut");
         var data = {
             labels: [
-                "Dark Grey",
-                "Purple Color",
-                "Gray Color",
-                "Green Color",
-                "Blue Color"
+                
             ],
             datasets: [{
                 data: [120, 50, 140, 180, 100],

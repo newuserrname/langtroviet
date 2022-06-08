@@ -17,8 +17,14 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $table = "users";
-    public function motelroom(){
+    
+    public function motelroom()
+    {
         return $this->hasMany('App\Motelroom','user_id','id');
+    }
+    public function hopdong()
+    {
+        return $this->hasMany('App\Hopdong', 'user_id', 'id');
     }
     public function numbereaw() 
     {
@@ -27,6 +33,10 @@ class User extends Authenticatable implements JWTSubject
     public function billeaw()
     {
         return $this->hasMany('App\BilldiennuocModel', 'user_id','id');
+    }
+    public function request()
+    {
+        return $this->hasMany('App\RequestFromCustomerModel', 'user_id','id');
     }
     public function getJWTIdentifier()
     {

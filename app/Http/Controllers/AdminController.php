@@ -6,25 +6,30 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Motelroom;
 use App\Reports;
+use App\RequestFromCustomerModel;
+use App\HopDongThueNhaModel;
 
 class AdminController extends Controller
 {
-    public function getIndex(){
+    public function getIndex() {
       $total_users_active = User::where('tinhtrang',1)->get()->count();
       $total_users_deactive = User::where('tinhtrang',0)->get()->count();
       $total_rooms_approve = Motelroom::where('approve',1)->get()->count();
       $total_rooms_unapprove = Motelroom::where('approve',0)->get()->count();
-
       $so_tin_da_dang = Motelroom::where('user_id', Auth::user()->id)->get()->count();
       $tongso_luot_xem_tin = Motelroom::where('user_id', Auth::user()->id)->get()->sum('count_view');
+      $yeu_cau = RequestFromCustomerModel::where('id_usermotelroom', Auth::user()->id)->get()->count();
+      $hop_dong = HopDongThueNhaModel::where('user_id', Auth::user()->id)->get()->count();
       $reports = Reports::all();
-      return view ('admin.index',[
+      return view ('admin.index', [
         'total_users_active'=>$total_users_active,  
         'total_users_deactive'=>$total_users_deactive,
         'total_rooms_approve'=>$total_rooms_approve,
         'total_rooms_unapprove'=>$total_rooms_unapprove,
         'tin_da_dang'=>$so_tin_da_dang,
         'tong_luot_xem'=>$tongso_luot_xem_tin,
+        'yeu_cau'=>$yeu_cau,
+        'hop_dong'=>$hop_dong,
         'total_report'=>$reports->count(),
       ]);
     }
@@ -80,19 +85,20 @@ class AdminController extends Controller
     		return redirect('admin/login')->with('thongbao','Đăng nhập không thành công');
     }
 
-    public function getListUser(){
+    public function getListUser() {
       $users = User::all();
       return view('admin.users.list',['users'=>$users]);
     }
 
     /* Motel room */
-    public function getListMotel(){
+    public function getListMotel() {
 
       $myroom = Motelroom::where('user_id', Auth::user()->id)->paginate(6);
         return view('admin.motelroom.list', ['motelrooms'=>$myroom]);
+
     }
 
-    public function ApproveMotelroom($id){
+    public function ApproveMotelroom($id) {
       $room = Motelroom::find($id);
       $room->approve = 1;
       $room->save();

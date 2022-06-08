@@ -59,6 +59,7 @@ class UserController extends Controller
    		$newuser->save();
    		return redirect('/user/login')->with('success','Đăng kí thành công, bạn có thể đăng nhập và tạo tin mới ngay bây giờ!');
    	}
+      
    	/* Login */
    	public function get_login(){
          $categories = Categories::all();
