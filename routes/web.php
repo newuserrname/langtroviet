@@ -16,12 +16,6 @@ use App\Categories;
 use App\Motelroom;
 use App\comment;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoriesController;
-use App\Http\Controllers\PlaymentController;
-use App\Http\Controllers\ThemsodiennuocController;
-use App\Http\Controllers\BilldiennuocController;
-use App\Http\Controllers\RequestFromCustomerController;
-use App\Http\Controllers\HopDongThueNhaController;
 
 Route::get('/', function () {
 	$district = District::all();
@@ -82,6 +76,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminmiddleware'], function () {
     Route::resource('/billeaw', 'BilldiennuocController');
     Route::resource('/request', 'RequestFromCustomerController');
     Route::resource('/hopdong', 'HopDongThueNhaController');
+    Route::resource('/phongchothue', 'PhongChoThueController');
     
 });
 Route::get('/print-bill/{checkout_code}', 'BilldiennuocController@print_bill');

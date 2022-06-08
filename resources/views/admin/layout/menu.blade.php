@@ -13,13 +13,16 @@
 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
     <div class="menu_section active">
       <br>
-      <h3>hôm nay <br> {{ date('d') }}/{{ date('m') }}/{{ date('Y') }} </h3>
+      <body onload=daterealtime();>
+        <h3>Hôm nay</h3>
+        <h3 style="font-size:15px" id='realtime'></h3>
+      </body>
       <ul class="nav side-menu">
-        <li><a href="/admin/motelrooms/list"> <i class="fa fa-home"></i> Quản lý tin đăng </a>
+        <li><a href="/admin/motelrooms/list"> <i class="fa fa-list"></i> Quản lý tin đăng </a>
         </li>
-        {{-- <li><a href="{{ route('categories.index') }}"> <i class="fa fa-th-list"></i> Danh sách loại phòng</a>
+        <li><a href="{{ route('phongchothue.index') }}"> <i class="fa fa-home"></i> Danh sách phòng cho thuê</a>
         </li>
-        <li><a href="/admin/users/list"> <i class="fa fa-smile-o"></i> Danh sách người dùng </a>
+        {{-- <li><a href="/admin/users/list"> <i class="fa fa-smile-o"></i> Danh sách người dùng </a>
         </li> --}}
         <li><a href="{{ route('request.index') }}"> <i class="fa fa-send"></i> Yêu cầu từ khách </a>
         </li>
@@ -37,8 +40,8 @@
         </li>
         <li><a href="{{ route('billeaw.index') }}"> <i class="fa fa-list-ol"></i> Tiền nước </a>
         </li>
-        <li><a href="/admin/thongke"> <i class="fa fa-tasks"></i> Thống kê </a>
-        </li>
+        {{-- <li><a href="/admin/thongke"> <i class="fa fa-tasks"></i> Thống kê </a>
+        </li> --}}
         <li><a href="/"> <i class="fa fa-laptop"></i> Đến trang chủ </a>
         </li>
       </ul>

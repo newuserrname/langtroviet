@@ -105,6 +105,19 @@
 
     <!-- Custom Theme Scripts -->
     <script src="/js/custom.js"></script>
+    <script type="text/javascript"> 
+      function date() {
+        var refresh=1000; // Refresh rate in milli seconds
+        mytime=setTimeout('daterealtime()',refresh)
+        }
+        function daterealtime() {
+        var time = new Date()
+        var format=time.getMonth() + 1+ "/" + time.getDate() + "/" + time.getFullYear();
+        format = format + " - " +  time.getHours( )+ ":" +  time.getMinutes() + ":" +  time.getSeconds();
+        document.getElementById('realtime').innerHTML = format;
+        date();      
+        }
+      </script>
     <script type="text/javascript">
       function ChangeToSlug()
           {
@@ -137,7 +150,7 @@
                   //In slug ra textbox có id “slug”
               document.getElementById('convert_slug').value = slug;
           }   
-  </script>
+  </>
 
   </body>
 </html>
