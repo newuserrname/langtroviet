@@ -112,7 +112,7 @@
         }
         function daterealtime() {
         var time = new Date()
-        var format=time.getMonth() + 1+ "/" + time.getDate() + "/" + time.getFullYear();
+        var format=time.getDate() + "/" + (time.getMonth()+1) + "/" + time.getFullYear();
         format = format + " - " +  time.getHours( )+ ":" +  time.getMinutes() + ":" +  time.getSeconds();
         document.getElementById('realtime').innerHTML = format;
         date();      

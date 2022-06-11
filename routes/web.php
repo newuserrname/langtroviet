@@ -75,8 +75,16 @@ Route::group(['prefix'=>'admin','middleware'=>'adminmiddleware'], function () {
     Route::resource('/electricandwater', 'ThemsodiennuocController');
     Route::resource('/billeaw', 'BilldiennuocController');
     Route::resource('/request', 'RequestFromCustomerController');
-    Route::resource('/hopdong', 'HopDongThueNhaController');
+    Route::resource('/hopdong', 'HopDongThueNhaController');   
+    Route::resource('/phongtro', 'PhongTroController');
     Route::resource('/phongchothue', 'PhongChoThueController');
+    Route::resource('/khachthue', 'KhachThueController');
+
+
+    Route::group(['prefix'=>'phongtro'],function(){
+        Route::get('chothue/{id}', 'PhongTroController@chothue');
+        Route::get('conphong/{id}', 'PhongTroController@conphong');
+    });
     
 });
 Route::get('/print-bill/{checkout_code}', 'BilldiennuocController@print_bill');

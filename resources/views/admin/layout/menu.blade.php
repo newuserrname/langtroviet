@@ -18,27 +18,37 @@
         <h3 style="font-size:15px" id='realtime'></h3>
       </body>
       <ul class="nav side-menu">
-        <li><a href="/admin/motelrooms/list"> <i class="fa fa-list"></i> Quản lý tin đăng </a>
+        <li><a><i class="fa fa-home"></i> Phòng trọ <span class="fa fa-chevron-down"></span></a>
+          <ul class="nav child_menu">
+            <li><a href="/admin/motelrooms/list"> <i class="fa fa-list"></i> Quản lý tin đăng </a>
+            </li>
+            <li><a href="{{ route('phongtro.index') }}"> <i class="fa fa-building-o"></i> Quản lý phòng trọ </a>
+            </li>
+            {{-- <li><a href="{{ route('phongchothue.index') }}"> <i class="fa fa-home"></i> Quản lý phòng cho thuê</a>
+            </li>  --}}
+          </ul>
         </li>
-        <li><a href="{{ route('phongchothue.index') }}"> <i class="fa fa-home"></i> Danh sách phòng cho thuê</a>
-        </li>
-        {{-- <li><a href="/admin/users/list"> <i class="fa fa-smile-o"></i> Danh sách người dùng </a>
-        </li> --}}
-        <li><a href="{{ route('request.index') }}"> <i class="fa fa-send"></i> Yêu cầu từ khách </a>
+        <li><a><i class="fa fa-users"></i> Khách <span class="fa fa-chevron-down"></span></a>
+          <ul class="nav child_menu">
+            <li><a href="{{ route('khachthue.index') }}"> <i class="fa fa-users"></i> Quản lý khách thuê trọ </a>
+            </li>
+            <li><a href="{{ route('request.index') }}"> <i class="fa fa-send"></i> Yêu cầu từ khách </a>
+            </li>
+          </ul>
         </li>
         <li><a href="{{ route('hopdong.index') }}"> <i class="fa fa-file-text"></i> Hợp đồng thuê trọ </a>
-        </li>
+        </li>     
         {{-- <li><a href="{{ route('payment.index') }}"> <i class="fa fa-cc-visa"></i> Thanh toán </a>
         </li> --}}
         {{-- <li><a href="/admin/report"> <i class="fa fa-exclamation-triangle"></i> Báo cáo nội dung </a>
         </li> --}}
-        <li><a href="{{ route('electricandwater.create') }}"> <i class="fa fa-edit"></i> Số điện </a>
+        <li><a href="{{ route('electricandwater.create') }}"> <i class="fa fa-edit"></i>Nhập Số điện </a>
         </li>
-        <li><a href="{{ route('electricandwater.create') }}"> <i class="fa fa-edit"></i> Số nước </a>
+        <li><a href="{{ route('electricandwater.create') }}"> <i class="fa fa-edit"></i>Nhập lý Số nước </a>
         </li>
-        <li><a href="{{ route('billeaw.index') }}"> <i class="fa fa-list-ol"></i> Tiền điện </a>
+        <li><a href="{{ route('billeaw.index') }}"> <i class="fa fa-bolt"></i>Tiền điện </a>
         </li>
-        <li><a href="{{ route('billeaw.index') }}"> <i class="fa fa-list-ol"></i> Tiền nước </a>
+        <li><a href="{{ route('billeaw.index') }}"> <i class="fa fa-tint"></i>Tiền nước </a>
         </li>
         {{-- <li><a href="/admin/thongke"> <i class="fa fa-tasks"></i> Thống kê </a>
         </li> --}}

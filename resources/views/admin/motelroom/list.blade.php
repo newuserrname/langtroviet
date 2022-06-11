@@ -52,7 +52,7 @@
 				<td class="a-center ">
 				  <input type="checkbox" class="flat" name="table_records">
 				</td>
-				<td class=" ">{{ $postsroom->coderoom }}</td>
+				<td class=" ">{{ $postsroom->id }}</td>
 				<td class=" ">{{ $postsroom->category->name }}</td>
 				<td class=" ">{{ date('d/m/Y', strtotime($postsroom->created_at)) }} </td>
 				<td class=" ">{{ $postsroom->count_view }}</td>

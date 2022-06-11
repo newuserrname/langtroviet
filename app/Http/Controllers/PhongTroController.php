@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\PhongTroModel;
+use App\Motelroom;
 
-class PhongChoThueController extends Controller
+class PhongTroController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,8 @@ class PhongChoThueController extends Controller
      */
     public function index()
     {
-        return view('admin.phongchothue.index');
+        $list_phongtro = PhongTroModel::where('user_id', Auth::user()->id)->get();
+        return view('admin.phongtro.index' , ["listphongtro"=>$list_phongtro]);
     }
 
     /**
@@ -24,7 +27,8 @@ class PhongChoThueController extends Controller
      */
     public function create()
     {
-        return view('admin.phongchothue.create');
+        $list_phong = Motelroom::where('user_id', Auth::user()->id)->get();
+        return view('admin.phongtro.create', ["phongtro"=>$list_phong]);
     }
 
     /**
@@ -35,7 +39,19 @@ class PhongChoThueController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        // $maphong = "PT" . "-" . date('dis');
+
+        $phongtro = new PhongTroModel();
+        $phongtro->user_id = Auth::user()->id;
+        $phongtro->postmotelroom_id = $request->idphong;
+        $phongtro->tenphong = $request->tenphong;
+        $phongtro->tiendien = $request->tiendien;
+        $phongtro->tiennuoc = $request->tiennuoc;
+        $phongtro->tinhtrang = $request->tinhtrang;
+
+        $phongtro->save();
+        return redirect('admin/phongtro/create')->with('thongbao','phòng đã được tạo');
     }
 
     /**
@@ -82,4 +98,17 @@ class PhongChoThueController extends Controller
     {
         //
     }
+    public function conphong($id) {
+        $room = PhongTroModel::find($id);
+        $room->tinhtrang = 1;
+        $room->save();
+        return redirect('admin/phongtro/')->with('thongbao','Đã thay đổi ');
+      }
+  
+    public function chothue($id){
+        $room = PhongTroModel::find($id);
+        $room->tinhtrang = 2;
+        $room->save();
+        return redirect('admin/phongtro/')->with('thongbao','Đã thay đổi ');
+      }
 }

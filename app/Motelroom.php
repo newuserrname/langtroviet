@@ -14,19 +14,24 @@ class Motelroom extends Model
     use Sluggable;
     use SluggableScopeHelpers;
     protected $table = "motelrooms";
-    public function category(){
+    public function category()
+    {
     	return $this->belongsTo('App\Categories','category_id','id');
     }
-    public function user(){
+    public function user()
+    {
     	return $this->belongsTo('App\User','user_id','id');
     }
-    public function district(){
+    public function district()
+    {
     	return $this->belongsTo('App\District','district_id','id');
     }
-    public function hopdong() {
-        return $this->hasMany('App\Hopdong','motelroom_id', 'id');
+    public function post()
+    {
+        return $this->hasMany('App\Motelroom', 'postmotelroom_id', 'id');
     }
-    public function reports(){
+    public function reports()
+    {
         return $this->hasMany('App\Reports','id_motelroom','id');
     }
     public function numbereaw()

@@ -20,12 +20,20 @@ class User extends Authenticatable implements JWTSubject
     
     public function motelroom()
     {
-        return $this->hasMany('App\Motelroom','user_id','id');
+        return $this->hasMany('App\Motelroom', 'user_id','id');
+    }
+    public function phongtro()
+    {
+        return $this->hasMany('App\PhongTroModel', 'user_id', 'id');
+    }
+    public function khachthue()
+    {
+        return $this->hasMany('App\KhachThueModel', 'user_id', 'id');
     }
     public function hopdong()
     {
         return $this->hasMany('App\Hopdong', 'user_id', 'id');
-    }
+    }   
     public function numbereaw() 
     {
         return $this->hasMany('App\ThemsodiennuocModel', 'user_id','id');

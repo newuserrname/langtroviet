@@ -54,47 +54,50 @@
         
     </tr>
     <tr>
-        <td>Sinh ngày:&nbsp;&nbsp;{{ date("d/m/Y", strtotime($showhopdong->ngaysinhcn)) }}</td>
+        <td>Sinh ngày:&nbsp;&nbsp;{{ date("d/m/Y", strtotime($showhopdong->user->ngaysinh)) }}</td>
     </tr>
     <tr>
-        <td>Nơi đăng ký HK:&nbsp;&nbsp;{{ $showhopdong->hokhaucn }}</td>
+        <td>Nơi đăng ký HK:&nbsp;&nbsp;{{ $showhopdong->user->diachi }}</td>
     </tr>
     <tr>
-        <td>CMND số:&nbsp;&nbsp;{{ $showhopdong->cmndcn }}</td>
+        <td>CMND số:&nbsp;&nbsp;{{ $showhopdong->user->cmnd }}</td>
     </tr>
     <tr>
-        <td>Nơi cấp: {{ $showhopdong->noicapcmndcn }}</td>
+        <td>Nơi cấp: {{ $showhopdong->user->noicapcmnd }}</td>
     </tr>
     <tr>
-        <td>Cấp ngày:&nbsp;&nbsp;{{ date('d/m/Y'), strtotime($showhopdong->ngaycapcmndcn) }}</td>
+        <td>Cấp ngày:&nbsp;&nbsp;{{ date("d/m/Y", strtotime($showhopdong->user->ngaycapcmnd)) }}</td>
     </tr>
     <tr>
-        <td>Số điện thoại:&nbsp;&nbsp;{{ $showhopdong->sdtcn }}</td>
+        <td>Số điện thoại:&nbsp;&nbsp;{{ $showhopdong->user->phone }}</td>
+    </tr>
+    <tr>
+        <td><br></td>
     </tr>
     <tr>
         <td>2. Bên thuê phòng trọ (Bên B):</td>
     </tr>
     <tr>
-        <td>Ông/bà:&nbsp;&nbsp;{{ $showhopdong->namekt }}</td>
+        <td>Ông/bà:&nbsp;&nbsp;{{ $showhopdong->hopdongkhach->name }}</td>
         
     </tr>
     <tr>
-        <td>Sinh ngày:&nbsp;&nbsp;{{ date("d/m/Y", strtotime($showhopdong->ngaysinhkt)) }}</td>
+        <td>Sinh ngày:&nbsp;&nbsp;{{ date("d/m/Y", strtotime($showhopdong->hopdongkhach->ngaysinh)) }}</td>
     </tr>
     <tr>
-        <td>Nơi đăng ký HK:&nbsp;&nbsp;{{ $showhopdong->hokhaukt }}</td>
+        <td>Nơi đăng ký HK:&nbsp;&nbsp;{{ $showhopdong->hopdongkhach->hokhau }}</td>
     </tr>
     <tr>
-        <td>CMND số:&nbsp;&nbsp;{{ $showhopdong->cmndkt }}</td>
+        <td>CMND số:&nbsp;&nbsp;{{ $showhopdong->hopdongkhach->cmnd }}</td>
     </tr>
     <tr>
-        <td>Nơi cấp: {{ $showhopdong->noicapcmndkt }}</td>
+        <td>Nơi cấp: {{ $showhopdong->hopdongkhach->noicapcmnd }}</td>
     </tr>
     <tr>
-        <td>Cấp ngày:&nbsp;&nbsp;{{ date('d/m/Y'), strtotime($showhopdong->ngaycapcmndkt) }}</td>
+        <td>Cấp ngày:&nbsp;&nbsp;{{ date("d/m/Y", strtotime($showhopdong->hopdongkhach->ngaycapcmnd)) }}</td>
     </tr>
     <tr>
-        <td>Số điện thoại:&nbsp;&nbsp;{{ $showhopdong->sdtkt }}</td>
+        <td>Số điện thoại:&nbsp;&nbsp;{{ $showhopdong->hopdongkhach->sdt }}</td>
     </tr>
     <tr>
         <td><br></td>
@@ -106,26 +109,26 @@
         <td><br></td>
     </tr>
     <tr>
-        <td>Bên A đồng ý cho bên B thuê 1 phòng ở tại địa chỉ: <br> {{ $showhopdong->diachi }} </td>
+        <td>Bên A đồng ý cho bên B thuê 1 phòng ở tại địa chỉ: <br> {{ $showhopdong->hopdongkhach->phongtro->post->address }} </td>
     </tr>
     <tr>
-        <td>Giá thuê:&nbsp;&nbsp;{{ number_format($showhopdong->gia) }} đ/tháng</td>
+        <td>Giá thuê:&nbsp;&nbsp;{{ number_format($showhopdong->hopdongkhach->phongtro->post->price) }} đ/tháng</td>
     </tr>
     <tr>
         <td>Hình thức thanh toán:&nbsp;&nbsp;{{ $showhopdong->thanhtoan->phuongthuc }}</td>
     </tr>
     <tr>
-        <td>Tiền điện:&nbsp;&nbsp;{{ number_format($showhopdong->tiendien) }} đ/kwh <br> tính theo chỉ số công tơ, thanh toán vào cuối các tháng.</td>
+        <td>Tiền điện:&nbsp;&nbsp;{{ number_format($showhopdong->hopdongkhach->phongtro->tiendien) }} đ/kwh <br> tính theo chỉ số công tơ, thanh toán vào cuối các tháng.</td>
     </tr>
     <tr>
-        <td>Tiền nước:&nbsp;&nbsp;{{ number_format($showhopdong->tiennuoc) }} đ/người thanh toán vào đầu các tháng. </td>
+        <td>Tiền nước:&nbsp;&nbsp;{{ number_format($showhopdong->hopdongkhach->phongtro->tiennuoc) }} đ/người thanh toán vào đầu các tháng. </td>
     </tr>
     <tr>
         <td>Tiền đặt cọc:&nbsp;&nbsp;{{ number_format($showhopdong->tiencoc) }} đ</td>
     </tr>
     <tr>
-        <td>Hợp đồng có giá trị kể từ ngày:&nbsp;&nbsp;{{ date('d/m/Y'), strtotime($showhopdong->tungay) }} 
-            &nbsp;&nbsp;đến ngày&nbsp;&nbsp;{{ date('d/m/Y'), strtotime($showhopdong->tungay) }}</td>
+        <td>Hợp đồng có giá trị kể từ ngày:&nbsp;&nbsp;{{ date("d/m/Y", strtotime($showhopdong->tungay)) }}
+            &nbsp;&nbsp;đến ngày&nbsp;&nbsp;{{ date("d/m/Y", strtotime($showhopdong->denngay)) }}</td>
     </tr>
     <tr>
         <td><br></td>

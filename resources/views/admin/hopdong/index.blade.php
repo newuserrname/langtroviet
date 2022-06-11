@@ -1,7 +1,6 @@
 @extends('admin.layout.master')
 @section('content2')
 
-
 <!-- Main content -->
 <div class="content-wrapper">
 	<div class="breadcrumb-line">
@@ -16,8 +15,7 @@
       <div class="x_title">
         <h2>Danh sách hợp đồng</h2>
         <div class="clearfix"></div>
-      </div>
-      
+      </div> 
       <div class="x_content">
 
         <p>Bấm vào đây để tạo hợp đồng mới <a style="color:red" href="{{ route('hopdong.create') }}">Tạo</a></p>
@@ -48,7 +46,7 @@
                 </td>
                 <td class=" ">{{ $list->id }}</td>
                 <td class=" ">{{ date("d/m/Y", strtotime($list->created_at)) }}</td>
-                <td class=" ">{{ $list->namekt }}</td>
+                <td class=" ">{{ $list->hopdongkhach->name }}</td>
                 <td class=" last"><a href="{{ route('hopdong.show', $list->id) }}">Mở</a>
                 </td>
               </tr>
@@ -59,5 +57,5 @@
       </div>
     </div>
   </div>
-
+</div>
 @endsection

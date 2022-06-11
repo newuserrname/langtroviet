@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\KhachThueModel;
+use App\PhongTroModel;
+use App\PhongChoThueModel;
+use App\HopDongThueNhaModel;
 
-class PhongChoThueController extends Controller
+class KhachThueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +18,8 @@ class PhongChoThueController extends Controller
      */
     public function index()
     {
-        return view('admin.phongchothue.index');
+        $list_khachthue = KhachThueModel::where('user_id', Auth::user()->id)->get();
+        return view('admin.khachthue.index', ['khachthue'=>$list_khachthue]);
     }
 
     /**
@@ -24,7 +29,10 @@ class PhongChoThueController extends Controller
      */
     public function create()
     {
-        return view('admin.phongchothue.create');
+        $list_phongtro = PhongtroModel::where('user_id', Auth::user()->id)->get();
+        return view('admin.khachthue.create',[
+        "phongtro"=>$list_phongtro,
+    ]);
     }
 
     /**
@@ -35,7 +43,20 @@ class PhongChoThueController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ttkhachhang = new KhachThueModel();
+
+        $ttkhachhang->user_id = Auth::user()->id;
+        $ttkhachhang->phongthue_id = $request->idphong;
+        $ttkhachhang->name = $request->tenkhach;
+        $ttkhachhang->ngaysinh = $request->ngaysinh;
+        $ttkhachhang->hokhau = $request->hokhau;
+        $ttkhachhang->cmnd = $request->cmnd;
+        $ttkhachhang->ngaycapcmnd = $request->ngaycap;
+        $ttkhachhang->noicapcmnd = $request->noicap;
+        $ttkhachhang->sdt = $request->sdt;
+
+        $ttkhachhang->save();
+        return redirect('admin/khachthue/create')->with('thongbao', 'đã thêm dữ liệu khách hàng');
     }
 
     /**

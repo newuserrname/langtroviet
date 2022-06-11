@@ -39,124 +39,26 @@
                     </div>
                 </div>
                 <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align">Sinh ngày<span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input id="birthday" class="date-picker form-control" name="ngaysinhcn" type="date" required="required">
-                    </div>
-                </div>
-                <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Nơi đăng ký hộ khẩu <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input type="text" id="last-name" name="diachicn" value="{{ Auth::user()->diachi }}" required="required" class="form-control">
-                    </div>
-                </div>
-                <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">CMND số <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input type="number" id="last-name" name="cmndcn" value="{{ Auth::user()->cmnd }}" required="required" class="form-control">
-                    </div>
-                </div>
-                <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align">Ngày cấp<span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input id="birthday" class="date-picker form-control" name="ngaycapcmndcn" type="date" required="required">
-                    </div>
-                </div>
-                <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Nơi cấp <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input type="text" id="last-name" name="noicapcmndcn" required="required" class="form-control">
-                    </div>
-                </div>
-                <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Số điện thoại <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input type="number" id="last-name" name="sdtcn" required="required" value="{{ Auth::user()->phone }}" class="form-control">
-                    </div>
-                </div>
-
-                <div class="item form-group">
                     <label style="font-size: 23px" class="col-form-label col-md-3 col-sm-3 label-align" for="last-name"><span class="badge badge-light">2. Bên thuê phòng trọ (Bên B)</span></label>
                 </div>
                 <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Ông(bà) <span class="required">*</span>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Ông(bà) <span class="required">* id khách thuê</span>
                     </label>
                     <div class="col-md-6 col-sm-6 ">
-                        <input type="text" id="last-name" name="hotenbenkt" required="required" class="form-control">
+                        <div class="col-md-6 col-sm-6 ">
+                            <select id="heard" class="form-control" name="idkhachthue" required>
+                                @foreach ($khachthue as $khachthue)
+                                <option value="{{ $khachthue->id }}">{{ $khachthue->id }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align">Sinh ngày<span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input id="birthday" class="date-picker form-control" name="ngaysinhkt" type="date" required="required">
-                    </div>
-                </div>
-                <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Nơi đăng ký hộ khẩu <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input type="text" id="last-name" name="diachikt" required="required" class="form-control">
-                    </div>
-                </div>
-                <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">CMND số <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input type="number" id="last-name" name="cmndkt" required="required" class="form-control">
-                    </div>
-                </div>
-                <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align">Ngày cấp<span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input id="birthday" class="date-picker form-control" name="ngaycapcmndkt" placeholder="dd-mm-yyyy" type="date" required="required">
-                    </div>
-                </div>
-                <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Nơi cấp <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input type="text" id="last-name" name="noicapcmndkt" required="required" class="form-control">
-                    </div>
-                </div>
-                <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Số điện thoại <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input type="number" id="last-name" name="sdtkt" required="required" class="form-control">
-                    </div>
-                </div>
-
                 <br>
                 <div class="item form-group">
                     <label style="font-size: 23px" class="col-form-label col-md-3 col-sm-3 label-align" for="last-name"><span class="badge badge-light">Thông tin phòng:</span></label>
                 </div>
                 <br>
-                
-                <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Địa chỉ thuê phòng <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input type="text" id="last-name" name="diachiphong" required="required" class="form-control">
-                    </div>
-                </div>
-                <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Giá <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input type="number" pattern="([0-9]{1,3}).([0-9]{1,3})" name="giaphong" required="required" class="form-control">
-                    </div>
-                    <div class="col-md-4 col-lg-4 col-sm-5">                        
-                        <h4>đ/tháng</h4>                       
-                      </div>
-                </div>
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Hình thức thanh toán <span class="required">*</span>
                     </label>
@@ -167,26 +69,6 @@
                             @endforeach
                         </select>
                     </div>
-                </div>
-                <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Tiền điện <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input type="number" id="inputNumbers" step="0.01" name="tiendienphongtro" required="required" class="form-control">
-                    </div>
-                    <div class="col-md-4 col-lg-4 col-sm-5">                        
-                        <h4>đ/kWh</h4>                       
-                      </div>
-                </div>
-                <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Tiền nước <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input type="number" id="inputNumbers" step="0.01" name="tiennuocphongtro" required="required" class="form-control">
-                    </div>
-                    <div class="col-md-4 col-lg-4 col-sm-5">                        
-                        <h4>đ/m 3</h4>                       
-                      </div>
                 </div>
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Tiền cọc <span class="required">*</span>

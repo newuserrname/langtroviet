@@ -8,6 +8,8 @@ use App\Motelroom;
 use App\User;
 use App\ThanhToanModel;
 use App\HopDongThueNhaModel;
+use App\KhachThueModel;
+use App\PhongTroModel;
 
 class HopDongThueNhaController extends Controller
 {
@@ -30,7 +32,11 @@ class HopDongThueNhaController extends Controller
     public function create()
     {
         $thanhtoan = ThanhToanModel::all();
-        return view('admin.hopdong.create', ["thanhtoan"=>$thanhtoan]);
+        $list_khachthue = KhachThueModel::where('user_id', Auth::user()->id)->get();
+        return view('admin.hopdong.create', [
+            "thanhtoan"=>$thanhtoan,
+            "khachthue"=>$list_khachthue,
+        ]);
     }
 
     /**
@@ -44,25 +50,9 @@ class HopDongThueNhaController extends Controller
         $tthopdong = new HopDongThueNhaModel();
 
         $tthopdong->user_id = Auth::user()->id;
-        $tthopdong->namecn = $request->hotenbencn;
-        $tthopdong->ngaysinhcn = $request->ngaysinhcn;
-        $tthopdong->hokhaucn = $request->diachicn;
-        $tthopdong->cmndcn = $request->cmndcn;
-        $tthopdong->ngaycapcmndcn = $request->ngaycapcmndcn;
-        $tthopdong->noicapcmndcn = $request->noicapcmndcn;
-        $tthopdong->sdtcn = $request->sdtcn;
-        $tthopdong->namekt = $request->hotenbenkt;
-        $tthopdong->ngaysinhkt = $request->ngaysinhkt;
-        $tthopdong->hokhaukt = $request->diachikt;
-        $tthopdong->cmndkt = $request->cmndkt;
-        $tthopdong->ngaycapcmndkt = $request->ngaycapcmndkt;
-        $tthopdong->noicapcmndkt = $request->noicapcmndkt;
-        $tthopdong->sdtkt = $request->sdtkt;
-        $tthopdong->diachi = $request->diachiphong;
-        $tthopdong->gia = $request->giaphong;
+        $tthopdong->namecn = Auth::user()->name;
+        $tthopdong->khachthue_id = $request->idkhachthue;
         $tthopdong->thanhtoan_id = $request->phuongthucthanhtoan;
-        $tthopdong->tiendien = $request->tiendienphongtro;
-        $tthopdong->tiennuoc = $request->tiennuocphongtro;
         $tthopdong->tiencoc = $request->tiendatcoc;
         $tthopdong->tungay = $request->tungay;
         $tthopdong->denngay = $request->ngayhethan;
