@@ -3,12 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use app\Motelroom;
-use app\Categories;
-use app\District;
-use app\User;
 
-use PDF;
 
 class PlaymentController extends Controller
 {
@@ -19,11 +14,7 @@ class PlaymentController extends Controller
      */
     public function index()
     {
-        $data = [
-            'ngay' => date('d'),
-            'thang' => date('m')
-        ];
-        return view('admin.playment.list', ['daymonth' => $data]);
+        return view('admin.playment.index');
     }
 
     /**

@@ -37,7 +37,6 @@
                 </th>
               </tr>
             </thead>
-
             <tbody>
               @foreach ($listhopdong as $list) 
               <tr class="even pointer">

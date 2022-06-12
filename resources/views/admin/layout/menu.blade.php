@@ -24,8 +24,8 @@
             </li>
             <li><a href="{{ route('phongtro.index') }}"> <i class="fa fa-building-o"></i> Quản lý phòng trọ </a>
             </li>
-            {{-- <li><a href="{{ route('phongchothue.index') }}"> <i class="fa fa-home"></i> Quản lý phòng cho thuê</a>
-            </li>  --}}
+            <li><a href="{{ route('phongchothue.index') }}"> <i class="fa fa-home"></i> Quản lý phòng cho thuê</a>
+            </li> 
           </ul>
         </li>
         <li><a><i class="fa fa-users"></i> Khách <span class="fa fa-chevron-down"></span></a>
@@ -38,8 +38,8 @@
         </li>
         <li><a href="{{ route('hopdong.index') }}"> <i class="fa fa-file-text"></i> Hợp đồng thuê trọ </a>
         </li>     
-        {{-- <li><a href="{{ route('payment.index') }}"> <i class="fa fa-cc-visa"></i> Thanh toán </a>
-        </li> --}}
+        <li><a href="{{ route('payment.index') }}"> <i class="fa fa-cc-visa"></i> Thanh toán </a>
+        </li>
         {{-- <li><a href="/admin/report"> <i class="fa fa-exclamation-triangle"></i> Báo cáo nội dung </a>
         </li> --}}
         <li><a href="{{ route('electricandwater.create') }}"> <i class="fa fa-edit"></i>Nhập Số điện </a>

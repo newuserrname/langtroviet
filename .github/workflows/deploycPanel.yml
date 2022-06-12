@@ -1,4 +1,4 @@
-name: DeploywebsitetoCpanel
+name: Deploy website to Cpanel
 on:
   push:
     branches:
@@ -12,8 +12,8 @@ jobs:
       with:
         fetch-depth: 2
     - name: FTP-Deploy-Action
-      uses: thanhtruongdn24/FTP-Deploy-Action@4.3.0
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
-        ftp-server: web11.123host.vn
+        ftp-server: ${{ secrets.FTP_SERVER }}
         ftp-username: ${{ secrets.FTP_USERNAME }}
         ftp-password: ${{ secrets.FTP_PASSWORD }}

@@ -48,10 +48,10 @@
                 </td>
                 <td class=" ">{{ $khachthue->id }}</td>
                 <td class=" ">{{ $khachthue->name }}</td>
-                <td class=" ">{{ $khachthue->phongtrokhachthue->tenphong }}</td>
-                <td class=" ">{{ number_format($khachthue->phongtrokhachthue->post->price) }} đ</td>
-                <td class=" ">{{ number_format($khachthue->phongtrokhachthue->tiendien) }} /kwh</td>
-                <td class=" ">{{ number_format($khachthue->phongtrokhachthue->tiennuoc) }} /m3</td>
+                <td class=" ">{{ $khachthue->phongtro->tenphong }}</td>
+                <td class=" ">{{ number_format($khachthue->phongtro->post->price) }} đ</td>
+                <td class=" ">{{ number_format($khachthue->phongtro->tiendien) }} /kwh</td>
+                <td class=" ">{{ number_format($khachthue->phongtro->tiennuoc) }} /m3</td>
                 <td class=" ">
                   @if ($khachthue->tinhtrang==1)
                   <button type="button" class="btn btn-round btn-primary">Còn hợp đồng thuê</button>
