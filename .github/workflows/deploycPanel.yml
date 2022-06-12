@@ -14,6 +14,6 @@ jobs:
     - name: FTP-Deploy-Action
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
-        ftp-server: ${{ secrets.FTP_SERVER }}
-        ftp-username: ${{ secrets.FTP_USERNAME }}
+        ftp-server: web11.123host.vn
+        ftp-username: fptgitsample@langtro.ml
         ftp-password: ${{ secrets.FTP_PASSWORD }}
