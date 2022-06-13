@@ -44,8 +44,10 @@ class PhongTroController extends Controller
 
         $phongtro = new PhongTroModel();
         $phongtro->user_id = Auth::user()->id;
-        $phongtro->postmotelroom_id = $request->idphong;
         $phongtro->tenphong = $request->tenphong;
+        $phongtro->diachi = $request->diachiphong;
+        $phongtro->gia = $request->giaphong;
+        $phongtro->dientich = $request->dientichphong;
         $phongtro->tiendien = $request->tiendien;
         $phongtro->tiennuoc = $request->tiennuoc;
         $phongtro->tinhtrang = $request->tinhtrang;

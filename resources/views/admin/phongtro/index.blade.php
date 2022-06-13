@@ -29,8 +29,8 @@
                 </th>
                 <th class="column-title">ID </th>
                 <th class="column-title">Tên phòng </th>
-                <th class="column-title">Mã phòng </th>
                 <th class="column-title">Giá </th>
+                <th class="column-title">Địa chỉ </th>
                 <th class="column-title">Diện tích </th>
                 <th class="column-title">Tiền điện </th>
                 <th class="column-title">Tiền nước </th>
@@ -50,9 +50,9 @@
                 </td>
                 <td class=" ">{{ $phongtro->id }}</td>
                 <td class=" ">{{ $phongtro->tenphong }}</td>
-                <td class=" ">{{ $phongtro->post->id }}</td>
-                <td class=" ">{{ number_format($phongtro->post->price )}} đ</td>
-                <td class=" ">{{ $phongtro->post->area }} m2</td>
+                <td class=" ">{{ number_format($phongtro->gia) }} đ</td>
+                <td class="d-inline-block text-truncate" style="max-width: 250px;">{{ $phongtro->diachi }}</td>
+                <td class=" ">{{ $phongtro->dientich }} m2</td>
                 <td class=" ">{{ number_format($phongtro->tiendien) }} /kwh</td>
                 <td class=" ">{{ number_format($phongtro->tiennuoc) }} /m3</td>
                 <td class=" ">

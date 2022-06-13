@@ -42,13 +42,13 @@
                     <label style="font-size: 23px" class="col-form-label col-md-3 col-sm-3 label-align" for="last-name"><span class="badge badge-light">2. Bên thuê phòng trọ (Bên B)</span></label>
                 </div>
                 <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Ông(bà) <span class="required">* id khách thuê</span>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Ông(bà) <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 ">
                         <div class="col-md-6 col-sm-6 ">
                             <select id="heard" class="form-control" name="idkhachthue" required>
                                 @foreach ($khachthue as $khachthue)
-                                <option value="{{ $khachthue->id }}">{{ $khachthue->id }}</option>
+                                <option value="{{ $khachthue->id }}">{{ $khachthue->name }} - ({{ $khachthue->phongtro->tenphong }})</option>
                                 @endforeach
                             </select>
                         </div>

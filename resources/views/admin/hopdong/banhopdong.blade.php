@@ -109,10 +109,10 @@
         <td><br></td>
     </tr>
     <tr>
-        <td>Bên A đồng ý cho bên B thuê 1 phòng ở tại địa chỉ: <br> {{ $showhopdong->hopdongkhach->phongtro->post->address }} </td>
+        <td>Bên A đồng ý cho bên B thuê 1 phòng ở tại địa chỉ: <br> {{ $showhopdong->hopdongkhach->phongtro->diachi }} </td>
     </tr>
     <tr>
-        <td>Giá thuê:&nbsp;&nbsp;{{ number_format($showhopdong->hopdongkhach->phongtro->post->price) }} đ/tháng</td>
+        <td>Giá thuê:&nbsp;&nbsp;{{ number_format($showhopdong->hopdongkhach->phongtro->gia) }} đ/tháng</td>
     </tr>
     <tr>
         <td>Hình thức thanh toán:&nbsp;&nbsp;{{ $showhopdong->thanhtoan->phuongthuc }}</td>

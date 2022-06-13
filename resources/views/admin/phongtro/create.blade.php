@@ -27,21 +27,31 @@
             <form method="POST" action="{{ route('phongtro.store') }}" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                 @csrf
                 <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Mã phòng <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <select id="heard" class="form-control" name="idphong" required>
-                            @foreach ($phongtro as $maphong)
-                            <option value="{{ $maphong->id }}">{{ $maphong->id }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Tên phòng <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 ">
                         <input type="text" name="tenphong" id="first-name" required="required" class="form-control ">
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Địa chỉ <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 ">
+                        <input type="text" name="diachiphong" id="first-name" required="required" class="form-control ">
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Giá <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 ">
+                        <input type="text" name="giaphong" id="first-name" required="required" class="form-control ">
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Diện tích <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 ">
+                        <input type="text" name="dientichphong" id="first-name" required="required" class="form-control ">
                     </div>
                 </div>
                 <div class="item form-group">

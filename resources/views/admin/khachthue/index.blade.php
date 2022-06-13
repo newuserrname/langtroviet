@@ -49,7 +49,7 @@
                 <td class=" ">{{ $khachthue->id }}</td>
                 <td class=" ">{{ $khachthue->name }}</td>
                 <td class=" ">{{ $khachthue->phongtro->tenphong }}</td>
-                <td class=" ">{{ number_format($khachthue->phongtro->post->price) }} đ</td>
+                <td class=" ">{{ number_format($khachthue->phongtro->gia) }} đ</td>
                 <td class=" ">{{ number_format($khachthue->phongtro->tiendien) }} /kwh</td>
                 <td class=" ">{{ number_format($khachthue->phongtro->tiennuoc) }} /m3</td>
                 <td class=" ">

@@ -50,21 +50,19 @@
         <!-- /top navigation -->
        <div class="right_col" role="main">
         <!-- Main content -->
-        
         	@yield('content2')
-        
 		<!-- /Main content -->       
       </div>
     </div>
-  </div>
-    <!-- footer content -->
-    <footer>
+     <!-- footer content -->
+     <footer>
       <div class="pull-right">
         ©2022 phát triển ứng dụng Đăng tin Tìm kiếm Phòng trọ by <a href="https://laravel.com/">20IT461 & 20IT303</a>
       </div>
         <div class="clearfix"></div>
     </footer>
-    <!-- /footer content -->  
+    <!-- /footer content --> 
+  </div>
     <!-- jQuery -->
     <script src="/public/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->

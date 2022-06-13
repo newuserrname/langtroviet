@@ -36,12 +36,10 @@
           <th class="column-title">Email </th>       
           <th class="column-title">Mã phòng </th>
           <th class="column-title">Loại </th>
-                  <th class="column-title">Giá </th>
+    	  <th class="column-title">Giá </th>
           <th class="column-title">Ngày gửi </th>
           <th class="column-title">Mục đích </th>							
-          <th class="column-title no-link last"><span class="nobr"><i class="fa fa-bars"></i></span>
-          </th>
-          <th class="bulk-actions" colspan="9">
+          <th class="bulk-actions" colspan="8">
             
           </th>
           </tr>
@@ -59,16 +57,13 @@
 				<td class=" ">{{ $listyeucau->motelroom->coderoom }}</td>
                 <td class=" ">{{ $listyeucau->motelroom->category->name }}</td>
 				<td class=" ">{{ number_format($listyeucau->motelroom->price) }} đ</td>
-				<td class=" ">{{ date("d/m/Y", strtotime($listyeucau->cre)) }}</td>
+				<td class=" ">{{ date("d/m/Y", strtotime($listyeucau->created_at)) }}</td>
 				<td class=" ">
 					@if($listyeucau->status==1)
 					<span class="badge badge-primary"> Yêu cầu thuê</span>
 					@elseif($listyeucau->status==2)
 					<span class="badge badge-success"> Yêu cầu đặt cọc</span>
 					@endif
-				</td>
-				<td class=" last">
-					
 				</td>
 			  </tr>
 				 @endforeach

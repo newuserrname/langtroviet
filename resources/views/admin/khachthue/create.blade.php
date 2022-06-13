@@ -76,12 +76,12 @@
                     </div>
                 </div>
                 <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Mã Phòng Thuê <span class="required">*</span>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Tên Phòng Thuê <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 ">
                         <select id="heard" class="form-control" name="idphong" required>
                             @foreach ($phongtro as $phongtro) 
-                            <option value="{{ $phongtro->id }}">{{ $phongtro->id }}</option>
+                            <option value="{{ $phongtro->id }}">{{ $phongtro->tenphong }}</option>
                             @endforeach
                         </select>
                     </div>
