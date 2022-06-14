@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\HoaDonModel;
 
-
-class PlaymentController extends Controller
+class HoaDonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +25,7 @@ class PlaymentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.playment.create');
     }
 
     /**
@@ -81,11 +82,5 @@ class PlaymentController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function print_receipt($checkout_code) {
-        // $pdf \App::make('dompdf.wrapper');
-        // $pdf->loadHTML($this->print_receipt_convert($checkout_code));
-        // return $pdf->stream();
     }
 }

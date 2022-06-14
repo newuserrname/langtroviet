@@ -32,8 +32,12 @@ class User extends Authenticatable implements JWTSubject
     }
     public function hopdong()
     {
-        return $this->hasMany('App\Hopdong', 'user_id', 'id');
-    }   
+        return $this->hasMany('App\HopDongModel', 'user_id', 'id');
+    }
+    public function hoadon()
+    {
+        return $this->hasMany('App\HoaDonModel', 'user_id', 'id');
+    }  
     public function numbereaw() 
     {
         return $this->hasMany('App\ThemsodiennuocModel', 'user_id','id');

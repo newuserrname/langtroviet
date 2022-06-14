@@ -233,34 +233,14 @@ function time_elapsed_string($datetime, $full = false) {
 	var map;
 	function initMap() {
 		map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 21.034031, lng: 105.814262},
-		zoom: 12,
+        center: {lat: 16.070372, lng: 108.214388},
+		zoom: 15,
 		draggable: true
 			});
 			/* Get latlng list phòng trọ */
 				addDrawingControl(map);
 
-			/*$arrmergeLatln = array();
-			foreach ($map_motelroom as $room) {
-				$arrlatlng = json_decode($room->latlng,true);
-				$arrImg = json_decode($room->images,true);
-				$arrmergeLatln[] = ["slug"=> $room->slug ,"lat"=> $arrlatlng[0],"lng"=> $arrlatlng[1],"title"=>$room->title,"address"=> $room->address,"image"=>$arrImg[0],"phone"=>$room->phone];
-
-				}
-
-				$js_array = json_encode($arrmergeLatln);
-				echo "var javascript_array = ". $js_array . ";\n";*/
-
-
-
 					}
-			/*$(".box-search ul li a").click(function(){
-                if($('#tab1id').hasClass('active')){
-                        addDrawingControl(map);
-                        }
-
-            	});*/
-
     function addDrawingControl(map){
             //add drawing control
                 var drawingControl = new google.maps.drawing.DrawingManager({
@@ -293,7 +273,7 @@ function time_elapsed_string($datetime, $full = false) {
                     google.maps.event.addListener(drawingControl, 'polylinecomplete', function(polyline){
                         if($('#tab2id').hasClass('active')){
                           map = new google.maps.Map(document.getElementById('map'), {
-                          center: {lat: 21.034031, lng: 105.814262},
+                          center: {lat: 16.070372, lng: 108.214388},
                           zoom: 12,
                           draggable: true
                         });
@@ -305,7 +285,6 @@ function time_elapsed_string($datetime, $full = false) {
                                 }
                                 	);
                                                  //
-
                     var id_category = id_category_change;
                     var min = min_change;
                     var max = max_change;
@@ -363,11 +342,9 @@ function time_elapsed_string($datetime, $full = false) {
 
                                             }
 
-
-
-
 	</script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhAcZsDVJY_xRevJvHaH8Zc1-9_bDUbOQ&libraries=geometry,drawing&callback=initMap"
-	async defer></script>
+	<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt_J-6AKahS05YoZrYKqIYay5cm8XTeYA&libraries=geometry,drawing&callback=initMap"
+	async defer type="text/javascript"></script>
 
 	@endsection

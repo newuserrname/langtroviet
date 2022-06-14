@@ -10,23 +10,21 @@
         </ol>
 	</div>
 <!-- /page header -->
-<div class="col-md-12 col-sm-12  ">
-    <div class="x_panel">
-      <div class="x_title">
-        <h2>Danh sách phòng trọ</h2>
-        <div class="clearfix"></div>
-      </div> 
-      <div class="x_content">
-
-        <p>Bấm vào đây để tạo mới <a style="color:red" href="{{ route('phongtro.create') }}">Tạo</a></p>
-
-        <div class="table-responsive">
-          <table class="table table-striped jambo_table bulk_action">                
+<div class="col-md-12 col-sm-12 ">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2>Danh sách phòng trọ</h2>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <div class="row">
+            <div class="col-sm-12">
+        <div class="card-box table-responsive">
+        <p class="text-muted font-13 m-b-30">Bấm vào đây để tạo mới <a style="color:red" href="{{ route('phongtro.create') }}">Tạo</a></p>
+        <div class="card-box table-responsive">
+          <table class="table table-striped table-bordered dt-responsive nowrap">                
             <thead>
               <tr class="headings">
-                <th>
-                  <input type="checkbox" id="check-all" class="flat">
-                </th>
                 <th class="column-title">ID </th>
                 <th class="column-title">Tên phòng </th>
                 <th class="column-title">Giá </th>
@@ -36,18 +34,12 @@
                 <th class="column-title">Tiền nước </th>
                 <th class="column-title">Tình trạng </th>
                 <th class="column-title">Tùy chỉnh </th>
-                <th class="bulk-actions" colspan="8">
-                  <a class="antoo" style="color:#fff; font-weight:500;">Đã chọn ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                </th>
               </tr>
             </thead>
 
             <tbody>
                 @foreach ($listphongtro as $phongtro)
               <tr class="even pointer">
-                <td class="a-center ">
-                  <input type="checkbox" class="flat" name="table_records">
-                </td>
                 <td class=" ">{{ $phongtro->id }}</td>
                 <td class=" ">{{ $phongtro->tenphong }}</td>
                 <td class=" ">{{ number_format($phongtro->gia) }} đ</td>
@@ -84,5 +76,8 @@
       </div>
     </div>
   </div>
+    </div>
+  </div>
+</div>
 </div>
 @endsection

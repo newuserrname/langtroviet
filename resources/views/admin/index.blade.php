@@ -5,17 +5,27 @@
 <div class="row" style="display: inline-block;" >
   <div class="tile_count">
     <div class="col-md-3 col-sm-4  tile_stats_count">
+      <span class="count_top"><i class="fa fa-user"></i> Phòng trọ</span>
+      <div class="count">{{ $phong_tro }}</div>
+    </div>
+    <div class="col-md-3 col-sm-4  tile_stats_count">
       <span class="count_top"><i class="fa fa-user"></i> Người thuê trọ</span>
-      <div class="count">0</div>
+      <div class="count">{{ $khach_thue }}</div>
+      <span class="count_bottom"><i class="green">trên tổng số {{ $phong_tro }} phòng trọ </i></span>
     </div>
     <div class="col-md-3 col-sm-4  tile_stats_count">
       <span class="count_top"><i class="fa fa-clock-o"></i> Tin đã đăng</span>
       <div class="count">{{ $tin_da_dang }}</div>
     </div>
     <div class="col-md-3 col-sm-4  tile_stats_count">
-      <span class="count_top"><i class="fa fa-user"></i> Tiền phòng đã thu</span>
+      <span class="count_top"><i class="fa fa-user"></i> Hóa đơn</span>
       <div class="count green">0</div>
       <span class="count_bottom"><i class="green">0% </i></span>
+    </div>
+    <div class="col-md-3 col-sm-4  tile_stats_count">
+      <span class="count_top"><i class="fa fa-user"></i> Tiền phòng đã thu</span>
+      <div class="count">0</div>
+      <span class="count_bottom"><i class="blue">0% </i></span>
     </div>
     <div class="col-md-3 col-sm-4  tile_stats_count">
       <span class="count_top"><i class="fa fa-user"></i> Tiền phòng chưa thu</span>
@@ -64,7 +74,7 @@
                   <td>
                     <p><i class="fa fa-square blue"></i>Người thuê trọ </p>
                   </td>
-                  <td>0</td>
+                  <td>{{ $khach_thue }}</td>
                 </tr>
                 <tr>
                   <td>

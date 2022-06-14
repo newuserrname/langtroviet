@@ -25,12 +25,9 @@
 		</div>
 		@endif
 		<div class="table-responsive">
-		  <table class="table table-striped jambo_table bulk_action">
+		  <table class="table table-striped table-bordered dt-responsive nowrap">
 			<thead>
 			  <tr class="headings">
-				<th>
-				  <input type="checkbox" id="check-all" class="flat">
-				</th>
 				<th class="column-title">Mã phòng </th>
 				<th class="column-title">Loại </th>
 				<th class="column-title">Ngày đăng </th>
@@ -40,18 +37,12 @@
 				<th class="column-title">Trạng thái </th>					
 				<th class="column-title no-link last"><span class="nobr"><i class="fa fa-bars"></i></span>
 				</th>
-				<th class="bulk-actions" colspan="8">
-				  <a class="antoo" style="color:#fff; font-weight:500;">Đã chọn ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-				</th>
 			  </tr>
 			</thead>
 
 			<tbody>
 				@foreach ($motelrooms as $postsroom)
 			  <tr class="even pointer">
-				<td class="a-center ">
-				  <input type="checkbox" class="flat" name="table_records">
-				</td>
 				<td class=" ">{{ $postsroom->id }}</td>
 				<td class=" ">{{ $postsroom->category->name }}</td>
 				<td class=" ">{{ date('d/m/Y', strtotime($postsroom->created_at)) }} </td>

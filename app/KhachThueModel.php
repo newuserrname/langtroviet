@@ -20,5 +20,9 @@ class KhachThueModel extends Model
     {
         return $this->hasMany('App\KhachThueModel', 'khachthue_id', 'id');
     }
+    public function khachthue()
+    {
+        return $this->hasMany('App\KhachThueModel', 'khachthue_id', 'id');
+    }
     
 }

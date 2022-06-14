@@ -8,6 +8,8 @@ use App\Motelroom;
 use App\Reports;
 use App\RequestFromCustomerModel;
 use App\HopDongThueNhaModel;
+use App\KhachThueModel;
+use App\PhongTroModel;
 
 class AdminController extends Controller
 {
@@ -20,6 +22,8 @@ class AdminController extends Controller
       $tongso_luot_xem_tin = Motelroom::where('user_id', Auth::user()->id)->get()->sum('count_view');
       $yeu_cau = RequestFromCustomerModel::where('id_usermotelroom', Auth::user()->id)->get()->count();
       $hop_dong = HopDongThueNhaModel::where('user_id', Auth::user()->id)->get()->count();
+      $nguoi_thue_tro = KhachThueModel::where('user_id', Auth::user()->id)->get()->count();
+      $phong_tro = PhongTroModel::where('user_id', Auth::user()->id)->get()->count();
       $reports = Reports::all();
       return view ('admin.index', [
         'total_users_active'=>$total_users_active,  
@@ -30,6 +34,8 @@ class AdminController extends Controller
         'tong_luot_xem'=>$tongso_luot_xem_tin,
         'yeu_cau'=>$yeu_cau,
         'hop_dong'=>$hop_dong,
+        'khach_thue'=>$nguoi_thue_tro,
+        'phong_tro'=>$phong_tro,
         'total_report'=>$reports->count(),
       ]);
     }

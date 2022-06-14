@@ -21,12 +21,9 @@
         <p>Bấm vào đây để tạo mới <a style="color:red" href="{{ route('phongchothue.create') }}">Tạo</a></p>
 
         <div class="table-responsive">
-          <table class="table table-striped jambo_table bulk_action">                
+          <table class="table table-striped table-bordered dt-responsive nowrap">                
             <thead>
-              <tr class="headings">
-                <th>
-                  <input type="checkbox" id="check-all" class="flat">
-                </th>
+              <tr class="headings"> 
                 <th class="column-title">ID </th>
                 <th class="column-title">Tên người thuê </th>
                 <th class="column-title">Phòng </th>
@@ -35,19 +32,13 @@
                 <th class="column-title">Tiền điện </th>
                 <th class="column-title">Tiền nước </th>
                 <th class="column-title no-link last"><span class="nobr">Chi tiết</span>
-                </th>
-                <th class="bulk-actions" colspan="7">
-                  <a class="antoo" style="color:#fff; font-weight:500;">Đã chọn ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                </th>
+                </th>           
               </tr>
             </thead>
 
             <tbody>
               
               <tr class="even pointer">
-                <td class="a-center ">
-                  <input type="checkbox" class="flat" name="table_records">
-                </td>
                 <td class=" "></td>
                 <td class=" "></td>
                 <td class=" "></td>
