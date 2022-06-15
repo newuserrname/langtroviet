@@ -18,7 +18,7 @@ class KhachThueModel extends Model
     }
     public function hopdongkhach()
     {
-        return $this->hasMany('App\KhachThueModel', 'khachthue_id', 'id');
+        return $this->hasMany('App\HopDongThueNhaModel', 'khachthue_id', 'id');
     }
     public function khachthue()
     {

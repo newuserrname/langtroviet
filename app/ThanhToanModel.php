@@ -8,7 +8,8 @@ class ThanhToanModel extends Model
 {
     protected $table = "thanhtoan";
 
-    public function hopdong() {
+    public function hopdong() 
+    {
         return $this->hasMany('App\HopDongThueNhaModel', 'thanhtoan_id', 'id');
     }
 }

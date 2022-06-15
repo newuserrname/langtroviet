@@ -18,6 +18,6 @@ class PhongTroModel extends Model
     }
     public function phongtro()
     {
-        return $this->hasMany('App\PhongTroModel', 'phongthue_id', 'id');
+        return $this->hasMany('App\KhachThueModel', 'phongthue_id', 'id');
     }
 }

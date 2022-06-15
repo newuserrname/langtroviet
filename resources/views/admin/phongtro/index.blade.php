@@ -33,6 +33,8 @@
                 <th class="column-title">Tiền điện </th>
                 <th class="column-title">Tiền nước </th>
                 <th class="column-title">Tình trạng </th>
+                <th class="column-title">Quản lý hợp đồng </th>
+                <th class="column-title">Quản lý khách thuê </th>
                 <th class="column-title">Tùy chỉnh </th>
               </tr>
             </thead>
@@ -54,6 +56,8 @@
                     <button type="button" class="btn btn-round btn-info">đã cho thuê</button>
                     @endif
                 </td>
+                <td class=" ">Mở danh sách hợp đồng</td>
+                <td class=" ">Mở danh sách khách đang thuê</td>
                 <td class=" ">
                   <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
