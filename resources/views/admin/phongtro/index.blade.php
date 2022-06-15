@@ -56,8 +56,8 @@
                     <button type="button" class="btn btn-round btn-info">đã cho thuê</button>
                     @endif
                 </td>
-                <td class=" ">Mở danh sách hợp đồng</td>
-                <td class=" ">Mở danh sách khách đang thuê</td>
+                <td class=" ">Chi tiết</td>
+                <td class=" "><a href="{{ route('phongtro.show', $phongtro->id) }}">Chi tiết</a></td>
                 <td class=" ">
                   <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">

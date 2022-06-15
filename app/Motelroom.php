@@ -34,14 +34,6 @@ class Motelroom extends Model
     {
         return $this->hasMany('App\Reports','id_motelroom','id');
     }
-    public function numbereaw()
-    {
-        return $this->hasMany('App\ThemsodiennuocModel', 'motelroom_id','id');
-    }
-    public function billeaw()
-    {
-        return $this->hasMany('App\BilldiennuocModel', 'motelroom_id','id');
-    }
     public function bookmasks()
     {
         return $this->hasMany(Bookmask::class);

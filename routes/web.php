@@ -72,8 +72,6 @@ Route::group(['prefix'=>'admin','middleware'=>'adminmiddleware'], function () {
 
     Route::resource('/categories', 'CategoriesController');
     Route::resource('/hoadon', 'HoaDonController');
-    Route::resource('/electricandwater', 'ThemsodiennuocController');
-    Route::resource('/billeaw', 'BilldiennuocController');
     Route::resource('/request', 'RequestFromCustomerController');
     Route::resource('/hopdong', 'HopDongThueNhaController');   
     Route::resource('/phongtro', 'PhongTroController');

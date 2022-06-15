@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\PhongTroModel;
 use App\Motelroom;
+use App\KhachThueModel;
 
 class PhongTroController extends Controller
 {
@@ -17,7 +18,9 @@ class PhongTroController extends Controller
     public function index()
     {
         $list_phongtro = PhongTroModel::where('user_id', Auth::user()->id)->get();
-        return view('admin.phongtro.index' , ["listphongtro"=>$list_phongtro]);
+        return view('admin.phongtro.index' , [
+            "listphongtro"=>$list_phongtro,
+        ]);
     }
 
     /**
@@ -64,7 +67,11 @@ class PhongTroController extends Controller
      */
     public function show($id)
     {
-        //
+        $list_khachthue = KhachThueModel::where('phongthue_id', $id)->get();
+        // var_dump($list_khachthue);
+        return view('admin.phongtro.khachdangthue', [
+            "khachdangthue"=>$list_khachthue
+        ]);
     }
 
     /**
