@@ -82,7 +82,15 @@ Route::group(['prefix'=>'admin','middleware'=>'adminmiddleware'], function () {
     Route::group(['prefix'=>'phongtro'],function(){
         Route::get('chothue/{id}', 'PhongTroController@chothue');
         Route::get('conphong/{id}', 'PhongTroController@conphong');
+
+    Route::group(['prefix'=>'khachthuetro'],function(){
+        Route::get('hethopdong/{id}', 'PhongTroController@hethopdong');
+        Route::get('conhopdong/{id}', 'PhongTroController@conhopdong');
+        Route::get('dathanhtoan/{id}', 'PhongTroController@dathanhtoan');
+        Route::get('chuathanhtoan/{id}', 'PhongTroController@chuathanhtoan');
     });
+    });
+    
     
 });
 Route::get('/print-bill/{checkout_code}', 'BilldiennuocController@print_bill');

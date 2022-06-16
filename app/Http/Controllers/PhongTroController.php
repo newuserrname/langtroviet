@@ -114,10 +114,36 @@ class PhongTroController extends Controller
         return redirect('admin/phongtro/')->with('thongbao','Đã thay đổi ');
       }
   
-    public function chothue($id){
+    public function chothue($id) {
         $room = PhongTroModel::find($id);
         $room->tinhtrang = 2;
         $room->save();
         return redirect('admin/phongtro/')->with('thongbao','Đã thay đổi ');
       }
+    
+    public function conhopdong($id) {
+        $hopdong = KhachThueModel::find($id);
+        $hopdong->tinhtrang = 1;
+        $hopdong->save();
+        return redirect('admin/phongtro/');
+    }
+    public function hethopdong($id) {
+        $hopdong = KhachThueModel::find($id);
+        $hopdong->tinhtrang = 2;
+        $hopdong->save();
+        return redirect('admin/phongtro/');
+    }
+    
+    public function dathanhtoan($id) {
+        $hoadon = KhachThueModel::find($id);
+        $hoadon->hoadon = 1;
+        $hoadon->save();
+        return redirect('admin/phongtro/');
+    }
+    public function chuathanhtoan($id) {
+        $hoadon = KhachThueModel::find($id);
+        $hoadon->hoadon = 2;
+        $hoadon->save();
+        return redirect('admin/phongtro/');
+    }
 }

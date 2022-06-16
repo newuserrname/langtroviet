@@ -12,7 +12,7 @@
               {{ Auth::user()->name }}
            </a>
             <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item"  href="admin/logout"><i class="fa fa-sign-out pull-right"></i>Đăng xuất</a>
+              <a class="dropdown-item"  href="/admin/logout"><i class="fa fa-sign-out pull-right"></i>Đăng xuất</a>
             </div>
           </li>
         </ul>

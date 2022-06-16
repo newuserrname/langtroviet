@@ -13,6 +13,11 @@ class HoaDonModel extends Model
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
 
+    public function phongtro()
+    {
+        return $this->belongsTo('App\PhongtroModel', 'phongtro_id', 'id');
+    }
+
     public function khachthue()
     {
         return $this->belongsTo('App\KhachThueModel', 'khachthue_id', 'id');

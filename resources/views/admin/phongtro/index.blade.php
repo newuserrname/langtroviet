@@ -33,8 +33,8 @@
                 <th class="column-title">Tiền điện </th>
                 <th class="column-title">Tiền nước </th>
                 <th class="column-title">Tình trạng </th>
-                <th class="column-title">Quản lý hợp đồng </th>
-                <th class="column-title">Quản lý khách thuê </th>
+                <th class="column-title">Khách thuê </th>
+                <th class="column-title">Hóa đơn </th>
                 <th class="column-title">Tùy chỉnh </th>
               </tr>
             </thead>
@@ -45,19 +45,19 @@
                 <td class=" ">{{ $phongtro->id }}</td>
                 <td class=" ">{{ $phongtro->tenphong }}</td>
                 <td class=" ">{{ number_format($phongtro->gia) }} đ</td>
-                <td class="d-inline-block text-truncate" style="max-width: 250px;">{{ $phongtro->diachi }}</td>
+                <td class="">{{ substr($phongtro->diachi, 0,40) }}...</td>
                 <td class=" ">{{ $phongtro->dientich }} m2</td>
                 <td class=" ">{{ number_format($phongtro->tiendien) }} /kwh</td>
                 <td class=" ">{{ number_format($phongtro->tiennuoc) }} /m3</td>
                 <td class=" ">
                     @if($phongtro->tinhtrang==1)
-                    <button type="button" class="btn btn-round btn-primary">còn phòng</button>
+                    <button type="button" class="btn btn-primary btn-xs">còn trống</button>
                     @elseif($phongtro->tinhtrang==2)
-                    <button type="button" class="btn btn-round btn-info">đã cho thuê</button>
+                    <button type="button" class="btn btn-secondary btn-xs">đang thuê</button>
                     @endif
                 </td>
-                <td class=" ">Chi tiết</td>
-                <td class=" "><a href="{{ route('phongtro.show', $phongtro->id) }}">Chi tiết</a></td>
+                <td class=" "><a class="btn btn-info btn-sm" href="{{ route('phongtro.show', $phongtro->id) }}">Chi tiết</a></td>
+                <td class=" "><a class="btn btn-danger btn-sm" href="">Tạo hóa đơn</a></td>
                 <td class=" ">
                   <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
@@ -65,7 +65,7 @@
                   </button>
                   <div class="dropdown-menu">
                     @if($phongtro->tinhtrang==1)
-                    <a class="dropdown-item" href="/admin/phongtro/chothue/{{$phongtro->id}}"><i class="fa fa-check-circle-o"></i> đã cho thuê</a>
+                    <a class="dropdown-item" href="/admin/phongtro/chothue/{{$phongtro->id}}"><i class="fa fa-check-circle-o"></i> cho thuê</a>
                     @elseif($phongtro->tinhtrang==2)
                     <a class="dropdown-item" href="/admin/phongtro/conphong/{{$phongtro->id}}"><i class="fa fa-check-circle-o"></i> còn phòng</a>
                     @endif

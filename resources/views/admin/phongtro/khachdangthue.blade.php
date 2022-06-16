@@ -31,8 +31,7 @@
                   <th class="column-title">Tiền nước </th>                 
                   <th class="column-title">Hóa đơn </th>
                   <th class="column-title">Hợp đồng </th>
-                  <th class="column-title">Tình trạng </th>
-                  <th class="column-title">Tùy chỉnh </th>
+                  <th class="column-title">Thay đổi </th>
                 </tr>
               </thead>
               <tbody>
@@ -42,18 +41,19 @@
                     <td>{{ $khach->name }}</td>
                     <td>{{ number_format($khach->phongtro->tiendien) }} /kwh</td>
                     <td>{{ number_format($khach->phongtro->tiennuoc) }} /m3</td>
-                    <td>mở</td>
-                    <td>mở</td>
                     <td>
-                        @if ($khach->tinhtrang == 1)
-                         <span class="badge badge-primary">còn hợp đồng</span>
+                      @if ($khach->hoadon == 1)
+                      <a href=""><span class="badge badge-success">đã thanh toán</span></a>
+                      @elseif ($khach->hoadon == 2)    
+                      <span class="badge badge-warning">chưa thanh toán</span>
+                      @endif                    
+                    </td>
+                    <td>
+                      @if ($khach->tinhtrang == 1)
+                        <a href=""><span class="badge badge-primary">còn hợp đồng</span></a> 
                          @elseif($khach->tinhtrang==2)
-                         <span class="badge badge-secondary">hết hợp đồng</span>
-                         @elseif($khach->tinhtrang==3)
-                         <span class="badge badge-success">đã thanh toán</span>
-                         @elseif($khach->tinhtrang==4)
-                         <span class="badge badge-warning">chưa đã thanh toán</span>
-                        @endif
+                        <a href=""><span class="badge badge-secondary">hết hợp đồng</span></a>
+                      @endif
                     </td>
                     <td>
                         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
@@ -61,14 +61,15 @@
                         Thay đổi
                         </button>
                         <div class="dropdown-menu">
-                          
-                          <a class="dropdown-item" href=""><i class="fa fa-chain"></i> còn hợp đồng</a>
-                          
-                          <a class="dropdown-item" href=""><i class="fa fa-chain-broken"></i> hết hợp đồng</a>
-                          
-                          <a class="dropdown-item" href=""><i class="fa fa-check-square"></i> đã thanh toán</a>
-                          
-                          <a class="dropdown-item" href=""><i class="fa fa-square"></i> chưa thanh toán</a>
+                          @if ($khach->tinhtrang == 1)
+                          <a class="dropdown-item" href="khachthuetro/hethopdong/{{ $khach->id }}"><i class="fa fa-chain-broken"></i> hết hợp đồng</a>
+                          <a class="dropdown-item" href="khachthuetro/dathanhtoan/{{ $khach->id }}"><i class="fa fa-check-square"></i> đã thanh toán</a>
+                          <a class="dropdown-item" href="khachthuetro/chuathanhtoan/{{ $khach->id }}"><i class="fa fa-square"></i> chưa thanh toán</a>
+                          @elseif($khach->tinhtrang==2)
+                          <a class="dropdown-item" href="khachthuetro/conhopdong/{{ $khach->id }}"><i class="fa fa-chain"></i> còn hợp đồng</a>
+                          <a class="dropdown-item" href="khachthuetro/dathanhtoan/{{ $khach->id }}"><i class="fa fa-check-square"></i> đã thanh toán</a>
+                          <a class="dropdown-item" href="khachthuetro/chuathanhtoan/{{ $khach->id }}"><i class="fa fa-square"></i> chưa thanh toán</a>
+                          @endif
                         </button>
                         </div>   
                     </td>     
