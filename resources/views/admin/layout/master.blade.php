@@ -6,7 +6,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+   {{-- Ajax --}}
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <title>Trang Quản Trị Phòng Trọ</title>
 
@@ -28,6 +31,8 @@
 
     <!-- Custom Theme Style -->
     <link href="/css/custom.min.css" rel="stylesheet">
+    <!-- Switchery -->
+	<link href="/public/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -116,6 +121,7 @@
     <script src="/public/vendors/jszip/dist/jszip.min.js"></script>
     <script src="/public/vendors/pdfmake/build/pdfmake.min.js"></script>
     <script src="/public/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="/public/vendors/switchery/dist/switchery.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="/js/custom.js"></script>
     <script type="text/javascript"> 
@@ -163,7 +169,6 @@
                   //In slug ra textbox có id “slug”
               document.getElementById('convert_slug').value = slug;
           }   
-  </>
-
+  </script>
   </body>
 </html>

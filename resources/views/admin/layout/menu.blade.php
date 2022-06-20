@@ -26,9 +26,9 @@
             </li>
             <li><a href="{{ route('hoadon.index') }}"> <i class="fa fa-credit-card"></i> Quản lý Hóa đơn </a>
             </li>
-            <li><a href=""> <i class="fa fa-bolt"></i>Hóa đơn tiền điện </a>
+            <li><a href="{{ route('dientro.index') }}"> <i class="fa fa-bolt"></i>Số điện </a>
             </li>
-            <li><a href=""> <i class="fa fa-tint"></i>Hóa đơn tiền nước </a>
+            <li><a href="{{ route('nuoctro.index') }}"> <i class="fa fa-tint"></i>Số nước </a>
             </li>
             <li><a href="{{ route('phongchothue.index') }}"> <i class="fa fa-home"></i> Quản lý phòng cho thuê</a>
             </li> 

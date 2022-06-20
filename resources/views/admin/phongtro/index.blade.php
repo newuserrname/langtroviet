@@ -51,12 +51,12 @@
                 <td class=" ">{{ number_format($phongtro->tiennuoc) }} /m3</td>
                 <td class=" ">
                     @if($phongtro->tinhtrang==1)
-                    <button type="button" class="btn btn-primary btn-xs">còn trống</button>
+                    <h2><span class="badge badge-primary">còn trống</span></h2> 
                     @elseif($phongtro->tinhtrang==2)
-                    <button type="button" class="btn btn-secondary btn-xs">đang thuê</button>
+                    <h2><span class="badge badge-secondary">đang thuê</span></h2>
                     @endif
                 </td>
-                <td class=" "><a class="btn btn-info btn-sm" href="{{ route('phongtro.show', $phongtro->id) }}">Chi tiết</a></td>
+                <td class=" "><h2><a class="badge badge-info" href="{{ route('phongtro.show', $phongtro->id) }}">Chi tiết</a></td></h2>
                 <td class=" "><a class="btn btn-danger btn-sm" href="">Tạo hóa đơn</a></td>
                 <td class=" ">
                   <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"

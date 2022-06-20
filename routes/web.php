@@ -77,7 +77,10 @@ Route::group(['prefix'=>'admin','middleware'=>'adminmiddleware'], function () {
     Route::resource('/phongtro', 'PhongTroController');
     Route::resource('/phongchothue', 'PhongChoThueController');
     Route::resource('/khachthue', 'KhachThueController');
+    Route::resource('/dientro', 'DienController');
+    Route::resource('/nuoctro', 'NuocController');
 
+   
 
     Route::group(['prefix'=>'phongtro'],function(){
         Route::get('chothue/{id}', 'PhongTroController@chothue');
@@ -93,6 +96,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminmiddleware'], function () {
     
     
 });
+
 Route::get('/print-bill/{checkout_code}', 'BilldiennuocController@print_bill');
 
 /* End Admin */
