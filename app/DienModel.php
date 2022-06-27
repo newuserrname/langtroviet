@@ -8,16 +8,12 @@ class DienModel extends Model
 {
     protected $table = 'dienphongtro';
 
-    public function user()
+    public function chutro()
     {
-        return $this->belongsTo('App\User', 'user_id', 'id');
+        return $this->belongsTo('App\User', 'chutro_id', 'id');
     }
-    public function phongtro()
+    public function hopdong()
     {
-        return $this->belongsTo('App\PhongTroModel', 'phongtro_id', 'id');
-    }
-    public function khachthue()
-    {
-        return $this->belongsTo('App\KhachThueModel', 'khachthue_id', 'id');
+        return $this->belongsTo('App\HopDongThueNhaModel', 'hopdong_id', 'id');
     }
 }

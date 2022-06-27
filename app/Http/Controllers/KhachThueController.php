@@ -18,7 +18,7 @@ class KhachThueController extends Controller
      */
     public function index()
     {
-        $list_khachthue = KhachThueModel::where('user_id', Auth::user()->id)->get();
+        $list_khachthue = KhachThueModel::where('chutro_id', Auth::user()->id)->get();
         return view('admin.khachthue.index', ['khachthue'=>$list_khachthue]);
     }
 
@@ -29,7 +29,7 @@ class KhachThueController extends Controller
      */
     public function create()
     {
-        $list_phongtro = PhongtroModel::where('user_id', Auth::user()->id)->get();
+        $list_phongtro = PhongtroModel::where('chutro_id', Auth::user()->id)->get();
         return view('admin.khachthue.create',[
         "phongtro"=>$list_phongtro,
     ]);
@@ -43,10 +43,45 @@ class KhachThueController extends Controller
      */
     public function store(Request $request)
     {
+        $json_imgcmnd = '';
+        if ($request->hasFile('imgcmnd'))
+        {
+            $array_imgcmnd = array();
+            $inputfile = $request->file('imgcmnd');
+            foreach ($inputfile as $file_img)
+            {
+                $name = "cmnd2mat-" . date('mdH') . rand(0, 99) . ".jpg";
+                $file_img->move('public/uploads/khachthue/cmnd', $name);
+                array_push($array_imgcmnd, $name);
+            }
+            $json_imgcmnd = json_encode($array_imgcmnd, JSON_FORCE_OBJECT);
+        }
+        else{
+            $array_imgcmnd[] = "Error-upload-imgcmnd";
+            $json_imgcmnd = json_encode($array_imgcmnd, JSON_FORCE_OBJECT);
+        }
+
+        $json_imganhthe = '';
+        if ($request->hasFile('imganhthe'))
+        {
+            $array_imganhthe = array();
+            $inputfile = $request->file('imganhthe');
+            foreach($inputfile as $file_img)
+            {
+                $name = "anhthe-" . date('mdH') . rand(0, 99) . ".jpg";
+                $file_img->move('public/uploads/khachthue/anhthe34', $name);
+                array_push($array_imganhthe, $name);
+            }
+            $json_imganhthe = json_encode($array_imganhthe, JSON_FORCE_OBJECT);
+        }
+        else{
+            $array_imganhthe[] = 'Error-upload-imganhthe';
+            $json_imganhthe = json_encode($array_imganhthe, JSON_FORCE_OBJECT);
+        }
+
         $ttkhachhang = new KhachThueModel();
 
-        $ttkhachhang->user_id = Auth::user()->id;
-        $ttkhachhang->phongthue_id = $request->idphong;
+        $ttkhachhang->chutro_id = Auth::user()->id;
         $ttkhachhang->name = $request->tenkhach;
         $ttkhachhang->ngaysinh = $request->ngaysinh;
         $ttkhachhang->hokhau = $request->hokhau;
@@ -54,7 +89,8 @@ class KhachThueController extends Controller
         $ttkhachhang->ngaycapcmnd = $request->ngaycap;
         $ttkhachhang->noicapcmnd = $request->noicap;
         $ttkhachhang->sdt = $request->sdt;
-
+        $ttkhachhang->hinhanhcmnd = $json_imgcmnd;
+        $ttkhachhang->hinhanhkhach = $json_imganhthe;
         $ttkhachhang->save();
         return redirect('admin/khachthue/create')->with('thongbao', 'đã thêm dữ liệu khách hàng');
     }
@@ -67,7 +103,11 @@ class KhachThueController extends Controller
      */
     public function show($id)
     {
-        //
+        $thongtin_khach = KhachThueModel::where('chutro_id', Auth::user()->id)->find($id);
+//        dd($thongtin_khach);
+        return view('admin.khachthue.thongtinkhach', [
+            'khach'=>$thongtin_khach,
+        ]);
     }
 
     /**
@@ -102,5 +142,23 @@ class KhachThueController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function huyhoatdong($id)
+    {
+        $hoatdong = KhachThueModel::find($id);
+        $hoatdong->tinhtrang = 2;
+        $hoatdong->save();
+
+        return redirect('admin/khachthue')->with('thongbao', 'đã hủy hoạt động khách');
+    }
+
+    public function mohoatdong($id)
+    {
+        $hoatdong = KhachThueModel::find($id);
+        $hoatdong->tinhtrang = 1;
+        $hoatdong->save();
+
+        return redirect('admin/khachthue')->with('thongbao', 'đã mở hoạt động khách');
     }
 }

@@ -11,35 +11,25 @@
         </ol>
 	</div>
 <!-- /page header -->
-
-<div class="col-md-12">
+<div class="col-md-12 col-sm-12">
     <div class="x_panel">
         <div class="x_title">
             <h2> Tạo hợp đồng thuê phòng trọ </h2>
             @if(session('thongbao'))
-            <div class="alert bg-secondary">
-                <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
-                <span style="font-size:15px" class="badge badge-light">{{session('thongbao')}}</span>
-            </div>
+                <div class="alert alert-success alert-dismissible " role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                    </button>
+                    <strong>Thông báo!</strong> {{session('thongbao')}}.
+                </div>
             @endif
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-            <br />
+            <br/>
             <form method="POST" action="{{ route('hopdong.store') }}" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                 @csrf
                 <div class="item form-group">
-                    <label style="font-size: 23px" class="col-form-label col-md-3 col-sm-3 label-align" for="last-name"><span class="badge badge-light">1. Đại diện cho thuê phòng trọ (Bên A)</span></label>
-                </div>
-                <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Ông(bà) <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input type="text" id="{{ Auth::user()->id }}" name="hotenbencn" required="required" value="{{ Auth::user()->name}}"class="form-control">
-                    </div>
-                </div>
-                <div class="item form-group">
-                    <label style="font-size: 23px" class="col-form-label col-md-3 col-sm-3 label-align" for="last-name"><span class="badge badge-light">2. Bên thuê phòng trọ (Bên B)</span></label>
+                    <label style="font-size: 23px" class="col-form-label col-md-3 col-sm-3 label-align" for="last-name"><span class="badge badge-light">Thông tin khách thuê:</span></label>
                 </div>
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Ông(bà) <span class="required">*</span>
@@ -47,8 +37,8 @@
                     <div class="col-md-6 col-sm-6 ">
                         <div class="col-md-6 col-sm-6 ">
                             <select id="heard" class="form-control" name="idkhachthue" required>
-                                @foreach ($khachthue as $khachthue)
-                                <option value="{{ $khachthue->id }}">{{ $khachthue->name }} - ({{ $khachthue->phongtro->tenphong }})</option>
+                                @foreach($phongthue as $phongthue)
+                                <option value="{{$phongthue->id}}">{{ $phongthue->khachthueone->name }} -- {{ $phongthue->phongtro->tenphong }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -59,6 +49,36 @@
                     <label style="font-size: 23px" class="col-form-label col-md-3 col-sm-3 label-align" for="last-name"><span class="badge badge-light">Thông tin phòng:</span></label>
                 </div>
                 <br>
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Dịch vụ <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 ">
+                        <p style="padding: 5px;">
+                            <input type="checkbox" name="dichvu[]" value="Giặt sấy" data-parsley-mincheck="2" required class="flat" /> Giặt sấy
+                            <br />
+                            <input type="checkbox" name="dichvu[]" value="Quản lý xe" class="flat" /> Quản lý xe
+                            <br />
+                            <input type="checkbox" name="dichvu[]" value="Vệ sinh" class="flat" /> Vệ sinh
+                            <br />
+                            <input type="checkbox" name="dichvu[]" value="Truyền hình cáp" class="flat" /> Truyền hình cáp
+                            <br />
+                            <input type="checkbox" name="dichvu[]" value="Internet" class="flat" /> Internet
+                            <br />
+                        <p>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name"> <span class="required"></span>
+                    </label>
+                    <div class="col-md-2 col-sm-2 ">
+                        <span>Số điện ban đầu (kWh)</span>
+                        <input type="number" id="last-name" name="sodienbandau" required="required" class="form-control">
+                    </div>
+                    <div class="col-md-2 col-sm-2 ">
+                        <span>Số nước ban đầu (m3)</span>
+                        <input type="number" id="last-name" name="sonuocbandau" required="required" class="form-control">
+                    </div>
+                </div>
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Hình thức thanh toán <span class="required">*</span>
                     </label>
@@ -71,14 +91,11 @@
                     </div>
                 </div>
                 <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Tiền cọc <span class="required">*</span>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Tiền cọc (VNĐ)<span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 ">
                         <input type="number" id="inputNumbers" step="0.01" name="tiendatcoc" required="required" class="form-control">
                     </div>
-                    <div class="col-md-4 col-lg-4 col-sm-5">                        
-                        <h4>đ</h4>                       
-                      </div>
                 </div>
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Giá trị hợp đồng <span class="required">*</span>
@@ -96,7 +113,6 @@
                 <div class="ln_solid"></div>
                 <div class="item form-group">
                     <div class="col-md-6 col-sm-6 offset-md-3">
-                        <button class="btn btn-primary" onclick="window.print();" type="button">Hủy</button>
                         <button type="submit" name="themhopdong" class="btn btn-success">Tạo</button>
                     </div>
                 </div>

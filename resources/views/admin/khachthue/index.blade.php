@@ -14,55 +14,78 @@
     <div class="x_panel">
       <div class="x_title">
         <h2>Danh sách khách thuê trọ</h2>
+        @if(session('thongbao'))
+          <div class="alert alert-success alert-dismissible " role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+            </button>
+            <strong>Thông báo!</strong> {{session('thongbao')}}.
+          </div>
+        @endif
         <div class="clearfix"></div>
       </div> 
       <div class="x_content">
-
         <p>Bấm vào đây để tạo mới <a style="color:red" href="{{ route('khachthue.create') }}">Tạo</a></p>
 
         <div class="table-responsive">
-          <table class="table table-striped jambo_table bulk_action">                
+          <table class="table table-striped projects">
             <thead>
-              <tr class="headings">
-                <th>
-                  <input type="checkbox" id="check-all" class="flat">
-                </th>
-                <th class="column-title">ID </th>
-                <th class="column-title">Tên người thuê </th>
-                <th class="column-title">Thuê phòng </th>
-                <th class="column-title">Giá thuê </th>
-                <th class="column-title">Tiền điện </th>
-                <th class="column-title">Tiền nước </th>
-                <th class="column-title">Tình trạng </th>
-                <th class="column-title">Tùy chỉnh </th>
-                <th class="bulk-actions" colspan="8">
-                  <a class="antoo" style="color:#fff; font-weight:500;">Đã chọn ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                </th>
-              </tr>
+            <tr>
+              <th style="width: 1%">ID</th>
+              <th style="width: 20%">Họ & tên</th>
+              <th>Ảnh 3*4</th>
+              <th>Số điện thoại</th>
+              <th>Trạng thái</th>
+              <th style="width: 20%">#Tùy chọn</th>
+            </tr>
             </thead>
             <tbody>
-              @foreach($khachthue as $khachthue)
-              <tr class="even pointer">
-                <td class="a-center ">
-                  <input type="checkbox" class="flat" name="table_records">
-                </td>
-                <td class=" ">{{ $khachthue->id }}</td>
-                <td class=" ">{{ $khachthue->name }}</td>
-                <td class=" ">{{ $khachthue->phongtro->tenphong }}</td>
-                <td class=" ">{{ number_format($khachthue->phongtro->gia) }} đ</td>
-                <td class=" ">{{ number_format($khachthue->phongtro->tiendien) }} /kwh</td>
-                <td class=" ">{{ number_format($khachthue->phongtro->tiennuoc) }} /m3</td>
-                <td class=" ">
-                  @if ($khachthue->tinhtrang==1)
-                  <button type="button" class="btn btn-round btn-primary">Còn hợp đồng thuê</button>
-                  @elseif ($khachthue->tinhtrang==2)
-                  <button type="button" class="btn btn-round btn-info">Hết hợp đồng</button>
+            @foreach($khachthue as $khachthue)
+            <tr>
+              <td>{{ $khachthue->id }}</td>
+              <td>
+                <a>{{ $khachthue->name }}</a>
+                <br />
+                <small></small>
+              </td>
+              <td>
+                <?php $array_img34 = json_decode($khachthue->hinhanhkhach, true) ?>
+                <ul class="list-inline">
+                  @foreach($array_img34 as $img34)
+                  <li>
+                    <img src="/public/uploads/khachthue/anhthe34/<?php echo $img34; ?>" class="avatar" alt="Avatar">
+                  </li>
+                  @endforeach
+                </ul>
+              </td>
+              <td class="project_progress">
+                {{ $khachthue->sdt }}
+              </td>
+              <td>
+                @if ($khachthue->tinhtrang==1)
+                  <h2><div type="button" class="badge badge-success"><i class="fa fa-circle"></i></div></h2>
+                @elseif ($khachthue->tinhtrang==2)
+                  <h2><div type="button" class="badge badge-secondary"><i class="fa fa-circle-o"></i></div></h2>
+                @endif
+              </td>
+              <td>
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                  Thay đổi
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="{{route('khachthue.show', $khachthue->id)}}"><i class="fa fa-folder"></i> Chi tiết </a>
+                  <a class="dropdown-item" href="#" ><i class="fa fa-pencil"></i> Thay đổi  </a>
+                  <a class="dropdown-item" href="#"><i class="fa fa-trash-o"></i> Xóa </a>
+                  @if($khachthue->tinhtrang==1)
+                    <a class="dropdown-item" href="/admin/khachthue/huyhoatdong/{{$khachthue->id}}"><i class="fa fa-lock"></i> Hủy hoạt động</a>
+                  @elseif($khachthue->tinhtrang==2)
+                    <a class="dropdown-item" href="/admin/khachthue/mohoatdong/{{$khachthue->id}}"><i class="fa fa-unlock"></i> Bật hoạt động</a>
                   @endif
-                </td>
-                <td class=" "></td>
-              </tr>
-              @endforeach
-            </tbody>          
+                </div>
+              </td>
+            </tr>
+            @endforeach
+            </tbody>
           </table>
         </div>          
       </div>

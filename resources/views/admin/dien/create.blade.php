@@ -29,8 +29,8 @@
             <div class="col-md-6 col-sm-6  form-group has-feedback">
                 <select class="form-control has-feedback-left choose phongtro" name="phongtro" id="phongtro">
                     <option>chọn phòng</option>
-                    @foreach($phongtro as $phong) 
-                    <option value="{{ $phong->id }}">{{ $phong->tenphong }}</option>
+                    @foreach($hopdong as $phong)
+                    <option value="">{{$phong->phongchothue->phongtro->tenphong}}</option>
                     @endforeach
                 </select>
                 <span class="fa fa-home form-control-feedback left" aria-hidden="true"></span>

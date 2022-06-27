@@ -8,9 +8,9 @@ class HoaDonModel extends Model
 {
     protected $table = "hoadon";
 
-    public function user()
+    public function chutro()
     {
-        return $this->belongsTo('App\User', 'user_id', 'id');
+        return $this->belongsTo('App\User', 'chutro_id', 'id');
     }
 
     public function phongtro()

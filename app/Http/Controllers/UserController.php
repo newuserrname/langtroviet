@@ -112,7 +112,7 @@ class UserController extends Controller
          $user = User::find(Auth::id());
          if ($request->hasFile('avtuser')){
             $file = $request->file('avtuser');
-            var_dump($file);
+//            var_dump($file);
             $exten = $file->getClientOriginalExtension();
             if($exten != 'jpg' && $exten != 'png' && $exten !='jpeg' && $exten != 'JPG' && $exten != 'PNG' && $exten !='JPEG' )
                 return redirect('user/profile/edit')->with('thongbao','Bạn chỉ được upload hình ảnh có định dạng JPG,JPEG hoặc PNG');

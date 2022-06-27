@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\HopDongThueNhaModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\DienModel;
@@ -16,7 +17,7 @@ class DienController extends Controller
      */
     public function index()
     {
-        $list_sodien = DienModel::where('user_id', Auth::user()->id)->get();
+        $list_sodien = DienModel::where('chutro_id', Auth::user()->id)->get();
         return view('admin.dien.index', [
             "dssodien"=>$list_sodien
         ]);
@@ -29,11 +30,11 @@ class DienController extends Controller
      */
     public function create()
     {
-        $list_phong = PhongTroModel::where('user_id', Auth::user()->id)->where('tinhtrang', '2')->get(); 
-        $list_sodien = DienModel::where('user_id', Auth::user()->id)->first();
+        $list_hopdong = HopDongThueNhaModel::where('chutro_id', Auth::user()->id)->get();
+        $list_sodien = DienModel::where('chutro_id', Auth::user()->id)->first();
         // dd($list_phong);
         return view('admin.dien.create', [
-            "phongtro"=>$list_phong,
+            "hopdong"=>$list_hopdong,
             "dssodien"=>$list_sodien
         ]);
     }

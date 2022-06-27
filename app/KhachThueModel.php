@@ -8,21 +8,9 @@ class KhachThueModel extends Model
 {
     protected $table ="khachthue";
 
-    public function user()
+    public function chutro()
     {
-        return $this->belongsTo('App\User','user_id', 'id');
-    }
-    public function phongtro()
-    {
-        return $this->belongsTo('App\PhongTroModel', 'phongthue_id', 'id');
-    }
-    public function hopdongkhach()
-    {
-        return $this->hasMany('App\HopDongThueNhaModel', 'khachthue_id', 'id');
-    }
-    public function khachthue()
-    {
-        return $this->hasMany('App\KhachThueModel', 'khachthue_id', 'id');
+        return $this->belongsTo('App\User','chutro_id', 'id');
     }
     
 }

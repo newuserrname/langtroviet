@@ -31,7 +31,7 @@
                   <th class="column-title">Tiền nước </th>                 
                   <th class="column-title">Hóa đơn </th>
                   <th class="column-title">Hợp đồng </th>
-                  <th class="column-title">Thay đổi </th>
+                  <th class="column-title">Tùy chọn </th>
                 </tr>
               </thead>
               <tbody>

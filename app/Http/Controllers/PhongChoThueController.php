@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\PhongChoThueModel;
+use App\PhongTroModel;
+use App\KhachThueModel;
 
 class PhongChoThueController extends Controller
 {
@@ -14,7 +17,10 @@ class PhongChoThueController extends Controller
      */
     public function index()
     {
-        return view('admin.phongchothue.index');
+        $list_phongvakhach = PhongChoThueModel::where('chutro_id', Auth::user()->id)->get();
+        return view('admin.phongchothue.index', [
+            "listkhachphong"=>$list_phongvakhach,
+        ]);
     }
 
     /**
@@ -24,7 +30,13 @@ class PhongChoThueController extends Controller
      */
     public function create()
     {
-        return view('admin.phongchothue.create');
+        $list_phong = PhongTroModel::where('chutro_id', Auth::user()->id)->where('tinhtrang', '2')->get();
+        $list_khach = KhachThueModel::where('chutro_id', Auth::user()->id)->get();
+//        dd($list_phong);
+        return view('admin.phongchothue.create', [
+            "listphong"=>$list_phong,
+            "listkhach"=>$list_khach
+        ]);
     }
 
     /**
@@ -35,7 +47,15 @@ class PhongChoThueController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $phongthue = new PhongChoThueModel();
+        $phongthue->chutro_id = Auth::user()->id;
+        $phongthue->khachthue_id = $request->khachone;
+        $phongthue->khachthue2_id = $request->khachtwo;
+        $phongthue->khachthue3_id = $request->khachthree;
+        $phongthue->phongthue_id = $request->phongtro;
+
+        $phongthue->save();
+        return redirect('admin/phongchothue/create')->with('thongbao', 'đã thêm khách thuê phòng');
     }
 
     /**

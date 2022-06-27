@@ -22,6 +22,8 @@
           <ul class="nav child_menu">
             <li><a href="{{ route('phongtro.index') }}"> <i class="fa fa-building-o"></i> Quản lý phòng </a>
             </li>
+            <li><a href="{{ route('phongchothue.index') }}"> <i class="fa fa-home"></i>Quản lý phòng cho thuê</a>
+            </li>
             <li><a href="{{ route('hopdong.index') }}"> <i class="fa fa-file-text"></i> Hợp đồng </a>
             </li>
             <li><a href="{{ route('hoadon.index') }}"> <i class="fa fa-credit-card"></i> Quản lý Hóa đơn </a>
@@ -30,8 +32,6 @@
             </li>
             <li><a href="{{ route('nuoctro.index') }}"> <i class="fa fa-tint"></i>Số nước </a>
             </li>
-            <li><a href="{{ route('phongchothue.index') }}"> <i class="fa fa-home"></i> Quản lý phòng cho thuê</a>
-            </li> 
           </ul>
         </li>
         <li><a><i class="fa fa-users"></i> Khách <span class="fa fa-chevron-down"></span></a>

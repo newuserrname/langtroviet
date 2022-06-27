@@ -170,7 +170,6 @@ function time_elapsed_string($datetime, $full = false) {
 						  </div>
 						  <button type="submit" class="btn btn-default">Tìm kiếm</button>
 						</form>
-						</ul>
 					  </div><!-- /.navbar-collapse -->
 					</div><!-- /.container-fluid -->
 				  </nav>

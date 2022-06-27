@@ -27,29 +27,26 @@
                 <th class="column-title">ID </th>
                 <th class="column-title">Tên người thuê </th>
                 <th class="column-title">Phòng </th>
-                <th class="column-title">Số người ở </th>
-                <th class="column-title">Tiền trọ </th>
-                <th class="column-title">Tiền điện </th>
-                <th class="column-title">Tiền nước </th>
-                <th class="column-title no-link last"><span class="nobr">Chi tiết</span>
-                </th>           
+                <th class="column-title no-link last"><span class="nobr">Chi tiết</span></th>
               </tr>
             </thead>
-
             <tbody>
-              
+              @foreach($listkhachphong as $list)
               <tr class="even pointer">
-                <td class=" "></td>
-                <td class=" "></td>
-                <td class=" "></td>
-                <td class=" "></td>
-                <td class=" "></td>
-                <td class=" "></td>
-                <td class=" "></td>
-                <td class=" last"><a href=""></a>
+                <td class=" ">{{ $list->id }}</td>
+                <td class=" ">* {{ $list->khachthueone->name }} <br>
+                  @if ($list->khachthue2_id != 0)
+                    * {{ $list->khachthuetwo->name }} <br>
+                    @endif
+                  @if ($list->khachthue3_id != 0)
+                    * {{ $list->khachthuethree->name }}
+                    @endif
+                </td>
+                <td class=" ">{{ $list->phongtro->tenphong }}</td>
+                <td class=" last"><a href="{{ route('phongchothue.show', $list->id) }}"><h2><span class="badge badge-info">Mở</span></h2></a>
                 </td>
               </tr>
-              
+              @endforeach
             </tbody>          
           </table>
         </div>          

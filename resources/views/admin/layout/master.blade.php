@@ -122,8 +122,28 @@
     <script src="/public/vendors/pdfmake/build/pdfmake.min.js"></script>
     <script src="/public/vendors/pdfmake/build/vfs_fonts.js"></script>
     <script src="/public/vendors/switchery/dist/switchery.min.js"></script>
+    <script src="/public/assets/js/fileinput/fileinput.js" type="text/javascript"></script>
+    <script src="/public/assets/js/fileinput/vi.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/public/assets/fileinput.css">
     <!-- Custom Theme Scripts -->
     <script src="/js/custom.js"></script>
+    <script type="text/javascript" src="/public/assets/toast/toastr.min.js"></script>
+    <script type="text/javascript">
+      $('#format-file').fileinput({
+        theme: 'fa',
+        language: 'vi',
+        showUpload: false,
+        allowedFileExtensions: ['jpg', 'png', 'gif']
+      });
+    </script>
+    <script type="text/javascript">
+      $('#format-file1').fileinput({
+        theme: 'fa',
+        language: 'vi',
+        showUpload: false,
+        allowedFileExtensions: ['jpg', 'png', 'gif']
+      });
+    </script>
     <script type="text/javascript"> 
       function date() {
         var refresh=1000; // Refresh rate in milli seconds

@@ -24,11 +24,11 @@
           <table class="table table-striped table-bordered dt-responsive nowrap">                
             <thead>
               <tr class="headings">
-                <th class="column-title">ID </th>
+                <th class="column-title">ID</th>
                 <th class="column-title">Ngày tạo </th>
                 <th class="column-title">Tên người thuê </th>
-                <th class="column-title no-link last"><span class="nobr">Chi tiết</span>
-                </th>
+                <th class="column-title">Chi tiết</th>
+                <th class="column-title">Tùy chọn</th>
               </tr>
             </thead>
             <tbody>
@@ -36,8 +36,18 @@
               <tr class="even pointer">
                 <td class=" ">{{ $list->id }}</td>
                 <td class=" ">{{ date("d/m/Y", strtotime($list->created_at)) }}</td>
-                <td class=" ">{{ $list->hopdongkhach->name }}</td>
-                <td class=" last"><a href="{{ route('hopdong.show', $list->id) }}">Mở</a>
+                <td class=" ">{{ $list->phongchothue->khachthueone->name }}</td>
+                <td class=" last"><a href="{{ route('hopdong.show', $list->id) }}">Mở</a></td>
+                <td class=" last">
+                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                      Tùy chọn
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Gia hạn hợp đồng</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Hủy hợp đồng</a>
+                    </div>
                 </td>
               </tr>
               @endforeach

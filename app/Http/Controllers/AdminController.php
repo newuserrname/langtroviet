@@ -21,9 +21,9 @@ class AdminController extends Controller
       $so_tin_da_dang = Motelroom::where('user_id', Auth::user()->id)->get()->count();
       $tongso_luot_xem_tin = Motelroom::where('user_id', Auth::user()->id)->get()->sum('count_view');
       $yeu_cau = RequestFromCustomerModel::where('id_usermotelroom', Auth::user()->id)->get()->count();
-      $hop_dong = HopDongThueNhaModel::where('user_id', Auth::user()->id)->get()->count();
-      $nguoi_thue_tro = KhachThueModel::where('user_id', Auth::user()->id)->get()->count();
-      $phong_tro = PhongTroModel::where('user_id', Auth::user()->id)->get()->count();
+      $hop_dong = HopDongThueNhaModel::where('chutro_id', Auth::user()->id)->get()->count();
+      $nguoi_thue_tro = KhachThueModel::where('chutro_id', Auth::user()->id)->get()->count();
+      $phong_tro = PhongTroModel::where('chutro_id', Auth::user()->id)->get()->count();
       $reports = Reports::all();
       return view ('admin.index', [
         'total_users_active'=>$total_users_active,  

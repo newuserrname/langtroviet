@@ -9,12 +9,12 @@ class HopDongThueNhaModel extends Model
 {
     protected $table = "hopdong";
 
-    public function user() {
-        return $this->belongsTo('App\User', 'user_id', 'id');
+    public function chutro() {
+        return $this->belongsTo('App\User', 'chutro_id', 'id');
     }
-    public function hopdongkhach()
+    public function phongchothue()
     {
-        return $this->belongsTo('App\KhachThueModel', 'khachthue_id', 'id');
+        return $this->beLongsTo('App\PhongChoThueModel', 'khachthue_id', 'id');
     }
     public function thanhtoan() 
     {

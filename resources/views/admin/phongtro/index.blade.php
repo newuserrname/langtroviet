@@ -35,7 +35,7 @@
                 <th class="column-title">Tình trạng </th>
                 <th class="column-title">Khách thuê </th>
                 <th class="column-title">Hóa đơn </th>
-                <th class="column-title">Tùy chỉnh </th>
+                <th class="column-title">Tùy chọn </th>
               </tr>
             </thead>
 
@@ -51,12 +51,12 @@
                 <td class=" ">{{ number_format($phongtro->tiennuoc) }} /m3</td>
                 <td class=" ">
                     @if($phongtro->tinhtrang==1)
-                    <h2><span class="badge badge-primary">còn trống</span></h2> 
+                    <h2><span class="badge badge-primary">chưa thuê</span></h2>
                     @elseif($phongtro->tinhtrang==2)
                     <h2><span class="badge badge-secondary">đang thuê</span></h2>
                     @endif
                 </td>
-                <td class=" "><h2><a class="badge badge-info" href="{{ route('phongtro.show', $phongtro->id) }}">Chi tiết</a></td></h2>
+                <td class=" "><h2><a class="badge badge-info" href="{{ route('phongtro.show', $phongtro->id) }}">Chi tiết</a></h2></td>
                 <td class=" "><a class="btn btn-danger btn-sm" href="">Tạo hóa đơn</a></td>
                 <td class=" ">
                   <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
@@ -69,7 +69,7 @@
                     @elseif($phongtro->tinhtrang==2)
                     <a class="dropdown-item" href="/admin/phongtro/conphong/{{$phongtro->id}}"><i class="fa fa-check-circle-o"></i> còn phòng</a>
                     @endif
-                    <a class="dropdown-item" href="/admin/phongtro/{{$phongtro->id}}"><i class="fa fa-edit"></i> Thay đổi</a></button>
+                    <a class="dropdown-item" href="/admin/phongtro/{{$phongtro->id}}"><i class="fa fa-edit"></i> Thay đổi</a>
                   </div>
                 </td>
               </tr>

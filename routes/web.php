@@ -80,7 +80,10 @@ Route::group(['prefix'=>'admin','middleware'=>'adminmiddleware'], function () {
     Route::resource('/dientro', 'DienController');
     Route::resource('/nuoctro', 'NuocController');
 
-   
+    Route::group(['prefix'=>'khachthue'],function(){
+       Route:: get('huyhoatdong/{id}','KhachThueController@huyhoatdong');
+       Route::get('mohoatdong/{id}', 'KhachThueController@mohoatdong');
+    });
 
     Route::group(['prefix'=>'phongtro'],function(){
         Route::get('chothue/{id}', 'PhongTroController@chothue');

@@ -17,7 +17,7 @@ class PhongTroController extends Controller
      */
     public function index()
     {
-        $list_phongtro = PhongTroModel::where('user_id', Auth::user()->id)->get();
+        $list_phongtro = PhongTroModel::where('chutro_id', Auth::user()->id)->get();
         return view('admin.phongtro.index' , [
             "listphongtro"=>$list_phongtro,
         ]);
@@ -30,8 +30,7 @@ class PhongTroController extends Controller
      */
     public function create()
     {
-        $list_phong = Motelroom::where('user_id', Auth::user()->id)->get();
-        return view('admin.phongtro.create', ["phongtro"=>$list_phong]);
+        return view('admin.phongtro.create');
     }
 
     /**
@@ -46,7 +45,7 @@ class PhongTroController extends Controller
         // $maphong = "PT" . "-" . date('dis');
 
         $phongtro = new PhongTroModel();
-        $phongtro->user_id = Auth::user()->id;
+        $phongtro->chutro_id = Auth::user()->id;
         $phongtro->tenphong = $request->tenphong;
         $phongtro->diachi = $request->diachiphong;
         $phongtro->gia = $request->giaphong;

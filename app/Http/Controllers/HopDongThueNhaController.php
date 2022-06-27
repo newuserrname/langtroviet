@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use DateTime;
 use App\Motelroom;
 use App\User;
 use App\ThanhToanModel;
 use App\HopDongThueNhaModel;
 use App\KhachThueModel;
 use App\PhongTroModel;
+use App\PhongChoThueModel;
 
 class HopDongThueNhaController extends Controller
 {
@@ -20,8 +23,11 @@ class HopDongThueNhaController extends Controller
      */
     public function index()
     {
-        $list_hopdong = HopDongThueNhaModel::where('user_id', Auth::user()->id)->get();
-        return view('admin.hopdong.index', ["listhopdong"=>$list_hopdong]);
+        $list_hopdong = HopDongThueNhaModel::where('chutro_id', Auth::user()->id)->get();
+
+        return view('admin.hopdong.index', [
+            "listhopdong"=>$list_hopdong,
+        ]);
     }
 
     /**
@@ -32,10 +38,10 @@ class HopDongThueNhaController extends Controller
     public function create()
     {
         $thanhtoan = ThanhToanModel::all();
-        $list_khachthue = KhachThueModel::where('user_id', Auth::user()->id)->get();
+        $list_phongthue = PhongChoThueModel::where('chutro_id', Auth::user()->id)->get();
         return view('admin.hopdong.create', [
             "thanhtoan"=>$thanhtoan,
-            "khachthue"=>$list_khachthue,
+            "phongthue"=>$list_phongthue,
         ]);
     }
 
@@ -47,15 +53,19 @@ class HopDongThueNhaController extends Controller
      */
     public function store(Request $request)
     {
-        $tthopdong = new HopDongThueNhaModel();
+        $json_dichvu = json_encode($request->dichvu, JSON_FORCE_OBJECT);
 
-        $tthopdong->user_id = Auth::user()->id;
-        $tthopdong->namecn = Auth::user()->name;
+        $tthopdong = new HopDongThueNhaModel();
+        $tthopdong->chutro_id = Auth::user()->id;
         $tthopdong->khachthue_id = $request->idkhachthue;
+        $tthopdong->dichvu = $json_dichvu;
+        $tthopdong->sodienbandau = $request->sodienbandau;
+        $tthopdong->sonuocbandau = $request->sonuocbandau;
         $tthopdong->thanhtoan_id = $request->phuongthucthanhtoan;
         $tthopdong->tiencoc = $request->tiendatcoc;
         $tthopdong->tungay = $request->tungay;
         $tthopdong->denngay = $request->ngayhethan;
+
         $tthopdong->save();
 
         return redirect('admin/hopdong/create')->with('thongbao', 'tạo hợp đồng thành công');
@@ -70,7 +80,7 @@ class HopDongThueNhaController extends Controller
     public function show($id)
     {
         $show_hopdong = HopDongThueNhaModel::find($id);
-        return view('admin.hopdong.banhopdong', ["showhopdong"=>$show_hopdong]);
+        return view('admin.hopdong.banhopdong', ["chitiet"=>$show_hopdong]);
     }
 
     /**
