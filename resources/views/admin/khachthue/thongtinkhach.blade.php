@@ -27,6 +27,24 @@
                                     <br>Nơi cấp: {{ $khach->noicapcmnd }}
                                 </address>
                             </div>
+                            <div class="col-md-6 invoice-col">
+                                <address>
+                                    <strong> Chứng minh thư</strong>
+                                    <br> <?php $array_img = json_decode($khach->hinhanhcmnd, true) ?>
+                                    @foreach($array_img as $imgcmnd)
+                                        <img src="/public/uploads/khachthue/cmnd/<?php echo $imgcmnd; ?>" style="width: 30%">
+                                    @endforeach
+                                </address>
+                            </div>
+                            <div class="col-md-6 invoice-col">
+                                <address>
+                                    <strong> Ảnh thẻ 3*4</strong>
+                                    <br> <?php $array_img = json_decode($khach->hinhanhkhach, true) ?>
+                                    @foreach($array_img as $img34)
+                                        <img src="/public/uploads/khachthue/anhthe34/<?php echo $img34; ?>" style="width: 10%">
+                                    @endforeach
+                                </address>
+                            </div>
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->

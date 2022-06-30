@@ -24,7 +24,6 @@
           <table class="table table-striped table-bordered dt-responsive nowrap">                
             <thead>
               <tr class="headings">
-                <th class="column-title">ID</th>
                 <th class="column-title">Ngày tạo </th>
                 <th class="column-title">Tên người thuê </th>
                 <th class="column-title">Chi tiết</th>
@@ -34,7 +33,6 @@
             <tbody>
               @foreach ($listhopdong as $list) 
               <tr class="even pointer">
-                <td class=" ">{{ $list->id }}</td>
                 <td class=" ">{{ date("d/m/Y", strtotime($list->created_at)) }}</td>
                 <td class=" ">{{ $list->phongchothue->khachthueone->name }}</td>
                 <td class=" last"><a href="{{ route('hopdong.show', $list->id) }}">Mở</a></td>
@@ -47,6 +45,12 @@
                       <a class="dropdown-item" href="#">Gia hạn hợp đồng</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="#">Hủy hợp đồng</a>
+                      <form method="POST" action="{{ route('hopdong.destroy', $list->id) }}">
+                        @method('DELETE')
+                        @csrf
+                        <button class="dropdown-item" href=""><i class="fa fa-trash-o"></i> Xóa</button>
+                      </form>
+
                     </div>
                 </td>
               </tr>

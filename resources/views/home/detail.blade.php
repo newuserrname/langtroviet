@@ -197,7 +197,7 @@ function time_elapsed_string($datetime, $full = false) {
 			@else	
 			<div class="report">
 				<h4>Liên hệ nhanh</h4>
-				<form action="{{ route('user.yeucau',['id'=> $motelroom->id, 'user_motel'=>$motelroom->user->id]) }}">
+				<form action="{{ route('user.yeucau',['id'=>$motelroom->id, 'user_motel'=>$motelroom->user->id]) }}">
 					<label class="radio" style="margin-right:15px"> Yêu cầu thuê
 						<input type="radio" checked="checked" name="yeucau" value="1">
 						<span class="checkround"></span>

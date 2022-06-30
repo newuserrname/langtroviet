@@ -17,9 +17,9 @@ class DienController extends Controller
      */
     public function index()
     {
-        $list_sodien = DienModel::where('chutro_id', Auth::user()->id)->get();
+        $hopdong = HopDongThueNhaModel::where('chutro_id', Auth::user()->id)->get();
         return view('admin.dien.index', [
-            "dssodien"=>$list_sodien
+            "hopdong"=>$hopdong,
         ]);
     }
 
@@ -31,11 +31,8 @@ class DienController extends Controller
     public function create()
     {
         $list_hopdong = HopDongThueNhaModel::where('chutro_id', Auth::user()->id)->get();
-        $list_sodien = DienModel::where('chutro_id', Auth::user()->id)->first();
-        // dd($list_phong);
         return view('admin.dien.create', [
             "hopdong"=>$list_hopdong,
-            "dssodien"=>$list_sodien
         ]);
     }
 
@@ -45,15 +42,16 @@ class DienController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
+        $gethopdong = HopDongThueNhaModel::find($id);
         $sodien = new DienModel();
-        $sodien->user_id = Auth::user()->id;
-        $sodien->phongtro_id = $request->phongtro;
-        $sodien->sodiencu = $request->sodiencu;
+        $sodien->chutro_id = Auth::user()->id;
+        $sodien->hopdong_id = $id;
+        $sodien->sodiencu = $gethopdong->sodienbandau;
         $sodien->sodienmoi = $request->sodienmoi;
-        $sodien->ngaylaysocu = $request->ngaylaycu;
-        $sodien->ngaylaysomoi = $request->ngaylaymoi;
+        $sodien->ngaynhap = $request->ngaynhap;
+        $sodien->giadien = $request->giadien;
         $sodien->save();
 
         return redirect('admin/dientro');
@@ -67,7 +65,8 @@ class DienController extends Controller
      */
     public function show($id)
     {
-        //
+        $id_nhapsodien = HopDongThueNhaModel::find($id);
+        return view('admin.dien.create', ["chitiet"=>$id_nhapsodien]);
     }
 
     /**

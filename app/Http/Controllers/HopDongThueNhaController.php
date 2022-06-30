@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\TblDienModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -66,6 +67,7 @@ class HopDongThueNhaController extends Controller
         $tthopdong->tungay = $request->tungay;
         $tthopdong->denngay = $request->ngayhethan;
 
+
         $tthopdong->save();
 
         return redirect('admin/hopdong/create')->with('thongbao', 'tạo hợp đồng thành công');
@@ -114,6 +116,7 @@ class HopDongThueNhaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        HopDongThueNhaModel::find($id)->delete();
+        return redirect()->back()->with('thongbao', 'Đã xóa hợp đồng!');
     }
 }

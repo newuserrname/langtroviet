@@ -96,12 +96,11 @@ Route::group(['prefix'=>'admin','middleware'=>'adminmiddleware'], function () {
         Route::get('chuathanhtoan/{id}', 'PhongTroController@chuathanhtoan');
     });
     });
-    
-    
+
 });
 
 Route::get('/print-bill/{checkout_code}', 'BilldiennuocController@print_bill');
-
+Route::get('/dientro/nhapsodien/{id}', 'DienController@store')->name('admin.dientro.nhapsodien');
 /* End Admin */
 
 Route::get('/phongtro/{slug}',function($slug){
@@ -121,7 +120,6 @@ Route::get('/phongtro/{slug}',function($slug){
 Route::get('/report/{id}','MotelController@userReport')->name('user.report');
 Route::get('/motelroom/del/{id}','MotelController@user_del_motel');
 Route::get('/yeucau/{id},{user_motel}', 'RequestFromCustomerController@store')->name('user.yeucau');
-
 /* User */
 Route::group(['prefix'=>'user'], function () {
     Route::get('register','UserController@get_register');
