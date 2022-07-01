@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DienBill;
 use App\HopDongThueNhaModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,10 +31,7 @@ class DienController extends Controller
      */
     public function create()
     {
-        $list_hopdong = HopDongThueNhaModel::where('chutro_id', Auth::user()->id)->get();
-        return view('admin.dien.create', [
-            "hopdong"=>$list_hopdong,
-        ]);
+
     }
 
     /**
@@ -45,16 +43,20 @@ class DienController extends Controller
     public function store(Request $request, $id)
     {
         $gethopdong = HopDongThueNhaModel::find($id);
+
+        $dienbill = DienBill::where('khachthue_id', HopDongThueNhaModel::find($id)->khachthue_id)->first();
         $sodien = new DienModel();
+
         $sodien->chutro_id = Auth::user()->id;
         $sodien->hopdong_id = $id;
-        $sodien->sodiencu = $gethopdong->sodienbandau;
+        $sodien->sodiencu = $request->sodientruoc;
         $sodien->sodienmoi = $request->sodienmoi;
+        $dienbill->sotruoc = $request->sodienmoi;
         $sodien->ngaynhap = $request->ngaynhap;
         $sodien->giadien = $request->giadien;
         $sodien->save();
-
-        return redirect('admin/dientro');
+        $dienbill->save();
+        return redirect('admin/dientro')->with('thongbao', 'Nhập số điện cho khách của ' .$gethopdong->phongchothue->phongtro->tenphong. ' thành công!');
     }
 
     /**
@@ -65,10 +67,12 @@ class DienController extends Controller
      */
     public function show($id)
     {
-        $id_nhapsodien = HopDongThueNhaModel::find($id);
-        return view('admin.dien.create', ["chitiet"=>$id_nhapsodien]);
+        $id_dien = HopDongThueNhaModel::find($id);
+        $dien = DienModel::where('hopdong_id', $id)->get();
+        return view('admin.dien.thongtin', [
+            "dien"=>$dien
+        ]);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -77,7 +81,12 @@ class DienController extends Controller
      */
     public function edit($id)
     {
-        //
+        $id_nhapsodien = HopDongThueNhaModel::find($id);
+        $dientruoc = DienBill::where('khachthue_id', HopDongThueNhaModel::find($id)->khachthue_id)->first();
+        return view('admin.dien.create', [
+            "chitiet"=>$id_nhapsodien,
+            "sodientruoc"=>$dientruoc
+        ]);
     }
 
     /**

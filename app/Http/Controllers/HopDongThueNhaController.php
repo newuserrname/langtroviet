@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\DienBill;
+use App\NuocBill;
 use App\TblDienModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -57,18 +59,26 @@ class HopDongThueNhaController extends Controller
         $json_dichvu = json_encode($request->dichvu, JSON_FORCE_OBJECT);
 
         $tthopdong = new HopDongThueNhaModel();
+        $dienbill = new DienBill();
+        $nuocbill = new NuocBill();
+
         $tthopdong->chutro_id = Auth::user()->id;
         $tthopdong->khachthue_id = $request->idkhachthue;
+        $dienbill->khachthue_id = $request->idkhachthue;
+        $nuocbill->khachthue_id = $request->idkhachthue;
         $tthopdong->dichvu = $json_dichvu;
         $tthopdong->sodienbandau = $request->sodienbandau;
+        $dienbill->sotruoc = $request->sodienbandau;
         $tthopdong->sonuocbandau = $request->sonuocbandau;
+        $nuocbill->sotruoc = $request->sonuocbandau;
         $tthopdong->thanhtoan_id = $request->phuongthucthanhtoan;
         $tthopdong->tiencoc = $request->tiendatcoc;
         $tthopdong->tungay = $request->tungay;
         $tthopdong->denngay = $request->ngayhethan;
 
-
         $tthopdong->save();
+        $dienbill->save();
+        $nuocbill->save();
 
         return redirect('admin/hopdong/create')->with('thongbao', 'tạo hợp đồng thành công');
     }

@@ -13,12 +13,13 @@
 <!-- /page header -->
 <div class="x_panel">
     <div class="x_title">
-        <h2>Nhập số điện {{ $chitiet->phongchothue->phongtro->tenphong }}</h2>
+        <h2>Nhập số điện {{ $chitiet->phongchothue->phongtro->tenphong }} </h2>
         @if(session('thongbao'))
-        <div class="alert bg-secondary">
-            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
-            <h2><span class="badge badge-success">{{session('thongbao')}}</span></h2>
-        </div>
+            <div class="alert alert-success alert-dismissible " role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                </button>
+                <strong>Thông báo!</strong> {{session('thongbao')}}.
+            </div>
         @endif
         <div class="clearfix"></div>
     </div>
@@ -34,7 +35,15 @@
             </div>
 
             <div class="item form-group">
-                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Số điện<span class="required">*</span>
+                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Số điện trước đó<span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 ">
+                    <input type="number" id="inputNumbers" step="0.01" name="sodientruoc" required="required" class="form-control" value="{{ $sodientruoc->sotruoc }}">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Số điện hiện tại<span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
                     <input type="number" id="inputNumbers" step="0.01" name="sodienmoi" required="required" class="form-control">

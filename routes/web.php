@@ -98,9 +98,10 @@ Route::group(['prefix'=>'admin','middleware'=>'adminmiddleware'], function () {
     });
 
 });
-
 Route::get('/print-bill/{checkout_code}', 'BilldiennuocController@print_bill');
 Route::get('/dientro/nhapsodien/{id}', 'DienController@store')->name('admin.dientro.nhapsodien');
+Route::get('/nuoctro/nhapsonuoc/{id}', 'NuocController@store')->name('admin.nuoctro.nhapsonuoc');
+
 /* End Admin */
 
 Route::get('/phongtro/{slug}',function($slug){
