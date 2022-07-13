@@ -46,8 +46,8 @@
         </li> 
         {{-- <li><a href="/admin/report"> <i class="fa fa-exclamation-triangle"></i> Báo cáo nội dung </a>
         </li> --}}
-        {{-- <li><a href="/admin/thongke"> <i class="fa fa-tasks"></i> Thống kê </a>
-        </li> --}}
+        <li><a href="/admin/thongke"> <i class="fa fa-bar-chart-o"></i> Thống kê </a>
+        </li>
       </ul>
     </div>
 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\HopDongThueNhaModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\HoaDonModel;
@@ -15,7 +16,8 @@ class HoaDonController extends Controller
      */
     public function index()
     {
-        return view('admin.playment.index');
+        $hopdong = HopDongThueNhaModel::where('chutro_id', Auth::user()->id)->get();
+        return view('admin.playment.index', ["hopdong"=>$hopdong]);
     }
 
     /**

@@ -100,6 +100,7 @@ class PhongChoThueController extends Controller
      */
     public function destroy($id)
     {
-        //
+        PhongChoThueModel::find($id)->delete();
+        return redirect()->back()->with('thongbao', 'Đã xóa phòng thuê thành công!');
     }
 }

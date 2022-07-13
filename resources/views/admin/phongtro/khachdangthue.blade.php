@@ -38,7 +38,7 @@
                 @foreach ($khachdangthue as $khach )
                   <tr>        
                     <td>{{ $khach->phongtro->tenphong }}</td>
-                    <td>{{ $khach->name }}</td>
+                    <td>{{ $khach }}</td>
                     <td>{{ number_format($khach->phongtro->tiendien) }} /kwh</td>
                     <td>{{ number_format($khach->phongtro->tiennuoc) }} /m3</td>
                     <td>

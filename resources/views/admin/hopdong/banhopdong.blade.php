@@ -8,7 +8,7 @@
     <script>
     window.onload = function () {
         window.print();
-    }   
+    }
     </script>
 </head>
 <body>
@@ -50,7 +50,7 @@
     </tr>
     <tr>
         <td>Ông/bà:&nbsp;&nbsp;{{ Auth::user()->name }}</td>
-        
+
     </tr>
     <tr>
         <td>Sinh ngày:&nbsp;&nbsp;{{ date("d/m/Y", strtotime(Auth::user()->ngaysinh)) }}</td>
@@ -78,7 +78,7 @@
     </tr>
     <tr>
         <td>Ông/bà:&nbsp;&nbsp;{{ $chitiet->phongchothue->khachthueone->name }}</td>
-        
+
     </tr>
     <tr>
         <td>Sinh ngày:&nbsp;&nbsp;{{ date("d/m/Y", strtotime($chitiet->phongchothue->khachthueone->ngaysinh)) }}</td>
@@ -202,7 +202,7 @@
             đồng đó gây tổn thất cho bên bị vi phạm hợp đồng thì bên vi phạm hợp đồng phải bồi thường thiệt hại.</td>
     </tr>
     <tr>
-        <td>- Một trong hai bên muốn chấm dứt hợp đồng trước thời hạn thì phải báo trước cho bên kia 
+        <td>- Một trong hai bên muốn chấm dứt hợp đồng trước thời hạn thì phải báo trước cho bên kia
             ít nhất 30 ngày và hai bên phải có sự thống nhất.</td>
     </tr>
     <tr>
@@ -222,7 +222,7 @@
             <td>ĐẠI DIỆN BÊN B</td>
             <td>ĐẠI DIỆN BÊN A</td>
         </tr>
-    </table>        
+    </table>
 </table>
 </body>
 </html>

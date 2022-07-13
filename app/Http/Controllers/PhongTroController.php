@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\PhongChoThueModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\Paginator;
 use App\PhongTroModel;
 use App\Motelroom;
 use App\KhachThueModel;
@@ -17,9 +19,17 @@ class PhongTroController extends Controller
      */
     public function index()
     {
-        $list_phongtro = PhongTroModel::where('chutro_id', Auth::user()->id)->get();
+        $list_phongtro = PhongTroModel::where('chutro_id', Auth::user()->id)->orderBy('gia', 'DESC')->simplePaginate(4);
+        $phongvip = PhongTroModel::where('chutro_id', Auth::user()->id)->where('loaiphong', '1')->get()->count();
+        $phongthuong = PhongTroModel::where('chutro_id', Auth::user()->id)->where('loaiphong', '2')->get()->count();
+        $chothue = PhongTroModel::where('chutro_id', Auth::user()->id)->where('tinhtrang', '2')->get()->count();
+        $conphong = PhongTroModel::where('chutro_id', Auth::user()->id)->where('tinhtrang', '1')->get()->count();
         return view('admin.phongtro.index' , [
             "listphongtro"=>$list_phongtro,
+            "phongvip"=>$phongvip,
+            "phongthuong"=>$phongthuong,
+            "chothue"=>$chothue,
+            "conphong"=>$conphong
         ]);
     }
 
@@ -52,6 +62,7 @@ class PhongTroController extends Controller
         $phongtro->dientich = $request->dientichphong;
         $phongtro->tiendien = $request->tiendien;
         $phongtro->tiennuoc = $request->tiennuoc;
+        $phongtro->loaiphong = $request->loaiphong;
         $phongtro->tinhtrang = $request->tinhtrang;
 
         $phongtro->save();
@@ -66,11 +77,7 @@ class PhongTroController extends Controller
      */
     public function show($id)
     {
-        $list_khachthue = KhachThueModel::where('phongthue_id', $id)->get();
-        // var_dump($list_khachthue);
-        return view('admin.phongtro.khachdangthue', [
-            "khachdangthue"=>$list_khachthue
-        ]);
+
     }
 
     /**

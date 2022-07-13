@@ -75,9 +75,9 @@
                         <div class="col-md-6 col-sm-6 ">
                             <p>
                                 Phòng VIP:
-                                <input type="radio" class="flat" name="loaiphong" id="genderM" value="1" checked="" required />
+                                <input type="radio" class="flat" name="loaiphong" value="1" />
                                 Phòng thường:
-                                <input type="radio" class="flat" name="loaiphong" id="genderF" value="2" />
+                                <input type="radio" class="flat" name="loaiphong" value="2" />
                             </p>
                         </div>
                     </div>
